@@ -47,13 +47,11 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt
 ## Source status (2026-09-28)
 
 All 15 documents from the old petercorke.com download plugin are here. Nine have LaTeX
-source in `src/`; `build.py --latex` rebuilds 2 of them (solving-trig-equations,
-xml-matlab). The rest fall back to their published PDF until these are fixed:
+source in `src/`; `build.py --latex` rebuilds 4 of them locally (precision-recall-curves,
+rtb-real-robot, solving-trig-equations, xml-matlab); CI also builds insertion-jacobian. The rest fall back to their published PDF until these are fixed:
 
-- **Missing shared bibliography**: `strings`, `kinematics`, `robot`, `dynamics`,
-  `software`, `extra`, `book` (`.bib`). Only `publist.bib` was found
-  (`Dropbox/CloudDocs/doc/`). Probably the RVC book's bibliography library.
-- **Missing `pic-common.tex`** (precision-recall-curves, rtb-real-robot) — on its way.
+- **Bibliographies**: now in `shared/bib/` (see below). Only `extra.bib`, cited by
+  xml-matlab, is still missing, and that note builds without it.
 - **`\dddot already defined`** (dh-common-robots, ets-jacobian, four-is-harder-than-six):
   current `rvc-notation` clashes with a newer LaTeX package; probably a one-line fix in
   `petercorke/rvc-notation`.
@@ -79,5 +77,6 @@ bones-of-descartes has Pages source (`source_format: pages`): re-export the PDF 
 
 `shared/tex/` and `shared/bib/` hold frozen copies of the macro files (`pic-common.tex`,
 `matlab.tex`) and bibliographies the older notes use, taken from `~/Dropbox/lib/tex/inputs`
-and `~/Dropbox/lib/bib` in September 2026. They aren't kept in sync: the notes are old and
+and `~/Dropbox/lib/bib` in September 2026. Private fields (`annote`, `File`,
+`Bdsk-File-*`) were stripped from the `.bib` copies. They aren't kept in sync: the notes are old and
 so are their references. `rvc-notation` is not copied; it comes from its own repo.
