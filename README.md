@@ -48,15 +48,25 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 All 15 documents from the old petercorke.com download plugin are here. Nine have LaTeX
 source in `src/`; `build.py --latex` rebuilds 4 of them locally (precision-recall-curves,
-rtb-real-robot, solving-trig-equations, xml-matlab); CI also builds insertion-jacobian. The rest fall back to their published PDF until these are fixed:
+rtb-real-robot, solving-trig-equations, xml-matlab), each matching its published page
+count; CI also builds insertion-jacobian.
 
-- **Bibliographies**: now in `shared/bib/` (see below). Only `extra.bib`, cited by
-  xml-matlab, is still missing, and that note builds without it.
-- **`\dddot already defined`** (dh-common-robots, ets-jacobian, four-is-harder-than-six):
-  current `rvc-notation` clashes with a newer LaTeX package; probably a one-line fix in
-  `petercorke/rvc-notation`.
-- **Other errors**: insertion-jacobian ("Missing }"), urdf-matlab (undefined control
-  sequence) — need a look.
+**Decision (2026-09-28): the others keep their published PDF as the master; their source
+is archived as is, not repaired.** dh-common-robots, ets-jacobian and
+four-is-harder-than-six were written in 2014–18 against the global `rvc-notation.tex` of
+the day, which has since changed: they use macros later removed or never committed
+(`\var`, `\Mlab`, `\so`, a `Code` environment). That version predates the
+`petercorke/rvc-notation` git history (August 2019) and no copy survives — the
+`Writing/` folders hold only `rvc-notation.aux` leftovers, no local variants. Neither the
+2016 `notation.tex` nor today's `rvc-notation` reproduces it. insertion-jacobian (builds on
+CI only) and urdf-matlab are in the same position. If one of these notes is ever revised,
+modernise its source against the current `rvc-notation` then.
+
+- **Bibliographies**: in `shared/bib/` (see below). Only `extra.bib`, cited by
+  xml-matlab, is missing, and that note builds without it.
+- Locally, an uncommitted work-in-progress `rvc-notation.tex` (in `~/code/rvc-notation`)
+  also causes a `\dddot already defined` clash; CI uses the committed version, which is
+  fine.
 
 bones-of-descartes has Pages source (`source_format: pages`): re-export the PDF by hand.
 
@@ -67,11 +77,11 @@ bones-of-descartes has Pages source (`source_format: pages`): re-export the PDF 
   modern Python versions (Robotics Toolbox for Python, Python XML/URDF parsing). Each has a
   `TODO` comment in its `doc.yml`.
 
-- **Large files**: scans and big archives become GitHub release assets rather than
-  committed files (`url:` in doc.yml instead of a local PDF); the build fetches them to
-  render thumbnails.
-- **OCR**: run OCRmyPDF on scans in CI so they're searchable and indexable.
-- **Sources**: add `src/` folders and build those PDFs in CI.
+- **OCR**: run OCRmyPDF on scans (AIM-177, the Puma report) in CI so they're searchable
+  and indexable.
+
+Large files are already handled: they're on the `assets` release (`asset:` in doc.yml),
+and CI downloads them to render thumbnails.
 
 ## Shared files
 
