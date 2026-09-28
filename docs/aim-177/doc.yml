@@ -1,0 +1,14 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: Modelling, trajectory calculation and servoing of a computer controlled arm
+group: historical
+asset: aim-177.pdf
+year: 1972
+authors:
+- Richard Paul
+institution: Stanford AI Lab
+report: AIM-177 (STAN-CS-72-311)
+source: NTIS reprint AD-785 071, scanned
+rights: Approved for public release; distribution unlimited (NTIS)
+summary: Richard Paul's 1972 Stanford AI Laboratory report (AIM-177), a foundational work
+  on manipulator kinematics, trajectory generation and servo control. Scanned NTIS copy.
+draft_summary: true

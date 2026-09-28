@@ -1,0 +1,268 @@
+% general layout
+\setcounter{secnumdepth}{3}     % label subsubsections
+\raggedbottom
+%\usepackage{cite}  clashes with biblatex
+\usepackage{array}
+\usepackage{color}
+%\usepackage{sidecap}
+\usepackage[small,nooneline,bf]{caption}
+%\usepackage{accents}
+\setlength{\fboxsep}{0.3ex}
+
+\ifthenelse{\boolean{draft}}{\usepackage[notref,notcite]{showkeys}} %\definecolor{refkey}{red}{1}\definecolor{labelkey}{red}{1}}
+%\ifthenelse{\boolean{draft}}{\usepackage{showlabels}}
+
+\usepackage{subfigure}
+
+%\usepackage{appendix}   % per chapter appendices
+
+\usepackage{endnotes}
+\let\realfootnote=\footnote
+\let\footnote=\endnote
+%\def\enoteformat{\parindent=1.8em\leavevmode\theenmark}
+%378 \def\enoteformat{\rightskip\z@ \leftskip\z@ \parindent=1.8em
+%379   \leavevmode\llap{\makeenmark}}
+
+\DeclareMathSymbol{\minus}{\mathord}{operators}{"2D}
+
+
+\newcommand{\footnotex}[1]{\footnote{#1 [p. \pageref{en-\thechapter.\theenmark}]}\label{en-\thechapter.\theendnote}}
+
+% create vertically aligned figures
+%
+%   \topfigure{width}{filename}
+\newcommand{\centrefigure}[2]{\begin{minipage}[c]{#1}\vspace{0pt}\includegraphics[width=0.99\textwidth]{#2}\end{minipage}}
+\newcommand{\topfigure}[2]{\begin{minipage}[t]{#1}\vspace{0pt}\includegraphics[width=0.99\textwidth]{#2}\end{minipage}}
+
+%\usepackage[info]{crop}
+%\crop
+%\pageframetrue
+%\newcommand{\topfigrule}{\hrule}
+
+% page dimensions
+%\setlength{\textwidth}{117mm}
+%\setlength{\textheight}{190mm}
+%\setlength{\oddsidemargin}{15mm}
+%\setlength{\evensidemargin}{15mm}
+%\setlength{\paperheight}{228mm}
+%\setlength{\paperwidth}{150mm}
+
+% MIT dimensions
+%\setlength{\textwidth}{7in}
+%\setlength{\textheight}{9in}
+
+
+% paragraphs
+\setlength\parindent{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newlength\fvskip
+\setlength\fvskip{0.5mm}
+
+% figure dimensions
+%
+%   \figwidth   normal width for a figure
+%   \figwidths  width for 2 figs side by side
+%   \bigwidth   width for a figure that spans the page
+\newlength{\figwidth}
+\setlength{\figwidth}{0.6\textwidth}
+\newlength{\figwidths}
+\setlength{\figwidths}{0.45\textwidth}
+\newlength{\bigwidth}		% for root-locus plots
+\setlength{\bigwidth}{\textwidth}
+\newlength{\fullwidth}
+\setlength{\fullwidth}{\textwidth}
+
+% headers and footers
+\usepackage{fancyheadings}
+%\pagestyle{headings}
+\pagestyle{fancy}
+\addtolength{\headheight}{4pt}
+%%\addtolength{\headwidth}{\marginparsep}
+%%\addtolength{\headwidth}{\marginparwidth}
+%%%\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}} % remember chapter title
+%%%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+                                              % section number and title
+\lhead[\fancyplain{}{\bf\thepage}]{\fancyplain{}{\bf\rightmark}}
+\rhead[\fancyplain{}{\bf\leftmark}]{\fancyplain{}{\bf\thepage}}
+\cfoot{}
+%\lfoot{Draft of \today, Boston}
+%\lfoot{Draft of \today, Brisbane}
+\lfoot{Draft of \today, Brisbane}
+\rfoot{Copyright (c) Peter Corke 2015}
+\def\fps@figure{htp}
+\def\fps@table{htp}
+
+% hypenation rules
+\hyphenation{ro-botic}
+\hyphenation{ro-botics}
+
+% float placement
+\def\topfraction{.9}
+\def\bottomfraction{.9}
+\def\textfraction{.1}
+\def\floatpagefraction{.9}
+%\renewcommand{\caption}{\hangcaption}
+%
+%\def\figurestring{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        extra packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% create the strikeout macro
+\usepackage{ulem}
+\normalem
+
+%\usepackage[hyphens]{url}
+
+\usepackage{marginnote}
+\newcommand{\todo}[1]{\ifthenelse{\boolean{draft}}{\marginnote{{\color{red}#1}}}{}}
+
+%\usepackage{wrapfig}
+
+% Info box environment
+%   for detailed information about Toolbox functions
+%
+%   \begin{InfoBox}
+%   \end{InfoBox}
+\usepackage{float}
+
+\definecolor{Yellow}{rgb}{1, 1, 0.8}
+%\definecolor{Yellow}{rgb}{1, 1, 0.9}
+\definecolor{Blue}{rgb}{0.9, 0.9, 1} % sky blue
+\definecolor{Red}{rgb}{1, 0.7, 0.7}
+
+
+\newcommand{\advise}[1]{{\color{red}#1}}
+\makeatletter\newenvironment{BlueBox}%
+   {\begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}%
+   {\end{minipage}\end{lrbox}%
+      \colorbox{Blue}{\usebox{\@tempboxa}}
+      }\makeatother
+
+\makeatletter\newenvironment{YellowBox}%
+   {\begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}%
+   {\end{minipage}\end{lrbox}%
+      \colorbox{Yellow}{\usebox{\@tempboxa}}
+      }\makeatother
+
+\makeatletter\newenvironment{InfoBox}%
+   {\begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}%
+   {\end{minipage}\end{lrbox}%
+      \colorbox{Blue}{\usebox{\@tempboxa}}
+      }\makeatother
+
+\makeatletter\newenvironment{WarningBox}%
+   {\begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}%
+   {\end{minipage}\end{lrbox}%
+      \colorbox{Red}{\usebox{\@tempboxa}}
+      }\makeatother
+
+% \begin{BioAside}{image}{firstname}{lastname}{years}
+
+\floatstyle{plain}
+\newfloat{AsideFloat}{b}{loi}[section]
+\newenvironment{Aside}{\begin{AsideFloat}\begin{BlueBox}\footnotesize}{\end{BlueBox}\end{AsideFloat}}
+\newenvironment{AsideNoFloat}{\begin{BlueBox}\footnotesize}{\end{BlueBox}}
+
+%\newenvironment{BioAside}[4]{\begin{AsideFloat}\begin{BlueBox}\footnotesize    \begin{tabular}{lp{90mm}}\begin{minipage}[t]{2cm}\vspace{0pt}\includegraphics[width=2cm]{figs/people/#1}\end{minipage}&\textbf{#2 #3 (#4)}\index{people}{#3, #2|textbf}}{\end{tabular}\end{BlueBox}\end{AsideFloat}}
+% \begin{BioAside}{fig}{first}{second}{years}
+\newenvironment{BioAside}[4]{\begin{PicAside}[20mm]{#1}\textbf{#2 #3 (#4)}\index{people}{#3, #2|textbf}}{\end{PicAside}}
+\newenvironment{BioAsideNoPic}[3]{\begin{AsideFloat}\begin{YellowBox}\footnotesize \textbf{#1 #2 (#3)}\index{people}{#2, #1|textbf}}{\end{YellowBox}\end{AsideFloat}}
+
+% begin{PicAside}{image}{lines}
+% begin{PicAside}[width]{image}{lines}
+%  lines is number of lines of text for the wrapped figure, if empty {} then computed
+
+%\newenvironment{PicAside}[2][20mm]{\begin{AsideFloat}\begin{BlueBox}\footnotesize    \begin{tabular}{lp{110mm-#1}}\begin{minipage}[t]{#1}\vspace{0pt}\includegraphics[width=#1]{#2}\end{minipage}&}{\end{tabular}\end{BlueBox}\end{AsideFloat}}
+\newenvironment{PicAside}[2][20mm]{%
+\begin{AsideFloat}\begin{minipage}{#1}\vspace{0pt}\includegraphics[width=#1]{#2}\end{minipage}\hspace{1ex}%
+\begin{minipage}[t]{110mm-#1}\begin{BlueBox}\footnotesize}%
+{\end{BlueBox}\end{minipage}\end{AsideFloat}}
+\newenvironment{PicAsideNoFloat}[2][20mm]{%
+\begin{minipage}{#1}\vspace{0pt}\includegraphics[width=#1]{#2}\end{minipage}\hspace{1ex}%
+\begin{minipage}[t]{110mm-#1}\begin{BlueBox}\footnotesize}%
+{\end{BlueBox}\end{minipage}}
+
+% begin{PicWrapAside}{image}{lines]
+% begin{PicWrapAside}[width]{image}
+\newenvironment{PicWrapAside}[3][20mm]{\begin{AsideFloat}\begin{YellowBox}\footnotesize\begin{minipage}[t]{\textwidth}\begin{wrapfigure}[#3]{l}{#1}
+\includegraphics[width=#1]{#2}
+\end{wrapfigure}}
+{\end{minipage}\end{YellowBox}\end{AsideFloat}}
+
+\floatstyle{boxed}
+%\newfloat{Info}{b}{loi}[chapter]
+%\newenvironment{InfoBox}{\begin{Info}\footnotesize}{\end{Info}}
+
+%\newcolumntype{V}{>{\centering\arraybackslash} m{.4\linewidth} }
+
+
+% Biography box environment
+%   for information about people or organizations.
+%
+%   \begin{BioBox}
+%   \end{BioBox}
+\floatstyle{boxed}
+%\newfloat{Biography}{b}{lob}[chapter]
+\newenvironment{BioBox}{\begin{Biography}\footnotesize}{\end{Biography}}
+
+% Matlab code example environment
+%   for code examples.
+%   each executable line must begin with >>
+%   comments start with !
+%   lines starting !>> are executed during parsing, but dont print
+%   
+%   \begin{Code}
+%   \end{Code}
+
+%\definecolor{orange}{rgb}{0.5,0.28,0}
+\definecolor{orange}{rgb}{1,0,0}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+  
+\usepackage{fancyvrb}
+\fvset{formatcom=\color{orange},fontseries=c,fontfamily=courier,xleftmargin=4mm,commentchar=!}
+
+\DefineVerbatimEnvironment{Code}{Verbatim}{formatcom=\color{blue},fontseries=c,fontfamily=courier,fontsize=\footnotesize,commentchar=@,xleftmargin=4mm,commandchars=\\\{\}}
+\DefineVerbatimEnvironment{CodeGrey}{Verbatim}{formatcom=\color{grey},fontseries=c,fontfamily=courier,fontsize=\footnotesize,commentchar=@,xleftmargin=4mm,commandchars=\\\{\}}
+
+\DefineVerbatimEnvironment{CodeSmall}{Verbatim}{formatcom=\color{blue},fontseries=c,fontfamily=courier,fontsize=\scriptsize,xleftmargin=1mm,commentchar=!}
+
+\DefineVerbatimEnvironment{XML}{Verbatim}{formatcom=\color{orange},fontseries=c,fontfamily=courier,fontsize=\footnotesize,commentchar=@,xleftmargin=4mm,commandchars=\\\{\}}
+\DefineVerbatimEnvironment{XMLNum}{Verbatim}{numbers=left,numbersep=4pt,formatcom=\color{orange},fontseries=c,fontfamily=courier,fontsize=\footnotesize,xleftmargin=4mm}
+
+\newcommand{\xml}[1]{{\color{orange}\Verb+#1+}}
+
+%\makeatletter\newenvironment{Code}%
+%   {\begin{Verbatim}[formatcom=\color{blue},fontseries=c,fontfamily=courier,fontsize=\footnotesize,xleftmargin=4mm,commentchar=!]}%
+%   {\end{Verbatim}\vspace{-0.8ex}}\makeatother
+%
+
+\DefineVerbatimEnvironment{CodeNoParse}{Verbatim}{formatcom=\color{blue},fontseries=c,fontfamily=courier,fontsize=\footnotesize,xleftmargin=4mm,commentchar=!}
+\DefineVerbatimEnvironment{CodeNum}{Verbatim}{numbers=left,numbersep=4pt,formatcom=\color{blue},fontseries=c,fontfamily=courier,fontsize=\footnotesize,xleftmargin=4mm}
+
+
+% future work, can we put code segment numbers in the margin?
+\newcounter{example}
+\setcounter{example}{1}
+%\newenvironment{Example}{\marginnote{\vspace{12pt}\color{blue}Ex \thechapter.\theexample}\addtocounter{example}\DefineShortVerb{\|}\SaveVerb{Verb}|}{|\UseVerb{Verb}}
+%\newenvironment{Example}{\DefineShortVerb{\|}\SaveVerb{Verb}|}{|\UseVerb{Verb}}
+%\newcommand{\fvmarginnote}{\marginnote{\vspace{12pt}\color{blue}Ex \thechapter.\theexample}\addtocounter{example}}
+%\newcommand{\fvmarginnote}{\marginnote{Ex \thechapter.\theexample}\addtocounter{example}{1}}
+\newcommand{\fvmarginnote}{}
+\def\exlabel#1{{\string\newlabel{#1}{{Bob}{\thepage}}}}
+
+\usepackage{empheq}
+\definecolor{eqboxcolor}{rgb}{0.9608,    0.9608,    0.8627}
+\newcommand*\eqbox[1]{%
+ \colorbox{eqboxcolor}{\hspace{1em}#1\hspace{1em}}}
+%\usepackage{mybib}
+
+\usepackage{marginnote}
+\newcommand{\sidenote}[1]{~$\blacktriangleright$\marginnote{\tiny #1}}
+\usepackage{framed}
+
+
+\typeout{------ end of layout ------}

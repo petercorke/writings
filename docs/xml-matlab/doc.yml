@@ -1,0 +1,15 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+# TODO: MATLAB-based; provide a modern Python alternative
+title: Parsing XML using MATLAB
+group: articles
+year: 2018
+latex: xml.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: A tutorial on XML and on MATLAB's built-in support for parsing it, filling gaps in
+  the official documentation.
+files:
+- label: example files
+  file: xml.zip
+draft_summary: true

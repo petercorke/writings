@@ -1,0 +1,61 @@
+# Build the writings tiles page and publish it to GitHub Pages on every push to main.
+#
+# PDFs are rebuilt from LaTeX source where that works; otherwise the committed (published)
+# PDF is used. Large PDFs live as assets on the "assets" release and are fetched here to
+# render thumbnails.
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check out rvc-notation (LaTeX macros used by the notes)
+        uses: actions/checkout@v4
+        with:
+          repository: petercorke/rvc-notation
+          path: rvc-notation
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-science texlive-fonts-recommended texlive-bibtex-extra biber
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Fetch large files from the "assets" release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download assets --dir assets --clobber || echo "no assets release yet"
+      - run: python tools/build.py --check
+      - run: python tools/build.py --latex
+        env:
+          RVC_NOTATION: ${{ github.workspace }}/rvc-notation
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

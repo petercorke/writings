@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<people>
+
+    <person employee_number="123" gender="female" >
+      <name>Alice</name>
+      <address>11 Alice St</address>
+      <commenced date="2016-01-01" />
+    </person>
+
+    <person employee_number =  "237" gender = "male" status="on vacation" >
+      <name>Bob</name>
+      <commenced date="2015-07-07" />
+      <address>13  Bob St</address>
+    </person>
+
+</people>

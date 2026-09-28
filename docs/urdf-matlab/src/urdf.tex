@@ -1,0 +1,528 @@
+\documentclass[9pt,fleqn,a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{hyperref}
+\usepackage{matlab}
+\usepackage{color}
+%\usepackage{sectsty}
+%\allsectionsfont{\color{red}}
+
+\DeclareGraphicsExtensions{.png,.eps,.pdf,.svg,.tiff}
+\DeclareGraphicsRule{.svg}{pdf}{.pdf}{`rsvg-convert -f pdf #1 > `dirname #1`/`basename #1 .svg`-svg-converted-to.pdf}
+
+\input{book2}
+\lfoot{}
+\rfoot{}
+
+
+%\usepackage{upquote}
+
+%\usepackage[marginparsep=5mm]{marginnote}
+\usepackage{marginnote}
+\usepackage{url}
+
+\title{Understanding URDF using MATLAB\textsuperscript{\textregistered}}
+\author{Peter Corke}
+\date{November 2018}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+The Universal Robot Data Format (URDF) is an increasingly common way to represent the kinematic structure and visual appearance of robots.
+It is widely used in the ROS software ecosystem.
+A URDF file is an XML format file and a number of specialized tags.
+
+I've not found a particularly helpful or readable tutorial hence I'm writing my own.
+
+\section{XML 101}
+URDF files are expressed in XML so it's helpful to start with a refresher about XML.
+
+\input{xml_content}
+\newpage
+\section{URDF}
+A URDF file is an XML-format file that describes both the kinematic structure and the visual appearance of a robot.  We will deal with these separately, starting with 
+kinematic structure.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Kinematic structure}
+A URDF file is an XML format file with an extension of \texttt{.urdf}.  A simple example is given below.
+We use the example of a simple 2 joint  arm that moves in the XY plane
+\begin{XMLNum}
+<?xml version="1.0"?>
+<robot name="planar2">
+  
+  <link name="base_link" />
+  <link name="link1" />
+  <link name="link2" />
+  <link name="end" />
+
+  <joint name="q1" type="continuous">
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+  </joint>
+  
+  <joint name="q2" type="continuous">
+    <parent link="link1" />
+    <child link="link2" />
+    <origin xyz="1 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  
+  <joint name="notajoint" type="fixed">
+    <parent link="link2" />
+    <child link="end" />
+    <origin xyz="1 0 0" />
+  </joint>
+  
+</robot>
+\end{XMLNum}
+
+Given our newfound knowledge about XML this file is quite easy to interpret.
+Line 2 is the top-level element in the file with the tag \xml{robot}.
+Nested below this are elements with the tags \xml{link} and \xml{joint}.
+The robot, the links and the joints all have names which should be unique.
+
+The links have no content and attributes are used to name them.  The first link \emph{must} be named \xml{base\_link}.
+
+A joint connects a pair of links.  The parent is the link closer to the base (or root) of the mechanism, the child is closer to the tool tip.
+The first joint, lines 9--13, has attributes that define its named, \xml{q1}, and its type.  In this case it is a \xml{continuous} type which is a revolute joint with no motion limits.
+Nested elements provide additional information about the joint.
+Lines 10-11 indicate that it connects the base link to link1.
+Line 12 indicates that the rotation is about the z-axis, in the \emph{parent} link's coordinate frame.
+
+Since no \xml{origin} tag is given the joint connects to the parent link at the origin in its coordinate frame.  That point also defines the origin of the child coordinate frame assuming a joint rotation angle of zero.
+The first part of the transformation chain for this robot is therefore
+\[
+\mat{R}_z(q_1)
+\]
+
+The second joint, lines 15-20, is named \xml{q2} and similar except for the addition of an \xml{origin} element.  This specifies that the second joint connects to the parent link, \xml{link1} at the point $[1,0,0]$ and that this point in the world is the origin of the child link.
+This is shown graphically in Figure \ref{fig:frames}.
+The next part of the transformation chain for this robot is therefore
+\[
+\mat{T}_x(1) \mat{R}_z(q_2)
+\]
+
+We are interested in the motion of the end of the robot which is at the end of link 2, at a fixed offset with respect to the link2 frame.
+To describe this we need to create another link that is \textit{fixed} to link 2 and this is described by lines 22--26.
+The next part of the transformation chain for this robot is therefore
+\[
+\mat{T}_x(1) 
+\]
+
+The total transformation chain is
+\[
+\mat{R}_z(q_1) \mat{T}_x(1) \mat{R}_z(q_2) \mat{T}_x(1)
+\]
+which can be readily interpreted in terms of standard Denavit-Hartenberg parameter as:
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|} \hline
+$\theta_i$ & $d_i$ & $a_i$ & $\alpha_i$ \\ \hline\hline
+$q_1$ & 0 & 1 & 0 \\
+$q_2$ & 0 & 1 & 0 \\ \hline
+\end{tabular}
+\end{center}
+
+For more complex URDF descriptions this transformation can be performed using the RTB function \texttt{DHFactor} and the transform chain might result in Denavit-Hartenberg parameters with joint angle offsets, and non-null base or tool transforms.
+
+The \xml{origin} tag can also contain an orientation.  The translation is applied first, then the rotation which is defined in terms
+of roll (about X), pitch (about Y) and yaw (about Z) where all angles are expressed in radians.  Explicitly this is the  transform sequence
+\[
+\mat{R}_z(Y) \mat{R}_y(P)  \mat{R}_x(R)
+\]
+or ZYX in RTB notation.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{frames}\\
+\end{centering}
+ \caption{Relationship between parent and child rigid bodies connected by a joint.}
+ \label{fig:frames}
+\end{figure}
+
+URDF explicitly separates links and joints which the Denavit-Hartenberg notation merges together.  It is also more general and
+supports branching mechanisms, that is, a link could have multiple child links which can be used to represent a humanoid robot.
+Note that some URDF models may not be expressible in Denavit-Hartenberg notation.  
+
+A number of different joint types are defined:
+\begin{description}
+\item[revolute] a  joint that rotates about the specified axis and has a limited range specified by the upper and lower limits.
+\item[continuous] a revolute joint that has no upper or lower limits.
+\item[prismatic] a  joint that slides along the specified axis, and has a limited range specified by the upper or lower limits.
+\item[fixed]  is not really a joint because it cannot move. All degrees of freedom are locked. This type of joint does not require the axis. \item[calibration]
+\item[floating] allows motion for all 6 degrees of freedom.
+\item[planar] allows motion in a plane perpendicular to the axis.
+\end{description}
+
+For prismatic and revolute types the motion limits are specified by nested
+elements like
+\begin{XML}
+<limit lower="-0.5" upper="0.5" />
+\end{XML}
+where the limits are given in units of radians or metres for revolute for prismatic joints respectively.  If either of the
+\xml{upper} or \xml{lower} limit is not specified, a limit, it defaults to zero.
+
+
+\subsubsection{Link transformations}
+We will use the notation of \cite{Corke17a} where $\pose[X]_Y$ represents rigid-body motion from frame $\cframe{X}$ to $\cframe{Y}$ and 
+$\oplus$ represents rigid-body motion composition.  
+For this problem we consider three coordinates frames: \cframe{P} of the parent link, \cframe{C} of the child link and \cframe{J} of the 
+joint.
+The transformation from the link frame of the parent frame to the link frame of the child is shown in Fig. \ref{fig:frames} and given by
+\[
+\pose[P]_C = \pose[P]_J \oplus \pose[J]_C(q, \vec[C]{\omega}, \sigma)
+\]
+The first transform is a constant set by the\xml{origin} tag of the joint element.
+The second transform represents the action of the joint itself which is defined by a rotation about ($\sigma=0$), or translation along ($\sigma=1$), the vector $\vec[P]{\omega}$ by the joint variable $q$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Visual appearance}
+URDF can also be used to describe graphical objects.  A very simple example\footnote{This example 1 from the ROS URDF tutorial.} of this is
+
+\begin{XMLNum}
+<?xml version="1.0"?>
+<robot name="myfirst">
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
+\end{XMLNum}
+which defines a cylinder, with its axis parallel to the z-axis,  of length 0.6\unit{m} and radius of 0.2\unit{m} centred at the world origin. 
+Substituting line 7 for
+\begin{XML}
+        <box size="1 2 3"/>
+\end{XML}
+would draw a box centred at the world origin of lengths 1, 2 and 3\unit{m} in the x-, y- and z-directions respectively.
+
+By default the cylinder or box is drawn centred at the origin of the link coordinate frame.  It can be repositioned by introducing an
+\xml{origin} element.  For example 
+\begin{XML}
+      <origin rpy="0 1.57075 0" xyz="0 0 -0.3"/>
+\end{XML}
+after line 8 (within the \xml{visual} element) will \emph{first} translate the cylinder by -0.3\unit{m} in the z-direction so its top is now at $z=0$ and
+\emph{then} rotate it by $pi/2$ about the y-axis.
+
+The object is drawn with a default color\footnote{Red in RViz, grey in MATLAB RST.} 
+but we can change that by altering the material of the link.
+This can be done adding
+\begin{XML}
+      <material rgba="0 0 0.8 1" />    
+\end{XML}
+below line 9.  The four numbers are red, green, blue in the range 0 to 1 and alpha (0 transparent, 1 opaque).
+Alternatively 
+\begin{XMLNum}
+<?xml version="1.0"?>
+<robot name="myfirst">
+
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <link name="link">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+      <material name="blue" />
+    </visual>
+  </link>
+</robot>
+\end{XMLNum}
+we can create a named material, lines 4--6, and then specify it for the link in line 14.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Combining kinematics and appearance}
+Now we will extend our kinematic model of the planar 2-link robot with simple visual models of the links.
+The links will be drawn as long thin boxes, red and green respectively (somewhat like Fig 7.2b in \cite{Corke17a}).
+The URDF file is now
+\begin{XMLNum}
+<?xml version="1.0"?>
+<robot name="planar2">
+
+  <material name="red">
+    <color rgba="1 0 0 0.8" />
+  </material>
+  <material name="green">
+    <color rgba="0 1 0 0.8" />
+  </material>
+
+  <link name="base_link" />
+  <link name="link1">
+    <visual>
+      <geometry>
+        <box size="1 0.1 0.1" />
+      </geometry>
+      <origin xyz="0.5 0 0" />
+      <material name="red" />
+    </visual>
+  </link>
+  <link name="link2">
+    <visual>
+      <geometry>
+        <box size="1 0.1 0.1" />
+      </geometry>
+      <origin xyz="0.5 0 0" />
+      <material name="green" />
+    </visual>
+  </link>
+  <link name="end">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.05" length="0.2" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="q1" type="continuous">
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <joint name="q2" type="continuous">
+    <parent link="link1" />
+    <child link="link2" />
+    <origin xyz="1 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <joint name="notajoint" type="fixed">
+    <parent link="link2" />
+    <child link="end" />
+    <origin xyz="1 0 0" />
+  </joint>
+
+</robot>
+\end{XMLNum}
+where lines 38--55 are as before.
+Lines 4--9 define two translucent materials called \xml{red} and \xml{green} respectively.
+Link 1 now has a \xml{visual} element defined in lines 13--19.  
+The geometry is a box of length 1\unit{m} in the x-direction and
+by default the reference frame of the visual element is with respect to the reference frame of the link.
+One end of the box should be at joint 1, at the origin, so we shift it by 0.5\unit{m} in the x-direction using an \xml{origin} element (line 17).
+Finally, we set the color to red using a \xml{material} element (line 18).
+Link 2 is similar.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[angle=90,width=0.9\textwidth]{planar2.pdf}\\
+\end{centering}
+ \caption{Planar 2 robot with joint angles $[0, \pi/4]$ parsed and plotted using the Robotic Systems Toolbox\textsuperscript{\textregistered}.}
+ \label{fig:planar2}
+\end{figure}
+
+The end of the robot is indicated by a small cylinder, in default color, which is centred at the origin of the end link's coordinate frame.
+
+Using the Robotic Systems Toolbox\textsuperscript{\textregistered} the file can be parsed and displayed very simply by
+\begin{Code}
+>> r = importrobot('/Users/corkep/pic3.urdf')
+>> r.DataFormat='row'
+>> show(r, [0 pi/4])
+\end{Code}
+and the result is shown in Figure \ref{fig:planar2}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Displaying meshes}
+
+The visual geometry can contain a \xml{mesh} element instead of \xml{cylinder} or \xml{box} as shown in this snippet\footnote{Exercepted from the Robotic Systems Toolbox file \texttt{iiwa14.urdf}.}
+\begin{XMLNum}
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://iiwa_description/meshes/iiwa14/visual/link_6.stl"/>
+      </geometry>
+      <material name="Orange"/>
+    </visual>
+\end{XMLNum}
+A \xml{mesh} element, line 4, specifies a a filename, and an optional scale factor that scales the mesh's axis-aligned-bounding-box. The recommended format for best texture and color support is Collada \texttt{.dae} files, though \texttt{.stl} files are also supported. The mesh file is not part of the URDF file and must be provided along with the URDF file and have the appropriate path.
+The \xml{<mesh>} tag also supports a \xml{scale} option with a list of x-, y- and z-axis scale factors.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\textwidth]{iiwa}\\
+\end{centering}
+ \caption{Kuka iiwa14 robot.}
+ \label{fig:iiwa}
+\end{figure}
+
+The Robotics System Toolbox includes a model of the Kuka iiwa14 arm and this can be imported, along with its meshes defined in STL
+format, and displayed
+\begin{Code}
+>> robot = importrobot('iiwa14.urdf')
+>> show(robot)
+\end{Code}
+and the result is shown in Figure \ref{fig:iiwa}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{xacro macros}
+Very large URDF files can be difficult to create and maintain, and this job can be simplified by introducing macros and even
+conditional code.  The ROS package \texttt{xacro} is a macro-preprocessor written in Python that can be used to transform files written with
+\texttt{xacro} macros into regular XML-based URDF which can be parsed as discussed above.
+For example
+
+\begin{Code}
+<xacro:macro name="pr2_arm" params="suffix parent reflect">
+  <pr2_upperarm suffix="${suffix}" reflect="${reflect}" parent="${parent}" />
+  <pr2_forearm suffix="${suffix}" reflect="${reflect}" parent="elbow_flex_${suffix}" />
+</xacro:macro>
+<xacro:pr2_arm suffix="left" reflect="1" parent="torso" />
+<xacro:pr2_arm suffix="right" reflect="-1" parent="torso" />
+\end{Code}
+expands to:
+\begin{Code}
+<pr2_upperarm suffix="left" reflect="1" parent="torso" />
+<pr2_forearm suffix="left" reflect="1" parent="elbow_flex_left" />
+<pr2_upperarm suffix="right" reflect="-1" parent="torso" />
+<pr2_forearm suffix="right" reflect="-1" parent="elbow_flex_right" />
+\end{Code}
+
+It can also be useful for parameterizing elements
+\begin{Code}
+<xacro:property name="the_radius" value="2.1" />
+<xacro:property name="the_length" value="4.5" />
+
+<geometry type="cylinder" radius="${the_radius}" length="${the_length}" />
+\end{Code}
+
+
+\appendix
+\section{A simple URDF parser in MATLAB}
+Following is a fairly complete URDF parser that returns three structure arrays: \texttt{joints}, \texttt{links} and \texttt{materials}.
+For the \texttt{links} array, the \texttt{material} field is an integer index into the \texttt{materials} array.
+For the \texttt{joints} array, the \texttt{parent} and \texttt{child} fields are integer indices into the \texttt{links} array.
+The source can be found in LiveScript file \texttt{urdfparse.mlx} and is for illustrative purposes only.
+The Robotics Toolbox for MATLAB includes a complete parser as \texttt{urdfparse}.
+
+\begin{Code}
+root = xmlread(['planar2b.urdf']);
+
+clear joints links materials
+
+robot = root.getChildNodes.item(0);
+
+materialNodes = robot.getElementsByTagName('material');
+i = 1;
+for j=1:materialNodes.getLength
+    node = materialNodes.item(j-1);
+    if isEqualNode(node.getParentNode, robot)
+        % only process material nodes at the top level
+        materials(i).name = string(node.getAttribute('name'));
+        materials(i).rgba = str2num(node.getElementsByTagName('color').item(0).getAttribute('rgba'));
+        materials(i).node = node;
+        i = i + 1;
+    end
+end
+try
+    materialNames = [materials.name];
+end
+
+materialNames
+\end{Code}
+\begin{CodeGrey}
+materialNames = 
+    "red"    "green"
+\end{CodeGrey}
+\begin{Code}
+materials(2)
+\end{Code}
+\begin{CodeGrey}
+ans = 
+    name: "green"
+    rgba: [0 1 0 0.8000]
+    node: [1x1 org.apache.xerces.dom.DeferredElementImpl]
+\end{CodeGrey}
+\begin{Code}
+
+linkNodes = robot.getElementsByTagName('link');
+for i=1:linkNodes.getLength
+    node = linkNodes.item(i-1);
+    links(i).name = string(node.getAttribute('name'));
+    links(i).geometry = node.getElementsByTagName('geometry').item(0);
+    try
+        links(i).material = find(strcmp((node.getElementsByTagName('material').item(0).getAttribute('name')), materialNames));
+    end
+
+    try
+        t = str2num( node.getElementsByTagName('origin').item(0).getAttribute('xyz'));
+        rpy = str2num( node.getElementsByTagName('origin').item(0).getAttribute('rpy'));
+    end
+        if isempty(t)
+            t = [0 0 0]; 
+    end
+    if isempty(rpy)
+        rpy = [0 0 0];
+    end
+    links(i).T = SE3(t) * SE3.rpy(rpy);   
+    links(i).node = node;
+end
+
+linkNames = [links.name]
+\end{Code}
+\begin{CodeGrey}
+linkNames = 
+    "base_link"    "link1"    "link2"    "end"
+\end{CodeGrey}
+\begin{Code}
+links(2)
+\end{Code}
+\begin{CodeGrey}
+ans = 
+        name: "link1"
+    geometry: [1x1 org.apache.xerces.dom.DeferredElementImpl]
+           T: [1x1 SE3]
+        node: [1x1 org.apache.xerces.dom.DeferredElementImpl]
+    material: 1
+\end{CodeGrey}
+\begin{Code}
+
+jointNodes = robot.getElementsByTagName('joint');
+for i=1:jointNodes.getLength
+    node = jointNodes.item(i-1);
+    joints(i).name = string(node.getAttribute('name'));
+    joints(i).type = string(node.getAttribute('type'));
+    try
+        joints(i).axis = node.getElementsByTagName('axis').item(0).getAttribute('xyz');
+    end
+    joints(i).parent = find(strcmp(node.getElementsByTagName('parent').item(0).getAttribute('link'), linkNames));
+    joints(i).child = find(strcmp(node.getElementsByTagName('child').item(0).getAttribute('link'), linkNames));
+    
+    try
+        t = str2num( node.getElementsByTagName('origin').item(0).getAttribute('xyz'));
+        rpy = str2num( node.getElementsByTagName('origin').item(0).getAttribute('rpy'));
+    end
+    if isempty(t)
+            t = [0 0 0]; 
+    end
+    if isempty(rpy)
+        rpy = [0 0 0];
+    end
+    joints(i).T = SE3(t) * SE3.rpy(rpy);
+    joints(i).node = node;
+end
+
+joints(2)
+\end{Code}
+\begin{CodeGrey}
+ans = 
+      name: "q2"
+      type: "continuous"
+      axis: [1x1 java.lang.String]
+    parent: 2
+     child: 3
+         T: [1x1 SE3]
+      node: [1x1 org.apache.xerces.dom.DeferredElementImpl]
+\end{CodeGrey}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{strings,publist}
+\end{document}

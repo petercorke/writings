@@ -1,0 +1,12 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+# TODO: MATLAB-based; provide a modern Python alternative
+title: Using the Robotics Toolbox with a real robot
+group: articles
+year: 2013
+latex: rtb_real_robot.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: How to connect an inexpensive hobby-class robot arm (the PhantomX) to the Robotics
+  Toolbox for MATLAB and drive it from the Toolbox.
+draft_summary: true

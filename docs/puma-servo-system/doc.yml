@@ -1,0 +1,13 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: The Unimation Puma servo system
+group: papers
+year: 1994
+asset: puma-servo-system.pdf
+institution: CSIRO Division of Manufacturing Technology
+report: MTM-226
+authors:
+- Peter Corke
+summary: 'A detailed technical description of the Puma 560 robot''s digital servo system:
+  the arm interface board, servo card hardware and firmware, and the axis electromechanical
+  dynamics. Scanned.'
+draft_summary: true

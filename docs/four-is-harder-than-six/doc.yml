@@ -1,0 +1,14 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+# TODO: MATLAB-based; provide a modern Python alternative
+title: '4 is harder than 6: inverse kinematics for underactuated robots'
+group: articles
+year: 2014
+latex: rtb_4dof.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: Why inverse kinematics for a 4-joint hobby robot is harder than for a 6-joint industrial
+  arm, and how to solve it with the Robotics Toolbox for MATLAB.
+draft_summary: true
+# src/: the five 6.5 MB bitmap EPS figures were replaced by their 20 kB PDF conversions
+# (from the original folder) and .eps dropped from \includegraphics, 2026-09-28

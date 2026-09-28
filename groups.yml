@@ -1,0 +1,15 @@
+# Display order and headings for the tiles page. Each doc.yml names one group id.
+# Based on the old WP File Download categories (see wpfd-manifest.csv).
+groups:
+  - id: articles
+    title: Articles and notes
+    blurb: Short technical notes, tutorials and derivations.
+  - id: books
+    title: Books and book resources
+    blurb: Out-of-print books and supporting material for Robotics, Vision & Control.
+  - id: papers
+    title: Papers and technical reports
+    blurb: Conference papers and technical reports.
+  - id: historical
+    title: Historical documents
+    blurb: Reports and documents of historical interest in robotics.

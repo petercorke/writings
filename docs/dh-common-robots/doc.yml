@@ -1,0 +1,11 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: Denavit-Hartenberg notation for common robots
+group: articles
+year: 2014
+latex: rtb_dh.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: The physical meaning of Denavit-Hartenberg parameters for common robot arm configurations,
+  with consistent diagrams and parameter tables.
+draft_summary: true

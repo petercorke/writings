@@ -1,0 +1,11 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: 'SLAM EKF: the insertion Jacobian'
+group: articles
+year: 2018
+latex: insertion.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: Derives the Jacobian needed to extend the EKF state vector when a new landmark is
+  discovered, for both the map-making and the full SLAM cases.
+draft_summary: true

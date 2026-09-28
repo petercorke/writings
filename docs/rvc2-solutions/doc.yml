@@ -1,0 +1,14 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: 'Robotics, Vision & Control (2nd edition): solutions manual'
+group: books
+year: 2017
+summary: Worked solutions to the exercises in Robotics, Vision & Control, second edition.
+files:
+- label: MATLAB live scripts
+  asset: rvc2-livescripts.zip
+- label: figures (EPS)
+  asset: RVC2-eps.zip
+- label: figures (SVG)
+  asset: RVC2-svg.zip
+draft_summary: true
+# TODO: upload the three zips (wpfd ids 1208, 1183, 1184) to the 'assets' release

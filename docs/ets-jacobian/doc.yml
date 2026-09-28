@@ -1,0 +1,9 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: Manipulator Jacobian from the elementary transform sequence
+group: articles
+latex: ets_jacobian.tex
+source_format: latex
+year: 2018
+summary: How to compute a serial-link manipulator's Jacobian directly from its elementary
+  transform sequence (ETS), without first converting to Denavit-Hartenberg parameters.
+draft_summary: true

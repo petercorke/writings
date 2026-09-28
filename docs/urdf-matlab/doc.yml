@@ -1,0 +1,15 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+# TODO: MATLAB-based; provide a modern Python alternative
+title: Understanding URDF using MATLAB
+group: articles
+year: 2018
+latex: urdf.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: A readable tutorial on the Universal Robot Description Format (URDF) used across
+  ROS, starting from XML basics and working through examples in MATLAB.
+files:
+- label: example files
+  file: urdf.zip
+draft_summary: true

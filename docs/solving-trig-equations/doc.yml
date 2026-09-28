@@ -1,0 +1,15 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+# TODO: MATLAB-based; provide a modern Python alternative
+title: Solving trigonometric equations
+group: articles
+year: 2018
+latex: solving trig.tex
+source_format: latex
+authors:
+- Peter Corke
+summary: Several ways to solve the equation a cos θ + b sin θ = c, which turns up again and
+  again in inverse kinematics.
+files:
+- label: MATLAB live script
+  file: sincos.mlx
+draft_summary: true

@@ -1,0 +1,189 @@
+\documentclass[a4paper]{article}
+
+\input {rvc-notation}
+\usepackage{color}
+
+\title{SLAM EKF: the insertion Jacobian}
+\author{Peter Corke}
+\date{June 2018}
+
+\newcommand{\matdim}[1]{\text{\scriptsize{\color{red}#1}}}
+\newenvironment{ppmatrix}[4]{\def\ppmA{#3}\def\ppmB{#4}\begin{array}{r} \matdim{#1} \\ \matdim{#2} \\ \, \end{array} \hspace*{-2ex} \begin{array}{c} \left( \hspace{-1ex} \begin{array}{cc}}
+{\end{array} \hspace{-1ex} \right) \\  \begin{array}{cc} \matdim{\ppmA} & \matdim{\ppmB} \end{array} \end{array}}
+
+\newenvironment{ppvector}[3]{\def\ppmA{#3}\begin{array}{r} \matdim{#1} \\ \matdim{#2} \\ \, \end{array} \hspace*{-2ex} \begin{array}{c} \left( \hspace{-1ex} \begin{array}{cc}}
+{\end{array} \hspace{-1ex} \right) \\   \matdim{\ppmA}  \end{array}}
+\setlength{\parindent}{0pt}
+
+\newenvironment{pppvector}[4]{\def\ppmA{#4}\begin{array}{r} \matdim{#1} \\ \matdim{#2}  \\ \matdim{#3} \\ \, \end{array} \hspace*{-2ex} \begin{array}{c} \left( \hspace{-1ex} \begin{array}{cc}}
+{\end{array} \hspace{-1ex} \right) \\   \matdim{\ppmA}  \end{array}}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+%\[
+%\begin{ppmatrix}{n}{m}{n}{m}
+%a & b\\
+%c& d
+%\end{ppmatrix}
+%\]
+%
+%\[
+%\left( \begin{array}{cc} a& b\\ c& d \end{array} \right)
+%\]
+%\[
+%\begin{pmatrix} a& b\\ c& d \end{pmatrix} 
+%\]
+%
+%\[
+%\begin{array}{r} n \\ m \\ \, \end{array} \hspace*{-2ex} \begin{array}{c} \left( \hspace{-1ex} \begin{array}{cc} a& b\\ c& d \end{array} \hspace{-1ex} \right) \\ n \end{array}
+%\]
+
+
+The EKF formulation for mapping and SLAM requires that the state vector is extended every time a new landmark is discovered.
+For the  map-making case the state vector is 
+\[
+\vec{x} = \begin{pmatrix} \vec{x}_m \end{pmatrix} \in \mathbb{R}^{n \times 1}
+\]
+where $\vec{x}_m \in \mathbb{R}^{2m \times 1}$ and $m$ is the number of landmarks so $n = 2m$.
+For the SLAM case the state vector is
+\[
+\vec{x} = \begin{pmatrix} \vec{x}_v \\ \vec{x}_m \end{pmatrix}  \in \mathbb{R}^{n \times 1}
+\]
+where $\vec{x}_v \in \mathbb{R}^{3\times 1}$ is the vehicle configuration so $n = 2m+3$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mapping case}
+The state vector is extended by the function
+\[
+\vec{y}(\vec{x},\, \vec{z}) = \begin{ppvector}{n}{2}{1}
+\vec{x} \\
+\vec{g}(\vec{x}_v,\, \vec{z})
+\end{ppvector}
+\]
+which simply the concatenation the two vectors, and where $\vec{z}$ is the observation.
+The Jacobians of this function are 
+\[
+\mat{Y}_x = \frac{\partial \vec{y}}{\partial \vec{x}} = \begin{pmatrix} \partial \vec{x}/\partial \vec{x} \\ \partial \vec{g}/\partial \vec{x} \end{pmatrix} = \begin{ppvector}{n}{2}{n} \mat{1}_{n\times n} \\ \mat{0}_{2\times n} \end{ppvector} \in \mathbb{R}^{n+2 \times n}
+\]
+\[
+\mat{Y}_z = \frac{\partial \vec{y}}{\partial \vec{z}} = \begin{pmatrix} \partial \vec{x}/\partial \vec{z} \\ \partial \vec{g}/\partial \vec{z} \end{pmatrix}  = \begin{ppvector}{n}{2}{2} \mat{0}_{n\times 2} \\ \mat{G}_z \end{ppvector} \in \mathbb{R}^{n\times 2}
+\]
+The zero element of $\mat{Y}_x$ is because the state vector comprises only landmark coordinates and $g(\cdot)$ is a function of 
+vehicle configuration which is not part of the state vector.
+
+The linearized covariance update, as discussed in Setion H.2, is
+\[
+\mat{Y}_x \mat{P} \mat{Y}_x^T + \mat{Y}_z \mat{W} \mat{Y}_z^T 
+\]
+and substituting the Jacobians we can write
+\begin{align}
+& = \begin{ppmatrix}{n}{2}{n}{2} \mat{P} & \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{0} _{2\times 2}\end{ppmatrix} + 
+  \begin{ppmatrix}{n}{2}{n}{2} \mat{0}_{n\times n} & \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{G}_z \mat{W}   \mat{G}_z^T \end{ppmatrix} \\
+& = \begin{pmatrix} \mat{P} & \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{G}_z \mat{W}   \mat{G}_z^T \end{pmatrix} 
+\end{align}
+which, using the procedure of Appendix A, can be shown to be equivalent to the quadratic expression
+\[
+\begin{pmatrix} \mat{1}_{n\times n}& \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{G}_z \end{pmatrix}
+\begin{pmatrix} \mat{P} & \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{W} \end{pmatrix}
+\begin{pmatrix} \mat{1}_{n\times n}& \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{G}_z \end{pmatrix}^T
+\]
+where
+\[
+\begin{ppmatrix}{n}{2}{n}{2} \mat{1}_{n\times n}& \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{G}_z \end{ppmatrix}
+\]
+is the insertion Jacobian.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{SLAM case}
+The state vector is extended by the function
+\[
+\vec{y}(\vec{x},\, \vec{z}) = \begin{ppvector}{n}{2}{1}
+\vec{x} \\
+\vec{g}(\vec{x}_v,\, \vec{z})
+\end{ppvector}
+\]
+which simply the concatenation the two vectors, and where $\vec{z}$ is the observation.  Recall that the state vector contains the vehicle
+configuration
+\[
+\vec{y}(\vec{x},\, \vec{z}) = \begin{pppvector}{3}{2m}{2}{1}
+\vec{x}_v \\
+\vec{x}_m \\
+\vec{g}(\vec{x}_v,\, \vec{z})
+\end{pppvector}
+\]
+The Jacobians of this function are 
+\begin{align*}
+\mat{Y}_x  = \frac{\partial \vec{y}}{\partial \vec{x}} & = \begin{pmatrix} \partial \vec{x}_v/\partial \vec{x}_v & \partial \vec{x}_v/\partial \vec{x}_m \\ \partial \vec{x}_m/\partial \vec{x}_v & \partial \vec{x}_m/\partial \vec{x}_m \\ \partial \vec{g}/\partial \vec{x}_v & \partial \vec{g}/\partial \vec{x}_m \end{pmatrix} \\
+& =
+\begin{pmatrix} \mat{1}_{3\times 3} & \mat{0}_{3\times 2m} \\
+\mat{0}_{2m\times 3} & \mat{1}_{2m\times 2m} \\
+\mat{G}_{xv} & \mat{0}_{2 \times 2m} \end{pmatrix} =
+\begin{ppvector}{n}{2}{n} \mat{1}_{n\times n} \\ \mat{G}_x  \end{ppvector} \in \mathbb{R}^{n+2 \times n}
+\end{align*}
+where
+\[
+\mat{G}_{x} = \frac{\partial \vec{g}}{\partial \vec{x}} \in \mathbb{R}^{2 \times n}
+\]
+which accounts for the fact that the first three elements of $\vec{x}$ are the vehicle configuration.
+
+ %\ \in \mathbb{R}^{n+2 \times n}
+
+\[
+\mat{Y}_z = \frac{\partial \vec{y}}{\partial \vec{z}} = \begin{pmatrix} \partial \vec{x}/\partial \vec{z} \\ \partial \vec{g}/\partial \vec{z} \end{pmatrix}  = \begin{ppvector}{n}{2}{2} \mat{0}_{n\times 2} \\ \mat{G}_z \end{ppvector} \in \mathbb{R}^{n\times 2}
+\]
+The linearized covariance update, as discussed in Setion H.2, is
+\[
+\mat{Y}_x \mat{P} \mat{Y}_x^T + \mat{Y}_z \mat{W} \mat{Y}_z^T 
+\]
+and substituting the Jacobians we can write
+\begin{align}
+& = \begin{ppmatrix}{n}{2}{n}{2} \mat{P} & \mat{P}\mat{G}_x^T \\ \mat{G}_x\mat{P} & \mat{G}_x\mat{P}\mat{G}_x^T \end{ppmatrix} + 
+  \begin{ppmatrix}{n}{2}{n}{2} \mat{0}_{n\times n} & \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{G}_z \mat{W}   \mat{G}_z^T \end{ppmatrix} \\
+& = \begin{ppmatrix}{n}{2}{n}{2} \mat{P} & \mat{P}\mat{G}_x^T \\ \mat{G}_x\mat{P} & \mat{G}_x\mat{P}\mat{G}_x^T + \mat{G}_z \mat{W}   \mat{G}_z^T \end{ppmatrix} 
+\end{align}
+which, using the procedure of Appendix A, can be shown to be equivalent to the quadratic expression
+\[
+\begin{pmatrix} \mat{1}_{n\times n}& \mat{0}_{n\times 2} \\ \mat{G}_x & \mat{G}_z \end{pmatrix}
+\begin{pmatrix} \mat{P} & \mat{0}_{n\times 2} \\ \mat{0}_{2\times n} & \mat{W} \end{pmatrix}
+\begin{pmatrix} \mat{1}_{n\times n}& \mat{0}_{n\times 2} \\ \mat{G}_x & \mat{G}_z \end{pmatrix}^T
+\]
+where
+\[
+\begin{ppmatrix}{n}{2}{n}{2} \mat{1}_{n\times n}& \mat{0}_{n\times 2} \\ \mat{G}_x & \mat{G}_z \end{ppmatrix}
+\]
+is the insertion Jacobian.
+
+\appendix
+\section{Factoring the Jacobian}
+Consider a quadratic expression
+\[
+\mat{M} \begin{pmatrix} \mat{P} & \mat{0} \\ \mat{0} & \mat{W} \end{pmatrix} \mat{M}^T
+\]
+where $\mat{M}$ is a general block-structured matrix
+\[
+\mat{M} = \begin{pmatrix} \mat{A} & \mat{B} \\ \mat{C} & \mat{D} \end{pmatrix}
+\]
+which we can expand as 
+\[
+\begin{pmatrix} \mat{A} \mat{P} \mat{A}^T + \mat{B} \mat{W}\mat{B}^T & 
+  \mat{A} \mat{P} \mat{C}^T + \mat{B} \mat{W}\mat{D}^T \\
+  \mat{C} \mat{P} \mat{A}^T + \mat{D} \mat{W}\mat{B}^T &
+  \mat{C} \mat{P} \mat{C}^T + \mat{D} \mat{W}\mat{D}^T \end{pmatrix}
+\]
+
+Now, given a matrix of the form
+\[
+\begin{pmatrix} \mat{P} & \mat{0} \\ \mat{0} & \mat{G}_z \mat{W}   \mat{G}_z^T \end{pmatrix}
+\]
+we can equate coefficients to determine that $\mat{A} \equiv 1$, $\mat{B} \equiv 0$, $\mat{C} \equiv 0$ and $\mat{D} \equiv \mat{G}_z$ leading to a factorization as
+\[
+\begin{pmatrix} \mat{1}& \mat{0} \\ \mat{0} & \mat{G}_z \end{pmatrix}
+\begin{pmatrix} \mat{P} & \mat{0} \\ \mat{0} & \mat{W} \end{pmatrix}
+\begin{pmatrix} \mat{1}& \mat{0} \\ \mat{0} & \mat{G}_z \end{pmatrix}^T
+\]
+
+
+\end{document}

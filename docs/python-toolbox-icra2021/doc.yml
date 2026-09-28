@@ -1,0 +1,11 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: 'Not your grandmother''s toolbox: the Robotics Toolbox reinvented for Python'
+group: papers
+year: 2021
+authors:
+- Peter Corke
+- Jesse Haviland
+summary: ICRA 2021 paper describing the Robotics Toolbox for Python, the successor to the
+  Robotics Toolbox for MATLAB, and how it builds on open-source tools for portability, 3D
+  graphics and documentation.
+draft_summary: true

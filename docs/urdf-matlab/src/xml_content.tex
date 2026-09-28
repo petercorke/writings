@@ -1,0 +1,377 @@
+\subsection{What's in an XML file}
+The most obvious feature of an XML document are the angle-bracket-delimited \emph{tags}  such as \xml{<foo>} or \xml{<bar>}.
+The file contains structured text that can be read by a person as well as being easy to parse programatically.
+
+An XML file is frequently referred to as a \textit{document}.
+The file comprises \emph{markup} and \emph{content}.
+Generally, strings that constitute markup either begin with the character \xml{<} and end with a \xml{>}, or they begin with the character \xml{\&} and end with a \xml{;}. Strings of characters that are not markup are content.
+
+\subsubsection{Tags}
+
+A \emph{tag} is a markup construct that begins with \xml{<} and ends with \xml{>}. Tags come in three flavours:
+\begin{description}
+\item[start-tag] such as \xml{<tag>}
+\item[end-tag] such as \xml{</tag>}
+\item[empty-element tag] such as \xml{<tag />}
+\end{description}
+where, in all cases, \xml{tag} is the name of the tag and is given without quotes.  For example \xml{<foo>} is a tag named foo.
+Tag names start with a letter, underscore or colon, followed by alphanumeric, dot or underscore characters.  
+
+\subsubsection{Elements}
+An \emph{element} is a logical document component that either begins with a start-tag and ends with a matching end-tag or consists only of an empty-element tag. The characters between the start-tag and end-tag, if any, are the element's \emph{content}, and may contain markup, including other elements, which are called child elements. 
+
+An XML element has matching start and end tags like
+\begin{XML}
+<foo></foo>
+\end{XML}
+or single empty-element tag such as
+\begin{XML} 
+<bar />
+\end{XML}
+which is equivalent to 
+\begin{XML} 
+<bar></bar>
+\end{XML}
+
+The body of the \textit{element} can be an arbitrary mixture of plain text or other elements, ie. elements can be nested within the body of
+other elements.  This allows the creation of hierarchies or trees, with the first or outermost element as the root.
+For example:
+\begin{XML}
+<bar>some text</bar>
+<foo><bar>one</bar><bar>two</bar></foo>
+\end{XML}
+
+The elements must not overlap. i.e., an end tag of an element must have the same name as that of the most recent unmatched start tag.
+
+\subsubsection{Attributes}
+
+An \emph{attribute} is a markup construct consisting of \xml{name=value} pairs that exists within a start-tag or empty-element tag. 
+The \textit{attributes} are given as a name and a value.
+Attribute names are defined without quotation marks, whereas attribute values must always appear as a string delimited with either single or double quotes.
+For example
+\begin{quote}
+ \xml{<img src="madonna.jpg" alt="Madonna" />}
+\end{quote}
+has two \emph{attributes}.  Their names are \xml{"src"} and \xml{"alt"}, and their \emph{values} are \xml{"madonna.jpg"} and \xml{"Madonna"} respectively.  
+An XML attribute can only have a single value and each attribute can appear at most once on each element.
+Attribute names start with a letter, underscore or colon, followed by alphanumeric, dot or underscore characters.  
+Attribute names in XML (unlike HTML) are case sensitive. 
+
+\subsubsection{Special characters \&$\cdot\cdot$;}
+Special characters are introduced using XML references.
+References always begin with the symbol \xml{"\&"} which is a reserved character and end with the symbol \xml{";"}. XML has two types of references
+\begin{description}
+
+\item[Entity References] contain a name between the start and the end delimiters.  The name refers to a predefined strings such as 
+
+\begin{tabular}{ll}
+\xml{\&amp;} & ampersand \\
+\xml{\&apos;} &single quote\\
+ \xml{\&gt;} & greater than\\
+\xml{\&lt;} & less than \\
+\xml{\&quot;} & double quote 
+\end{tabular}
+
+or a larger set defined for HTML which can be found in \href{https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Standard_public_entity_sets_for_characters}{online lists},
+for example, \xml{\&theta;} is the Greek letter $\theta$.
+
+\item[Character References] These specify a character by its Unicode code in either decimal or hexadecimal format.
+For example the Roman character ``A'' can be specified as  \xml{\&\#65;} in decimal or \xml{\&\#x41;} in hexadecimal.
+\end{description}
+
+Because ampersand \xml{"\&"} indicates a reference it must always be escaped in text as \xml{\&amp;}.
+
+\subsubsection{Comments and white space}
+
+Comments are a special kind of element
+\begin{XML}
+<!-- comment stuff -->
+\end{XML}
+and the body of the comment can also span multiple lines
+\begin{XML}
+<!--   comment
+       more comment
+       still more comment -->
+\end{XML}
+Comments cannot be nested.
+
+White space is mostly insignificant so XML files are often formatted with indenting to highlight the structure to human readers.  Some
+editors support auto-indenting.
+
+White space is ignored outside of quotes, so the following two lines are equivalent
+\begin{XML}
+\xml{<foo param1 = "x1" param2 = "x2"> body </tag>}
+<foo param1="x1" param2="x2"> body </tag>
+\end{XML}
+
+\subsubsection{CDATA}
+A CDATA block refers to character data that is considered literally. The special characters are interpreted as themselves, and \textit{not} as markup. 
+For example
+\begin{XML}
+<![CDATA[
+   characters with markup like 3<4;
+]]>
+\end{XML}
+This section may contain markup characters (\xml{<}, \xml{>}, and \xml{\&}).  CDATA cannot contain the string \xml{"]]>"}.
+This is somewhat analogous to a LaTeX verbatim block.
+
+
+\subsubsection{Document}
+XML documents may begin with an XML declaration that describes some information about themselves. An example is 
+\begin{XML}
+<?xml version="1.0" encoding="UTF-8"?>
+\end{XML}
+which is case-sensitive and must be the first statement in the document.
+An XML document can have only one root element. 
+
+\subsection{The DOM model}
+The Document Object Model (DOM) is a hierarchical or tree representation of the file called a node tree.
+Everything in an XML document is a node:
+\begin{itemize}
+\item The entire document is a document node
+\item Every XML element is an element node
+\item The non-markup text in the XML elements are text nodes
+\item Every attribute is an attribute node
+\item Comments are comment nodes
+\end{itemize}
+The document node is the root of the tree.  If must have at most one (XML rule) child node.  That node may have multiple children of the types mentioned above.
+For example the XML element \xml{<date type="year">2005</date>} is represented by an element node \xml{<date>} with two child nodes:
+an attribute node with the name \xml{"type"} and value \xml{"year"}, and a child text node with the value \xml{"2005"}.
+
+\subsection{Reading XML with MATLAB}
+Consider a short XML file that represents employees at a company
+\begin{XMLNum}
+<?xml version="1.0"?>
+<people>
+
+  <person employee_number="123" gender="female" >
+    <name>Alice</name>
+    <address>11 Alice St</address>
+    <commenced date="2016-01-01" />
+  </person>
+
+  < person employee_number =  "237" gender = "male" status="on vacation" >
+    <name>Bob</name>
+    <commenced date="2015-07-07" />
+    <address>13  Bob St</address>
+  </person>
+
+</people>
+\end{XMLNum}
+
+
+MATLAB provides a function to read and parse an XML file and return a DOM node-tree
+\begin{Code}
+>> root = xmlread('simple.xml');
+\end{Code}
+The type of a node is indicated by an enum  
+\begin{Code}
+root.getNodeType()
+ans =
+    9
+\end{Code}
+which Table \ref{tab:values} indicates is a document node.
+The Table also shows the \emph{name} and \emph{value} associated with different types of node.
+These are the display value of the variable, shown when it is evaluated without  a semicolon on the end of the line
+\begin{Code}
+>> root
+root =
+[#document: null]
+\end{Code}
+
+\begin{table}
+\begin{tabular}{|l|l|l|l|} \hline
+Node type & nodeName() & nodeType() & nodeValue()  \\ \hline\hline
+Element  & tag name & ELEMENT\_NODE = 1  & null\\
+Attribute  & attribute name & ATTRIBUTE\_NODE =2 &  attribute value\\
+Text  & \#text & TEXT\_NODE = 3  & the string \\
+CDATA  &  \#cdata-section & CDATA\_SECTION\_NODE=4  & the CDATA text \\
+Entity  & entity name & ENTITY\_NODE=6  & null \\
+Comment  & \#comment & COMMENT\_NODE=8  & the comment\\
+Document  & \#document & DOCUMENT\_NODE=9  & null\\ \hline
+\end{tabular}
+\caption{Names and values for different node types.  The symbolic value in column 3 is a property of any node, ie. \texttt{node.ATTRIBUTE\_NODE} is the value 2.}\label{tab:values}
+\end{table}
+
+This root node has at least one child node
+\begin{Code}
+>> root.hasChildNodes
+ans =  logical
+   1
+\end{Code}
+and we can get a list of the child nodes
+\begin{Code}
+>> rootChildNodes = root.getChildNodes;
+>> rootChildNodes.getLength
+ans =
+     1
+\end{Code}
+The first (and only) child node from this list is
+\begin{Code}
+>> node = rootChildNodes.item(0)
+ans =
+[people: null]
+>> node.getNodeType
+ans =
+     1
+\end{Code}
+which is an element node and the display value shows the tag name: people.
+
+The syntax looks quite unMATLAB-like and that's because the implementation is based on the standard Java DOM processor and the objects are native Java objects.  Elements in the list are indexed starting at zero, and we use properties and methods of the Java objects.
+
+This node has a name, the tag name, but no value
+\begin{Code}
+>> node.getNodeName
+ans =
+people
+
+>> node.getNodeValue
+ans =
+     []
+\end{Code}
+
+The people node has five children
+\begin{Code}
+>> persons = node.getChildNodes();
+>> persons.getLength()
+ans =
+     5
+\end{Code}
+which is somewhat surprising since the people node has only two children, the two person nodes: Alice and Bob.
+We can list the child nodes
+\begin{Code}
+>> for i=0:node.getLength-1
+   persons.item(i)
+ end
+
+ans =
+[#text: 
+
+    ]
+
+ans =
+[person: null]
+
+ans =
+[#text: 
+
+    ]
+
+ans =
+[person: null]
+
+ans =
+[#text: 
+
+]
+\end{Code}
+and what we've overlooked is the non-markup text in the XML file, the three blank lines.
+Since we are only interested in the \xml{person} nodes we can extract them specifically\footnote{The \texttt{getElementsByTagName} method
+returns all nodes with the matching tag below \texttt{node} in the parse tree.  There is no way to restrict this to immediate children, to do that you need to find all the children and test if they have this tag.}
+\begin{Code}
+>> persons = node.getElementsByTagName('person');
+>> persons.getLength
+ans =
+     2
+\end{Code}   
+The first person is 
+\begin{Code}
+>> person = persons.item(0)
+person =
+[person: null]
+>> nodes = person.getChildNodes;
+>> nodes.getLength
+ans =
+     7
+\end{Code} 
+which has seven child nodes.
+Once again, we see that this is due to white space in the file
+\begin{Code}
+>> for i=0:nodes.getLength-1
+    nodes.item(i)
+end
+
+ans =
+[#text: 
+      ]
+
+ans =
+[name: null]
+
+ans =
+[#text: 
+      ]
+
+ans =
+[address: null]
+
+ans =
+[#text: 
+      ]
+
+ans =
+[commenced: null]
+
+ans =
+[#text: 
+    ]
+\end{Code}
+The address node could be obtained by
+\begin{Code}
+>> address = nodes.item(3)
+address =
+[address: null]
+\end{Code}
+but the index could vary depending on the formatting (white space) in the XML file.  It can be obtained more robustly by
+\begin{Code}
+>> address = nodes.getElementsByTagName('address').item(0)
+address =
+[address: null]
+\end{Code}
+noting that the \texttt{.item(0)} is required because the \texttt{getElementsByTagName} method always returns a list.
+The address node has just one child which is a text node whose value is Alice's address
+\begin{Code}
+>> txt = address.getChildNodes.item(0)
+txt =
+[#text: 11 Alice St]
+>> txt.getNodeValue
+ans =
+11 Alice St
+\end{Code}
+
+The person node also has attributes.  We can obtain a list of those by
+\begin{Code}
+>> person.hasAttributes
+ans =  logical
+   1
+>> attributes = person.getAttributes;
+>> attributes.getLength
+ans =
+     2
+\end{Code}
+The first attribute
+\begin{Code}
+>> att0 = attributes.item(0)
+att0 =
+employee_number="123"
+\end{Code}
+has a display value that shows both its name and its value.
+We can get those strings by
+\begin{Code}
+>> att0.getNodeName
+ans =
+employee_number
+
+>> att0.getNodeValue
+ans =
+123
+\end{Code}
+
+Attributes can also be obtained directly
+\begin{Code}
+>> person.getAttribute('employee_number')
+ans =
+123
+\end{Code}
+
+This is all somewhat tedious to do manually but it lends itself to a programmatic solution.

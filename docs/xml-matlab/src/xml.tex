@@ -1,0 +1,49 @@
+\documentclass[9pt,fleqn,a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{hyperref}
+\usepackage{matlab}
+\usepackage{color}
+%\usepackage{sectsty}
+%\allsectionsfont{\color{red}}
+
+\DeclareGraphicsExtensions{.png,.eps,.pdf,.svg,.tiff}
+\DeclareGraphicsRule{.svg}{pdf}{.pdf}{`rsvg-convert -f pdf #1 > `dirname #1`/`basename #1 .svg`-svg-converted-to.pdf}
+
+\input{book2}
+\lfoot{}
+\rfoot{}
+
+
+%\usepackage{upquote}
+
+%\usepackage[marginparsep=5mm]{marginnote}
+\usepackage{marginnote}
+\usepackage{url}
+
+\title{Parsing XML using MATLAB\textsuperscript{\textregistered}}
+\author{Peter Corke}
+\date{November 2018}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+An increasing amount of data is encoded in XML format.  MATLAB has built in support for parsing XML format files, but the documentation
+leaves something to be desired.  What follows is a tutorial about XML and the MATLAB support.
+
+
+\section{XML 101}
+
+
+\input{xml_content}
+
+\section{Conclusions}
+We have demonstrated the main parts of the MATLAB API for parsing XML files.  More detail can be found online
+in tutorials and references for the Java DOM Parser.
+
+\bibliographystyle{IEEEtran}
+\bibliography{strings,publist,extra}
+\end{document}

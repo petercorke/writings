@@ -1,0 +1,198 @@
+\documentclass[11pt,a4paper,fleqn]{article}
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\include{rvc-notation}
+\usepackage{matlab}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Solving trigonometric equations}
+\author{Peter Corke}
+%\date{}                                           % Activate to display a given date or no date
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+When solving problems in inverse kinematics we often end up with an equation of the form.  There are several ways to solve this and they
+are discussed below.
+
+\section*{Simple derivation}
+\begin{equation}
+a \cos \theta + b \sin \theta = c, \,\, a,b \ne 0 \label{eq:problem-orig}
+\end{equation}
+and we note similarity with the form of the sum of angles identity
+\[
+ \underbrace{\sin \phi}_{\sim a} \cos \theta + \underbrace{\cos \phi}_{\sim b} \sin \theta \equiv \sin (\phi + \theta) 
+\]
+In order to equate coefficients we need to ensure that $\sin^2 \phi + \cos^2 \phi = 1$ which is true only if $a^2 + b^2 = 1$. 
+In general this will not be the case so we normalize the equation, dividing each side by $d = \sqrt{a^2 + b^2}$ giving
+\begin{equation}
+a^\prime \cos \theta + b^\prime \sin \theta = c^\prime \label{eq:problem}
+\end{equation}
+where $a^\prime= a/d$, $b^\prime=b/d$ and $c^\prime=c/d$.
+Now we can write
+\[
+\sin \phi = a^\prime, \, \cos \phi = b^\prime
+\]
+and solve for $\phi$
+\[
+\tan \phi = \frac{a^\prime}{b^\prime}  = \frac{a}{b} \in [-2\pi, 2\pi)
+\]
+which should be computed using an \texttt{atan2} function. 
+
+Next we  rewrite \eq{eq:problem} as
+\[
+\sin (\phi + \theta) = c^\prime
+\]
+and if $|c^\prime| \le 1$ or $a^2+b^2-c^2 > 0$ we can solve  for
+\[
+\theta = \sin^{-1} c^\prime - \phi
+\]
+
+In general, there is a second solution corresponding to the negative solution of the square root $d = -\sqrt{a^2 + b^2}$ leading to
+\[
+\tan \phi = \frac{-a^\prime}{-b^\prime}  = \frac{-a}{-b} \in [-2\pi, 2\pi)
+\]
+which puts the solution for $\phi$ in the diagonally opposite quadrant, and
+\[
+\sin (\phi + \theta) = -c^\prime
+\]
+Since $\sin( -x) = -\sin(x)$ we can write the second solution as
+\[
+\theta = -\sin^{-1} c^\prime - \phi
+\]
+
+In summary, the two solutions are
+\[
+\begin{array}{ll}
+\theta = \hspace{1em}\sin^{-1} c^\prime - \phi, & \tan \phi =  \frac{a}{b} \\
+\theta = -\sin^{-1} c^\prime - \phi, & \tan \phi =  \frac{-a}{-b}
+\end{array}
+\]
+
+We can test this numerically using MATLAB
+\begin{matlabcode}
+a = 4; b = 5; c = 3;
+clear theta
+
+phi = atan2(a, b);
+th1 = asin(c/norm([a b])) - phi
+\end{matlabcode}
+\begin{matlaboutput}
+th1 = -0.1871
+\end{matlaboutput}
+\begin{matlabcode}
+phi = atan2(-a, -b);
+th2 = -asin(c/norm([a b])) - phi;
+theta = [th1 th2];
+a*cos(theta) + b*sin(theta) - c
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 1x2    
+1.0e+-15 *
+   -0.8882   -0.8882
+\end{matlaboutput}
+which indicates solutions equal to zero up to machine precision.
+
+\section*{Other forms}
+Another commonly given solutions of this equation include
+\[
+\theta = \tan^{-1} \frac{c}{\pm \sqrt{a^2+b^2-c^2}} - \tan^{-1}\frac{a}{b}
+\]
+and
+\[
+\theta = \tan^{-1} \frac{ bc \pm ad}{ac \mp bd}
+\]
+which requires just a single arc-tangent operation.
+See the discussion at \url{https://math.stackexchange.com/questions/213545/solving-trigonometric-equations-of-the-form-a-sin-x-b-cos-x-c}
+
+
+\section*{The Weierstrass transformation}
+A well known way to convert trigonometric equations to algebraic equations is with the Weierstrass transformation\footnote{After the German mathematician Karl Weierstrass (1815-1897).} which is familiar as one of the half-angle identities
+\[
+\sin \theta = \frac{2h}{1+h^2}, \,\,\, \cos \theta = \frac{1-h^2}{1+h^2}
+\]
+where $h = \tan \frac{\theta}{2}$.  The problem (\ref{eq:problem-orig}) can be rewritten as
+\[
+\frac{2 b h}{h^2 + 1} - \frac{a (h^2 - 1)}{h^2 + 1} = c
+\]
+which can be expressed as a quadratic in $h$
+\[
+(a+c)h^2 - 2bh+a + c = 0
+\]
+which we can solve as
+\begin{align}
+h = \left(\begin{array}{c} \frac{b+\sqrt{a^2+b^2-c^2}}{a+c}\\ 
+\frac{b-\sqrt{a^2+b^2-c^2}}{a+c} \end{array}\right)
+\end{align}
+and clearly has the two solutions so long as $a^2 + b^2 - c^2 > 0$. 
+The transformation has led to the solution in a very straightforward fashion.
+
+Once again, we can test this numerically using MATLAB
+\begin{matlabcode}
+syms a b c h theta
+e = a*cos(theta) + b*sin(theta) == c
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+e = 
+    $\displaystyle a \cos \left(\theta \right)+b \sin \left(\theta \right)=c$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+e = rewrite(e, 'tan')
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+e = 
+    $\displaystyle \frac{2 b \tan \left(\frac{\theta }{2}\right)}{{\tan \left(\frac{\theta }{2}\right)}^2 +1}-\frac{a {\left({\tan \left(\frac{\theta }{2}\right)}^2 -1\right)}}{{\tan \left(\frac{\theta }{2}\right)}^2 +1}=c$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+e = subs(e, tan(theta/2), h)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+e = 
+    $\displaystyle \frac{2 b h}{h^2 +1}-\frac{a {\left(h^2 -1\right)}}{h^2 +1}=c$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+sol = solve(e, h)
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+sol = 
+    $\displaystyle \left(\begin{array}{c}
+\frac{b+\sqrt{a^2 +b^2 -c^2 }}{a+c}\\
+\frac{b-\sqrt{a^2 +b^2 -c^2 }}{a+c}
+\end{array}\right)$
+\end{matlabsymbolicoutput}
+
+\begin{par}
+\begin{flushleft}
+Now lets validate this
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+a = 4; b = 5; c = 3;
+theta = 2*atan(eval(sol))
+\end{matlabcode}
+\begin{matlaboutput}
+theta = 2x1    
+    1.9792
+   -0.1871
+
+\end{matlaboutput}
+\begin{matlabcode}
+a*cos(theta) + b*sin(theta) - c
+\end{matlabcode}
+\begin{matlaboutput}
+ans = 2x1    
+1.0e+-15 *
+         0
+   -0.8882
+\end{matlaboutput}
+which again is equal to zero up to machine precision.
+
+
+\end{document}  

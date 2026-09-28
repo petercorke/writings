@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\usepackage{algpseudocode}
+\usepackage{stmaryrd} % short arrows
+% page formatting
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{\thepage}
+\rfoot{Copyright \copyright\ Peter Corke 2018}
+\lfoot{\texttt{[petercorke.com]}}
+\lhead{}
+
+% paragraph formatting
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.5\baselineskip}
+
+% maths notation
+\usepackage{amssymb}
+\input{rvc-notation}
+\usepackage{mathtools}
+
+
+
+\title{Manipulator Jacobian based on the elementary transform sequence}
+\author{Peter Corke}
+\date{January 2015 (\small updated December 2018)}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\section{Introduction}
+The Denavit and Hartenberg notation for describing a serial-link mechanism
+geometry is a fundamental tool of the roboticist.
+Once a manipulator's kinematics is parameterized in this form a large body
+of standard algorithms and code implementations for
+kinematics, dynamics, motion planning and simulation are available\cite{Corke17a}.
+
+The fundamentals of serial-link robot kinematics and the 
+Denavit-Hartenberg\cite{Hartenberg55} notation are well covered in
+standard texts\cite{Spong06,Paul81a}.  Each link is represented by
+two parameters: the
+{\em link length}, $a_i$, and {\em link twist}, $\alpha_i$, which define 
+the relative location of the two attached joint axes in space.
+The classical method of assigning Denavit-Hartenberg parameters is to 
+systematically assign a coordinate frame to each link, but there are
+significant constraints on each frame, and also the coordinate system
+of the base and the end-effector.
+An interesting complication with the Denavit-Hartenberg notation is the
+zero-angle configuration, that is, the pose when all joint angles are zero.
+For the Puma robot this is a non-obvious `L-shaped' pose with the upper
+arm horizontal and the lower arm vertically upward.
+
+Corke\cite{Corke07a} introduced an alternative representation of the kinematics for a serial-link manipulator: the elementary transform sequence (ETS).
+This intuitive but systematic approach allows the forward kinematics to be written down by inspection
+using a simple ``walk through'' procedure.
+The result is a string of elementary translations and rotations, from
+the user defined base coordinate to the end-effector.
+For example, the ETS for a Puma 560 robot is 
+\begin{align*}
+T_z(L_1) R_z(q_1) R_y(q_2) T_y(L_2) T_z(L_3) R_y(q_3) T_x(L_6) T_y(L_4) 
+T_z(L_5) R_z(q_4) R_y(q_5) R_z(q_6) T_z(L_7) & \label{eq:puma}
+\end{align*}
+This readable string describes motion along the joint and link chain in terms of translations and rotations
+about the canonic axes.  The arguments of the transformations are constants or generalized joint coordinates.
+Unlike the Denavit-Hartenberg approach a joint can involve a rotation or translation about \textit{any} axis -- note in this
+example the term $R_y(q_2)$ is a rotation about the y-axis.
+
+The paper\cite{Corke07a} goes on to describe an algebraic procedure that can be automatically applied to an ETS
+sequence to factorize it into the standard or modified Denavit-Hartenberg
+form.  Joint angle offsets, if required by the chosen zero-angle configuration 
+chosen, are generated automatically, as are base and tool transformations.
+This algorithm is provided in the Robotics Toolbox for \MATLAB\ by the function \var{DHFactor} which is implemented in Java.
+
+Denavit-Hartenberg parameters are still required to determine the manipulator Jacobian and the inverse dynamics.
+This article extends \cite{Corke07a} by describing an algorithm to determine the manipulator Jacobian matrix directly from the ETS
+representation.
+
+\section{ETS-based forward kinematics}
+We will first recap on the forward kinematics, the pose of the robot's end-effector given a set of joint coordinates.
+
+With ETS represent the forward kinematics of a serial-link  robot manipulator by a sequence of $M$ elementary transformations  $\mat{E}_i \in SE(3)$
+\begin{equation}
+\mat{T}_E = \mat{E}_1 \mat{E}_2 \mat{E}_3 \cdots \mat{E}_M \label{eq:fkine}
+\end{equation}
+Each factor is either a translation along, or a rotation about, one of either the x-, y- or z-axis.  That is, it is one of six elementary transformations
+\[
+\mat{E}_i = \left\{ \begin{tabular}{l}
+$\mat{T}_x(\eta_i)$ \\
+$\mat{T}_y(\eta_i)$ \\
+$\mat{T}_z(\eta_i)$ \\
+$\mat{R}_x(\eta_i)$ \\
+$\mat{R}_y(\eta_i)$ \\
+$\mat{R}_z(\eta_i)$ \end{tabular}
+\right.
+\]
+where the parameter is
+either a constant (a translational offset or a rotation) or a generalized joint coordinate
+\[
+\eta_i = \left\{ \begin{tabular}{l}
+$c_i$ \\
+$q_j$ \end{tabular}
+\right.  .
+\]
+The forward kinematics is simply the cumulative product of the elementary transforms with the joint coordinates plugged in as
+appropriate. There is no need to factorize it first into Denavit-Hartenberg parameters.
+
+Using \MATLAB\ we can take a conventional toolbox Denavit-Hartenberg-based model and convert it to ETS format\footnote{This string is different to the one shown above because the link coordinate frames have been assigned using Denavit-Hartenberg constraints.}
+\begin{Code}
+>> mdl_puma560
+>> s = p560.trchain
+s =
+    'Rz(q1)Rx(90)Rz(q2)Tx(0.4318)Rz(q3)Tz(0.15005)Tx(0.0203)Rx(-90)Rz(q4)
+    Tz(0.4318)Rx(90)Rz(q5)Rx(-90)Rz(q6)'
+\end{Code}
+where translations are in units of metres and angles are in degrees.
+We can convert this human-readable string into a sequence of ETS object
+\begin{Code}
+>> Te = ETS(s)
+Te = 
+Rz(q1)Rx(90)Rz(q2)Tx(0.4318)Rz(q3)Tz(0.15005)Tx(0.0203)Rx(-90)Rz(q4)Tz(0.4318)
+  Rx(90)Rz(q5)Rx(-90)Rz(q6)
+
+>> about Te
+Te [ETS] : 1x14 (112 bytes)
+\end{Code}
+which is a 14-element row vector of \texttt{ETS} objects.  We can look at individual elements in this sequence, for example
+\begin{Code}
+>> Te(3)
+ans = 
+Rz(q2)
+>> Te(1:3)
+ans = 
+Rz(q1)Rx(90)Rz(q2)
+\end{Code}
+and the objects support a number of methods to determine the parameters, joint angle if any and so on.
+
+We can \textit{evaluate} this string for a particular set of joint coordinates
+\begin{Code}
+>> Te.eval(qz)
+ans =
+    1.0000         0         0    0.4521
+         0    1.0000         0   -0.1500
+         0         0    1.0000    0.4318
+         0         0         0    1.0000
+\end{Code}
+which agrees with the classical Denavit-Hartenberg-based forward kinematics
+\begin{Code}
+>> p560.fkine(qz)
+ans = 
+         1         0         0    0.4521
+         0         1         0     -0.15
+         0         0         1    0.4318
+         0         0         0         1
+\end{Code}
+    
+\section{ETS-based manipulator Jacobian}
+The time derivative of the end-effector pose is 
+\begin{equation*}
+\dot{\mat{T}_E} = \frac{d \mat{T}_E}{dt} \in \mathbb{R}^{4 \times 4}
+\end{equation*}
+
+
+We are interested in the change of the end-effector pose due to a change in the $j$'th joint so we introduce the joint velocity
+\begin{equation}
+\frac{d \mat{T}_E}{dt} = \frac{d \mat{T}_E}{d q_j} \frac{d q_j}{dt} = \frac{d \mat{T}_E}{d q_j} \dot{q}_j\label{eq:dTdt}
+\end{equation}
+The  matrix derivative on the left-hand-side of \eq{eq:dTdt} has 16 elements  -- it is a non-compact representation of the end-effector spatial velocity which is commonly represented by
+$(\vec{v},\, \vec{\omega}) \in \mathbb{R}^6$ where $\vec{v}$ is the end-effector translational velocity and $\vec{\omega}$ is the end-effector rotational velocity.
+If we write the end-effector pose as
+\[
+\mat{T}_E = \begin{pmatrix} \mat{R} &\vec{t} \in \SE{3} \\
+0\, 0\, 0 & 1 \end{pmatrix}
+\]
+where $\mat{R} \in \SO{3}$ is an orthonormal rotation matrix representing the orientation of the end-effector and $\vec{t} \in \mathbb{R}^3$ is the translation
+of the end-effector then the time derivative  is
+\begin{equation}
+\dot{\mat{T}} = \begin{pmatrix} \dot{\mat{R}} & \dot{\vec{t}} \\ \label{eq:dTdt2}
+0\, 0\, 0 & 0 \end{pmatrix}
+\end{equation}
+
+
+The translational velocity is simply
+\[
+\vec{v} = \dot{\vec{t}}
+\]
+Angular velocity is related to the rate of change of a rotation matrix by the well known identity\cite{Corke17a}
+\[
+ \dot{\mat{R}} = \skx{\vec{\omega}} \mat{R}
+ \]
+ where $\skx{\cdot} : \mathbb{R}^3 \mapsto \so{3}$ is a skew-symmetric matrix and we can express the angular velocity as
+\[
+\vec{\omega} = \iskx{ \dot{\mat{R}} \mat{R}^T }
+ \]
+where $\iskx{\cdot} :  \so{3} \mapsto \mathbb{R}^3 $ is the inverse operator to $\skx{\cdot}$.
+Now we can write
+ \[
+\begin{pmatrix} \vec{v} \\ \vec{\omega} \end{pmatrix} = \begin{pmatrix} \dot{\vec{t}} \\ \iskx{ \dot{\mat{R}} \mat{R}^T} \end{pmatrix} = \vee(\dot{\mat{T}_E}) =  \vee( \frac{d{\mat{T}_E}}{d q_j}) \dot{q}_j
+ \]
+ where $\isk{\cdot} :  \se{3} \mapsto \mathbb{R}^6 $.
+
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l|} \hline
+$\frac{d \mat{T}_x(q_j)}{dq_j} = \begin{pmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0\end{pmatrix} $ & $\frac{d \mat{R}_x(q_j)}{dq_j} =\begin{pmatrix} \skx{1,0,0} \mat{R}_x(q_j) & \begin{matrix} 0 \\ 0 \\ 0 \end{matrix} \\ 0\, 0\, 0 & 0 \end{pmatrix}  $\\
+$\frac{d \mat{T}_y(q_j)}{dq_j} =\begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0\end{pmatrix} $ & $\frac{d \mat{R}_y(q_j)}{dq_j} =\begin{pmatrix} \skx{0,1,0} \mat{R}_y(q_j) & \begin{matrix} 0 \\ 0 \\ 0 \end{matrix} \\ 0\, 0\, 0 & 0 \end{pmatrix}  $\\
+$\frac{d \mat{T}_z(q_j)}{dq_j} =\begin{pmatrix} 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0\end{pmatrix} $ & 
+$\frac{d \mat{R}_z(q_j)}{dq_j} =\begin{pmatrix} \skx{0,0,1} \mat{R}_z(q_j) & \begin{matrix} 0 \\ 0 \\ 0 \end{matrix} \\ 0\, 0\, 0 & 0 \end{pmatrix}  $\\ \hline
+\end{tabular}
+\caption{Derivative of primitive transforms with respect to joint coordinate $q_j$.}
+\label{tab:derivs}
+\end{table}
+
+
+To determine how motion of the $j$'th joint affects the end-effector pose we can apply the chain rule to \eq{eq:fkine}
+\begin{align*}
+\frac{d \mat{T}}{dq_j} &= \frac{d \mat{E}_1}{dq_j} \mat{E}_2 \mat{E}_3 \cdots \mat{E}_M \\
+&+ \mat{E}_1 \frac{d \mat{E}_2}{dq_j} \mat{E}_3 \cdots \mat{E}_M \\
+&+ \mat{E}_1 \mat{E}_2 \frac{d \mat{E}_3}{dq_j}  \cdots \mat{E}_M \\
+& \hspace{0.5em} \vdots \\
+& + \mat{E}_1 \mat{E}_2 \cdots \frac{d \mat{E}_M}{dq_j} 
+\end{align*}
+where all the product terms will be zero except for the one where $\mat{E}_i$ is a function of the joint coordinate $q_j$.
+If this is the $k$'th term in \eq{eq:fkine}  then we can rewrite \eq{eq:fkine} as
+\[
+ \mat{T} = \left( \prod_{i=1}^{k-1} \mat{E}_i  \right)  \mat{E}_k    \left( \prod_{i=k+1}^{M} \mat{E}_i  \right)
+\]
+and the derivative with respect to $q_j$ is
+\begin{equation}
+\frac{d \mat{T}}{dq_j} = \left( \prod_{i=1}^{k-1} \mat{E}_i  \right)  \frac{d \mat{E}_k}{dq_j}   \left( \prod_{i=k+1}^{M} \mat{E}_i  \right)\label{eq:dtdq}
+\end{equation}
+The middle derivative term  is easily computed and the value for all possible cases of $\mat{E}_k$ are summarised in Table \ref{tab:derivs}.
+
+The end-effector motion is the sum of the components due to each of the joints
+\begin{align}
+\begin{pmatrix} \vec{v} \\ \vec{\omega} \end{pmatrix} &=
+\vee( \frac{d \mat{T}_E}{d q_1}) \dot{q}_1 + \cdots + \vee( \frac{d \mat{T}_E}{d q_N}) \dot{q}_N 
+\end{align}
+which can be written in matrix form as
+\begin{align}
+&= \begin{pmatrix} \vee( \frac{d \mat{T}_E}{d q_1})  \cdots \vee( \frac{d \mat{T}_E}{d q_N})  \end{pmatrix} \begin{pmatrix}\dot{q}_1  \\ \vdots \\ \dot{q}_N \end{pmatrix} \\
+&= \mat{J} \dvec{q}
+\end{align}
+where $\mat{J}$ is the manipulator Jacobian -- the end-effector spatial velocity in the world coordinate frame.
+The algorithm is shown succinctly in pseudocode in Figure \ref{fig:algo}.
+
+Continuing the MATLAB example from above
+\begin{Code}
+>> Te.jacobian(qz)
+ans =
+    0.1500   -0.4318   -0.4318         0         0         0
+    0.4521         0         0         0         0         0
+         0    0.4521    0.0203         0         0         0
+         0         0         0         0         0         0
+         0   -1.0000   -1.0000         0   -1.0000         0
+    1.0000         0         0    1.0000         0    1.0000
+\end{Code}
+which agrees with the classical Denavit-Hartenberg-based algorithm\cite{Paul81c}
+\begin{Code}
+>> p560.jacob0(qz)
+ans =
+    0.1500   -0.4318   -0.4318         0         0         0
+    0.4521    0.0000    0.0000         0         0         0
+         0    0.4521    0.0203         0         0         0
+         0         0         0         0         0         0
+         0   -1.0000   -1.0000         0   -1.0000         0
+    1.0000    0.0000    0.0000    1.0000    0.0000    1.0000
+\end{Code}    
+
+
+\begin{figure}
+\begin{center}
+\begin{algorithmic}
+\For{j = 1 to N}
+ \State{$k \gets i$ such that $\eta_i = q_j$}
+ \State{$\dmat{T} = \prod_{i=1}^{k-1} \mat{E}_i  \cdot D\left\{ \mat{E}_k \right\} \cdot \prod_{i=k+1}^{M} \mat{E}_i  $}
+\State{$\vec{v}$ = $\dmat{T}$[1 $\shortrightarrow$ 3, 4];}
+\State{$\dmat{R}$ = $\dmat{T}$[1 $\shortrightarrow$ 3, 1 $\shortrightarrow$ 3];}
+\State{$\vec{\omega} = \vex \left( \dmat{R} \mat{R}^T \right)$}
+\State{$\mat{J}$ [1 $\shortrightarrow$ 6 \comma j] = $\begin{pmatrix} \vec{v} \comma \vec{\omega} \end{pmatrix}^T$}
+\EndFor
+\end{algorithmic}
+\end{center}
+\caption{ETS Jacobian algorithm}\label{fig:algo}
+\end{figure}
+
+
+\section{Conclusion}
+Given a robot kinematic model expressed as an elementary transform sequence (ETS), we have shown how to derive the Jacobian
+matrix.  This, combined with a standard minimization algorithm, is sufficient to perform numerical inverse kinematics without the nee
+for Denavit-Hartenberg parameters.
+
+\bibliographystyle{ieeetr}
+\bibliography{strings,robot,kinematics,dynamics,software,publist}
+\end{document}  
+
+

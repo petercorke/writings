@@ -1,0 +1,9 @@
+# summary drafted from the PDF's first page: please rewrite, then remove draft_summary
+title: Precision-recall curves
+group: articles
+latex: prcurves.tex
+source_format: latex
+year: 2016
+summary: A tutorial introduction to binary classifiers, the confusion matrix, and how precision-recall
+  curves are constructed and interpreted.
+draft_summary: true

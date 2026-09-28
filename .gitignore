@@ -1,0 +1,6 @@
+.venv/
+_site/
+staging/
+__pycache__/
+.DS_Store
+assets/
