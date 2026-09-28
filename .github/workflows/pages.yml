@@ -32,7 +32,7 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-science texlive-fonts-recommended texlive-bibtex-extra biber
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-science texlive-fonts-recommended texlive-plain-generic texlive-bibtex-extra biber
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

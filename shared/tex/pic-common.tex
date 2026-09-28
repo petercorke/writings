@@ -1,0 +1,70 @@
+%\input{epsfig.tex}               % use epsfig package for all PostScript includes
+%\pssilent
+\def\fps@figure{htp}
+\def\fps@table{htp}
+\def\topfraction{.9}
+\def\bottomfraction{.9}
+\def\textfraction{.1}
+\def\floatpagefraction{.9}
+
+%
+% useful abbreviations
+%
+%\newcommand{\bi}{\begin{itemize}}
+%\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\bfig}{\begin{figure}}
+\newcommand{\efig}{\end{figure}}
+
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+
+%\newcommand{\be}{\begin{equation}}
+%\newcommand{\ee}{\end{equation}}
+
+\newcommand{\hstrut}{\rule{0mm}{7mm}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+%\newcommand{\eq}[1]{(\ref{#1})}
+%
+% global
+%
+\newenvironment{hitlist}{
+  \begin{list}{\protect $\bullet$}{
+    \setlength{\topsep}{0.0pc}
+    \setlength{\partopsep}{0.0pc}
+    \setlength{\itemsep}{0.0pc}
+    \setlength{\parsep}{0.0pc}
+    \setlength{\rightmargin}{\leftmargin}
+  }
+}{
+  \end{list}
+}
+
+\newcommand{\floor}{{\rm floor}}
+\newcommand{\ceil}{{\rm ceil}}
+\newcommand{\ord}{{\rm Ord}}
+\newcommand{\fnumber}{{\it f}-number}
+\newcommand{\etal}{{et al.}}
+\newcommand{\apriori}{{\it a priori}}
+\renewcommand{\vec}[1]{\underline{#1}}
+\newcommand{\SNR}{\mbox{SNR}}
+%
+% use as \sci{5}{-2} for formatting 5e-2
+%
+\newcommand{\sci}[2]{\mbox{$#1 \times 10^{#2}$}}
+
+%
+% macros to display units in math or LR mode, 20\unit{lx/m^2}
+%
+\newcommand{\unit}[1]{\mbox{$\rm \,#1$}}
+\newcommand{\mm}{\unit{mm}}
+\newcommand{\kg}{\unit{kg}}
+\newcommand{\Hz}{\unit{Hz}}
+\newcommand{\kHz}{\unit{kHz}}
+\newcommand{\MHz}{\unit{MHz}}
+\newcommand{\ms}{\unit{ms}}
+\newcommand{\us}{\unit{\mu s}}
+\renewcommand{\deg}{${}^\circ$}
+
+\newcommand{\DEF}[1]{\index{#1}{\it#1}}

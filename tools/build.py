@@ -158,7 +158,14 @@ def build_latex(doc: Doc, workdir: Path) -> Path | None:
     src = DOCS / doc.slug / "src"
     build_dir = workdir / doc.slug
     shutil.copytree(src, build_dir)
-    env = {**os.environ, "TEXINPUTS": f".:{RVC_NOTATION}//:"}
+    # shared/ holds frozen copies of common files the old notes use: macros from
+    # ~/Dropbox/lib/tex/inputs and bibliographies from ~/Dropbox/lib/bib
+    shared = ROOT / "shared"
+    env = {
+        **os.environ,
+        "TEXINPUTS": f".:{shared / 'tex'}//:{RVC_NOTATION}//:",
+        "BIBINPUTS": f".:{shared / 'bib'}//:",
+    }
     result = subprocess.run(
         ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", doc.latex],
         cwd=build_dir, env=env, capture_output=True, text=True,

@@ -74,3 +74,10 @@ bones-of-descartes has Pages source (`source_format: pages`): re-export the PDF 
   render thumbnails.
 - **OCR**: run OCRmyPDF on scans in CI so they're searchable and indexable.
 - **Sources**: add `src/` folders and build those PDFs in CI.
+
+## Shared files
+
+`shared/tex/` and `shared/bib/` hold frozen copies of the macro files (`pic-common.tex`,
+`matlab.tex`) and bibliographies the older notes use, taken from `~/Dropbox/lib/tex/inputs`
+and `~/Dropbox/lib/bib` in September 2026. They aren't kept in sync: the notes are old and
+so are their references. `rvc-notation` is not copied; it comes from its own repo.
