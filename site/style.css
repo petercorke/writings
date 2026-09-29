@@ -42,3 +42,22 @@ footer { margin-top: 56px; color: var(--muted); font-size: .9rem; }
 @media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
 .byline { font-size: .85rem; margin: 0 0 2px; }
 .rights { font-size: .75rem; color: var(--muted); margin: 6px 0 0; font-style: italic; }
+
+/* Hover preview: a readable image of the page, shown beside the tile on devices with a
+   mouse. Loaded lazily, i.e. only when first shown. site/preview.js flips it to the left
+   when there's no room on the right. */
+.thumb { position: relative; display: block; align-self: start; }
+.preview {
+  display: none; position: absolute; top: -8px; left: calc(100% + 12px); z-index: 10;
+  width: min(440px, 45vw); padding: 6px; background: #fff; pointer-events: none;
+  border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 8px 28px rgb(0 0 0 / .25);
+}
+.preview img { width: 100%; height: auto; display: block; border: 0; box-shadow: none; }
+.thumb.flip .preview { left: auto; right: calc(100% + 12px); }
+@media (hover: hover) and (pointer: fine) {
+  .thumb:hover .preview, .thumb:focus-visible .preview { display: block; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .thumb:hover .preview { animation: pop .12s ease-out; }
+  @keyframes pop { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+}

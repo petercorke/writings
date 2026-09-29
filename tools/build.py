@@ -23,6 +23,7 @@ each is either a committed file in ``docs/<slug>/files/`` or an ``asset:``.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -41,7 +42,8 @@ DOCS = ROOT / "docs"
 ASSETS = ROOT / "assets"
 SITE = ROOT / "_site"
 RELEASE_URL = "https://github.com/petercorke/writings/releases/download/assets"
-THUMB_WIDTH = 360  # pixels; tiles display at 90 CSS px, so this is generous for zooming
+THUMB_WIDTH = 360  # pixels; tiles display at 90 CSS px
+PREVIEW_WIDTH = 900  # pixels; the hover preview displays at up to 440 CSS px, so it is readable
 # LaTeX sources \input{rvc-notation}; locally it's on TEXINPUTS, in CI it's checked out here
 RVC_NOTATION = Path(os.environ.get("RVC_NOTATION", Path.home() / "code" / "rvc-notation"))
 
@@ -184,18 +186,22 @@ def build_latex(doc: Doc, workdir: Path) -> Path | None:
     return None
 
 
-def render_thumbnail(pdf: Path, out: Path, page_number: int = 1) -> int:
-    """Render one page of a PDF as a WebP thumbnail.
+def render_thumbnail(pdf: Path, slug: str, page_number: int = 1) -> int:
+    """Render one page of a PDF as a small tile thumbnail and a larger hover preview.
+
+    Writes ``_site/thumbs/<slug>.webp`` and ``_site/previews/<slug>.webp``.
 
     :param pdf: source PDF
-    :param out: destination image file
+    :param slug: document identifier, used for the image file names
     :param page_number: 1-based page to render; the first page by default
     :return: number of pages in the PDF
     """
     document = pdfium.PdfDocument(pdf)
     page = document[min(page_number, len(document)) - 1]
-    scale = THUMB_WIDTH / page.get_width()
-    page.render(scale=scale).to_pil().save(out, "WEBP", quality=80)
+    bitmap = page.render(scale=PREVIEW_WIDTH / page.get_width()).to_pil()
+    bitmap.save(SITE / "previews" / f"{slug}.webp", "WEBP", quality=75)
+    small = bitmap.resize((THUMB_WIDTH, round(bitmap.height * THUMB_WIDTH / bitmap.width)))
+    small.save(SITE / "thumbs" / f"{slug}.webp", "WEBP", quality=80)
     return len(document)
 
 
@@ -233,7 +239,10 @@ def tile(doc: Doc) -> str:
         extras = f'<p class="extras">Also: {links}</p>'
     return f"""
     <article class="tile">
-      <a class="thumb" href="{esc(doc.href)}"><img src="thumbs/{doc.slug}.webp" alt="" loading="lazy" width="180"></a>
+      <a class="thumb" href="{esc(doc.href)}">
+        <img src="thumbs/{doc.slug}.webp" alt="" loading="lazy" width="90">
+        <span class="preview"><img src="previews/{doc.slug}.webp" alt="Preview of {esc(doc.title)}" loading="lazy" width="440"></span>
+      </a>
       <div class="text">
         <h3><a href="{esc(doc.href)}">{esc(doc.title)}</a></h3>
         {byline}<p class="facts">{esc(" · ".join(facts))}</p>
@@ -279,15 +288,16 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
 
     if SITE.exists():
         shutil.rmtree(SITE)
-    for sub in ("thumbs", "pdf", "files"):
+    for sub in ("thumbs", "previews", "pdf", "files"):
         (SITE / sub).mkdir(parents=True)
-    shutil.copy(ROOT / "site" / "style.css", SITE / "style.css")
+    for asset in ("style.css", "preview.js"):
+        shutil.copy(ROOT / "site" / asset, SITE / asset)
 
     with tempfile.TemporaryDirectory() as workdir:
         for doc in docs:
             resolve_pdf(doc, Path(workdir), use_latex)
             doc.size = doc.pdf.stat().st_size
-            doc.pages = render_thumbnail(doc.pdf, SITE / "thumbs" / f"{doc.slug}.webp", doc.thumb_page)
+            doc.pages = render_thumbnail(doc.pdf, doc.slug, doc.thumb_page)
             if doc.href.startswith("pdf/"):
                 shutil.copy(doc.pdf, SITE / doc.href)
             for c in doc.companions:
@@ -308,6 +318,10 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
         sections.append(f'<section id="{g["id"]}"><h2>{html.escape(g["title"])}</h2>{blurb}<div class="grid">{tiles}</div></section>')
 
     page = (ROOT / "site" / "index.template.html").read_text().replace("<!-- SECTIONS -->", "\n".join(sections))
+    # fingerprint the stylesheet and script so browsers fetch fresh copies after a change
+    for asset in ("style.css", "preview.js"):
+        digest = hashlib.sha256((ROOT / "site" / asset).read_bytes()).hexdigest()[:10]
+        page = page.replace("{{" + asset + "}}", digest)
     (SITE / "index.html").write_text(page)
     # machine-readable index, e.g. for a WordPress page to list the groups
     (SITE / "docs.json").write_text(json.dumps(
