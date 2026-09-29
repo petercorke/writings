@@ -1,0 +1,16 @@
+# summary drafted from the arXiv abstract: please rewrite, then remove draft_summary
+title: "Manipulator Differential Kinematics, Part 1: Kinematics, Velocity, and Applications"
+group: papers
+year: 2023
+authors: [Jesse Haviland, Peter Corke]
+url: https://arxiv.org/abs/2207.01796
+doi: 10.1109/MRA.2023.3270228
+venue: IEEE Robotics and Automation Magazine
+summary: >-
+  First of a two-part tutorial: modelling manipulator kinematics with the elementary
+  transform sequence (ETS), first-order differential kinematics and the manipulator
+  Jacobian, and applications such as resolved-rate motion control.
+files:
+  - label: Jupyter notebooks
+    url: https://github.com/jhavl/dkt
+draft_summary: true

@@ -14,16 +14,27 @@ Where a document's PDF comes from, in order of preference:
 2. ``docs/<slug>/<slug>.pdf`` committed in the repo;
 3. ``asset: <file>`` — a large file kept as a GitHub release asset, not in git. For
    thumbnails it must be present in ``assets/`` (CI downloads the release assets there);
-   the tile links to the release download URL.
+   the tile links to the release download URL;
+4. ``url: <landing page>`` — a document hosted elsewhere, e.g. on arXiv. The tile links
+   there. The PDF (derived from an arXiv URL, or given as ``pdf_url:``) is fetched once
+   into ``external/`` purely to render the preview; it is never republished. If
+   it can't be fetched, the tile is shown without a preview.
 
-Companion files (``files:`` in ``doc.yml``) are listed on the tile as extra downloads;
-each is either a committed file in ``docs/<slug>/files/`` or an ``asset:``.
+For a host that blocks automated downloads, or a PDF that mustn't be redistributed, commit
+an image of the page instead: ``preview_image: preview.webp`` (in the document folder, at
+least 900 px wide) plus ``pages:`` if the page count should be shown.
+
+A published version behind a paywall can be linked with ``doi:`` (and ``venue:`` for the
+link text). Companion links (``files:`` in ``doc.yml``) are listed on the tile; each is a
+committed file in ``docs/<slug>/files/``, an ``asset:``, or a web ``url:``.
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import re
+import urllib.request
 import html
 import json
 import os
@@ -42,6 +53,9 @@ DOCS = ROOT / "docs"
 ASSETS = ROOT / "assets"
 SITE = ROOT / "_site"
 RELEASE_URL = "https://github.com/petercorke/writings/releases/download/assets"
+EXTERNAL = ROOT / "external"  # cache of PDFs fetched from other hosts, for previews only
+USER_AGENT = "petercorke-writings-site-builder (https://github.com/petercorke/writings)"
+HOST_LABELS = {"arxiv.org": "arXiv", "export.arxiv.org": "arXiv", "ieeexplore.ieee.org": "IEEE Xplore"}
 THUMB_WIDTH = 360  # pixels; tiles display at 90 CSS px
 PREVIEW_WIDTH = 900  # pixels; the hover preview displays at up to 440 CSS px, so it is readable
 # LaTeX sources \input{rvc-notation}; locally it's on TEXINPUTS, in CI it's checked out here
@@ -74,6 +88,11 @@ class Doc:
     source_format: str | None = None  # "latex", "pages", …: what src/ holds
     committed_pdf: Path | None = None
     asset: str | None = None  # release-asset file name for a large PDF
+    url: str | None = None  # landing page of a document hosted elsewhere (e.g. arXiv)
+    pdf_url: str | None = None  # its PDF, if it can't be derived from url
+    doi: str | None = None  # published version, e.g. behind the IEEE Xplore paywall
+    venue: str | None = None  # where it was published, for the DOI link text
+    preview_image: Path | None = None  # committed page image, used instead of rendering a PDF
     companions: list[Companion] = field(default_factory=list)
     # provenance, mainly for scanned third-party reports
     institution: str | None = None  # e.g. "Stanford AI Lab"
@@ -124,6 +143,11 @@ def load_doc(folder: Path, group_ids: set[str]) -> Doc:
         latex=meta.get("latex"),
         source_format=meta.get("source_format"),
         asset=meta.get("asset"),
+        url=meta.get("url"),
+        pdf_url=meta.get("pdf_url"),
+        doi=meta.get("doi"),
+        venue=meta.get("venue"),
+        pages=meta.get("pages"),
         institution=meta.get("institution"),
         report=meta.get("report"),
         source=meta.get("source"),
@@ -133,15 +157,21 @@ def load_doc(folder: Path, group_ids: set[str]) -> Doc:
         raise ValueError(f"{slug}: historical documents need a 'rights' entry")
     if doc.latex and not (folder / "src" / doc.latex).exists():
         raise ValueError(f"{slug}: latex source src/{doc.latex} not found")
+    if "preview_image" in meta:
+        doc.preview_image = folder / meta["preview_image"]
+        if not doc.preview_image.exists():
+            raise ValueError(f"{slug}: preview image {meta['preview_image']} not found")
     committed = folder / f"{slug}.pdf"
     if committed.exists():
         doc.committed_pdf = committed
-    if not (doc.latex or doc.committed_pdf or doc.asset):
-        raise ValueError(f"{slug}: needs latex:, {committed.name} or asset:")
+    if not (doc.latex or doc.committed_pdf or doc.asset or doc.url):
+        raise ValueError(f"{slug}: needs latex:, {committed.name}, asset: or url:")
 
     for entry in meta.get("files", []):
         if "asset" in entry:
             doc.companions.append(Companion(entry["label"], f"{RELEASE_URL}/{entry['asset']}"))
+        elif "url" in entry:
+            doc.companions.append(Companion(entry["label"], entry["url"]))
         else:
             path = folder / "files" / entry["file"]
             if not path.exists():
@@ -186,6 +216,48 @@ def build_latex(doc: Doc, workdir: Path) -> Path | None:
     return None
 
 
+def host_label(url: str) -> str:
+    """Short name of the site a URL points to, for display on a tile.
+
+    :param url: a web address
+    :return: e.g. ``"arXiv"``, or the bare host name
+    """
+    host = re.sub(r"^www\.", "", url.split("/")[2])
+    return HOST_LABELS.get(host, host)
+
+
+def fetch_external_pdf(doc: Doc) -> Path | None:
+    """Fetch an externally hosted PDF once, for rendering its preview.
+
+    arXiv abstract URLs are turned into PDF URLs on export.arxiv.org, the host arXiv
+    asks automated clients to use. A previously fetched copy is reused.
+
+    :param doc: the document, with ``url`` (and optionally ``pdf_url``) set
+    :return: the cached PDF, or ``None`` if it isn't available
+    """
+    cached = EXTERNAL / f"{doc.slug}.pdf"
+    if cached.exists():
+        return cached
+    pdf_url = doc.pdf_url
+    if not pdf_url and (m := re.match(r"https?://(?:export\.)?arxiv\.org/abs/([^?#]+)", doc.url)):
+        pdf_url = f"https://export.arxiv.org/pdf/{m.group(1)}"
+    if not pdf_url:
+        print(f"  warning: {doc.slug}: no pdf_url for {doc.url}; tile has no preview")
+        return None
+    try:
+        request = urllib.request.Request(pdf_url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(request, timeout=60) as response:
+            data = response.read()
+        if not data.startswith(b"%PDF"):
+            raise ValueError("not a PDF")
+    except Exception as e:  # network or content problem: build without a preview
+        print(f"  warning: {doc.slug}: couldn't fetch {pdf_url} ({e}); tile has no preview")
+        return None
+    EXTERNAL.mkdir(parents=True, exist_ok=True)
+    cached.write_bytes(data)
+    return cached
+
+
 def render_thumbnail(pdf: Path, slug: str, page_number: int = 1) -> int:
     """Render one page of a PDF as a small tile thumbnail and a larger hover preview.
 
@@ -203,6 +275,20 @@ def render_thumbnail(pdf: Path, slug: str, page_number: int = 1) -> int:
     small = bitmap.resize((THUMB_WIDTH, round(bitmap.height * THUMB_WIDTH / bitmap.width)))
     small.save(SITE / "thumbs" / f"{slug}.webp", "WEBP", quality=80)
     return len(document)
+
+
+def render_from_image(image: Path, slug: str) -> None:
+    """Make the tile thumbnail and hover preview from a committed page image.
+
+    :param image: page image, at least ``PREVIEW_WIDTH`` pixels wide
+    :param slug: document identifier, used for the image file names
+    """
+    from PIL import Image
+    bitmap = Image.open(image)
+    bitmap = bitmap.resize((PREVIEW_WIDTH, round(bitmap.height * PREVIEW_WIDTH / bitmap.width)))
+    bitmap.save(SITE / "previews" / f"{slug}.webp", "WEBP", quality=75)
+    small = bitmap.resize((THUMB_WIDTH, round(bitmap.height * THUMB_WIDTH / bitmap.width)))
+    small.save(SITE / "thumbs" / f"{slug}.webp", "WEBP", quality=80)
 
 
 def human_size(n: int) -> str:
@@ -226,7 +312,9 @@ def tile(doc: Doc) -> str:
     facts = [x for x in (doc.institution, doc.report, str(doc.year)) if x]
     if doc.pages:
         facts.append(f"{doc.pages} pages")
-    if doc.size:
+    if doc.url:
+        facts.append(host_label(doc.url))
+    elif doc.size:
         facts.append(human_size(doc.size))
     byline = f'<p class="byline">{esc(", ".join(doc.authors))}</p>' if doc.authors else ""
     rights = f'<p class="rights">{esc(doc.rights)}</p>' if doc.rights else ""
@@ -237,12 +325,19 @@ def tile(doc: Doc) -> str:
             for c in doc.companions
         )
         extras = f'<p class="extras">Also: {links}</p>'
-    return f"""
-    <article class="tile">
-      <a class="thumb" href="{esc(doc.href)}">
+    if doc.doi:
+        venue = esc(doc.venue or "the publisher")
+        extras = f'<p class="extras">Published version: <a href="https://doi.org/{esc(doc.doi)}">{venue}</a></p>' + extras
+    if doc.pages or doc.preview_image:  # a preview was rendered
+        thumb = f"""<a class="thumb" href="{esc(doc.href)}">
         <img src="thumbs/{doc.slug}.webp" alt="" loading="lazy" width="90">
         <span class="preview"><img src="previews/{doc.slug}.webp" alt="Preview of {esc(doc.title)}" loading="lazy" width="440"></span>
-      </a>
+      </a>"""
+    else:
+        thumb = f'<a class="thumb nopreview" href="{esc(doc.href)}" aria-hidden="true" tabindex="-1"><span>{esc(host_label(doc.href))}</span></a>'
+    return f"""
+    <article class="tile">
+      {thumb}
       <div class="text">
         <h3><a href="{esc(doc.href)}">{esc(doc.title)}</a></h3>
         {byline}<p class="facts">{esc(" · ".join(facts))}</p>
@@ -260,6 +355,11 @@ def resolve_pdf(doc: Doc, workdir: Path, use_latex: bool) -> None:
     :param use_latex: try building from LaTeX source first
     :raises ValueError: if no PDF is available
     """
+    if doc.url:
+        doc.href = doc.url
+        if not doc.preview_image:
+            doc.pdf = fetch_external_pdf(doc)
+        return
     if use_latex and doc.latex and (built := build_latex(doc, workdir)):
         doc.pdf, doc.built_from_source = built, True
     elif doc.committed_pdf:
@@ -296,8 +396,11 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
     with tempfile.TemporaryDirectory() as workdir:
         for doc in docs:
             resolve_pdf(doc, Path(workdir), use_latex)
-            doc.size = doc.pdf.stat().st_size
-            doc.pages = render_thumbnail(doc.pdf, doc.slug, doc.thumb_page)
+            if doc.preview_image:
+                render_from_image(doc.preview_image, doc.slug)
+            elif doc.pdf:  # an external document may have no preview
+                doc.size = doc.pdf.stat().st_size
+                doc.pages = render_thumbnail(doc.pdf, doc.slug, doc.thumb_page)
             if doc.href.startswith("pdf/"):
                 shutil.copy(doc.pdf, SITE / doc.href)
             for c in doc.companions:

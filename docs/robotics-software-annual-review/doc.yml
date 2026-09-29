@@ -1,0 +1,16 @@
+# summary drafted from the abstract: please rewrite, then remove draft_summary
+# preview.webp: page 1 rendered from the publisher's PDF (not committed); the
+# "Downloaded from ... IP ..." stamp in the left margin was painted out.
+title: "Robotics Software: Past, Present, and Future"
+group: papers
+year: 2024
+authors: [Jesse Haviland, Peter Corke]
+url: https://www.annualreviews.org/content/journals/10.1146/annurev-control-061323-095841
+preview_image: preview.webp
+pages: 31
+rights: Open access, CC BY 4.0
+summary: >-
+  A review of software tools for robotics, both community-developed and the authors' own,
+  and their impact on education, research and industry, in Annual Review of Control,
+  Robotics, and Autonomous Systems.
+draft_summary: true

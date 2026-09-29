@@ -1,0 +1,16 @@
+# summary drafted from the arXiv abstract: please rewrite, then remove draft_summary
+title: "Manipulator Differential Kinematics, Part 2: Acceleration and Advanced Applications"
+group: papers
+year: 2023
+authors: [Jesse Haviland, Peter Corke]
+url: https://arxiv.org/abs/2207.01794
+doi: 10.1109/MRA.2023.3270221
+venue: IEEE Robotics and Automation Magazine
+summary: >-
+  Second part of the tutorial: second-order differential kinematics and the manipulator
+  Hessian, and advanced applications including numerical inverse kinematics, null-space
+  motion and manipulability optimisation.
+files:
+  - label: Jupyter notebooks
+    url: https://github.com/jhavl/dkt
+draft_summary: true

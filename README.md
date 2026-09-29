@@ -37,6 +37,17 @@ rights: Approved for public release; distribution unlimited
 Set `draft_summary: true` while a summary still needs writing; `build.py --check`
 reports how many remain.
 
+### Documents hosted elsewhere
+
+`url:` makes a tile link to another site (arXiv, a journal). The preview comes from the PDF,
+fetched once and cached in `external/` (arXiv) — or, for hosts that block scripts or PDFs
+that mustn't be redistributed, from a committed `preview_image:` (with `pages:`).
+`doi:` + `venue:` add a link to a paywalled published version.
+
+**When making a `preview_image` from a publisher's download, check it for a download
+stamp** — Annual Reviews, for one, prints "Downloaded from … IP: <your address> On: <date>"
+in the margin of every page. Paint it out before committing.
+
 ## Build locally
 
 ```bash
