@@ -38,7 +38,24 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      # Large files live on the "assets" release. Cache them between runs, keyed on the
+      # release's file list, so CI only downloads them when they change; otherwise every
+      # run would add to the release's download counts.
+      - name: Key for the asset cache
+        id: assets-key
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          key=$(gh release view assets --json assets --jq '[.assets[] | [.name, .size, .updatedAt]]' | sha256sum | cut -c1-16)
+          echo "key=assets-$key" >> "$GITHUB_OUTPUT"
+      - name: Restore cached assets
+        id: assets-cache
+        uses: actions/cache@v4
+        with:
+          path: assets
+          key: ${{ steps.assets-key.outputs.key }}
       - name: Fetch large files from the "assets" release
+        if: steps.assets-cache.outputs.cache-hit != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release download assets --dir assets --clobber || echo "no assets release yet"
