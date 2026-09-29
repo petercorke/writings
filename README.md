@@ -187,8 +187,9 @@ assets/, external/, _site/   (not in git) downloaded release files, fetched exte
 ## Search
 
 - **Search engines:** the build writes `robots.txt` (all crawlers welcome) and `sitemap.xml`
-  (the page and every PDF hosted here). The site is registered in Google Search Console and
-  Bing Webmaster Tools, which is where to check indexing.
+  (the page and every PDF hosted here). Register the site (a Domain or URL-prefix property for
+  `https://docs.petercorke.com/`) in Google Search Console and Bing Webmaster Tools and
+  submit the sitemap there; that is also where to check what has been indexed.
 - **Find box:** the page filters its tiles as you type (`site/filter.js`), in the browser.
   `?q=words` in the address pre-fills it, so a search can be linked to.
 - **petercorke.com's site search** lists matching documents above its own results. It reads
