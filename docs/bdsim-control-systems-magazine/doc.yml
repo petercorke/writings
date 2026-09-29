@@ -1,0 +1,20 @@
+# summary drafted from the manuscript's first page: please rewrite, then remove draft_summary
+# The PDF is the submitted manuscript (20 Aug 2025, from bdsim/docs/CSM); IEEE's final
+# version may not be posted here, so the tile links to it via the DOI.
+title: "A New Python-Based Tool for Simulation of Dynamical Systems: History, Design, and Usage through Detailed Examples"
+group: papers
+year: 2026
+authors: [Peter Corke]
+doi: 10.1109/MCS.2026.3667020
+venue: IEEE Control Systems Magazine
+rights: >-
+  Submitted manuscript. The published version, © 2026 IEEE, is in IEEE Control Systems
+  Magazine 46(3):98–111.
+summary: >-
+  Introduces bdsim, a free Python tool for simulating continuous- and discrete-time
+  dynamical systems written as block diagrams in concise Python code, with its history,
+  design and detailed examples.
+files:
+  - label: bdsim on GitHub
+    url: https://github.com/petercorke/bdsim
+draft_summary: true
