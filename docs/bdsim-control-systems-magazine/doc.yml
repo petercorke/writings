@@ -1,7 +1,7 @@
 # summary drafted from the manuscript's first page: please rewrite, then remove draft_summary
 # The PDF is the submitted manuscript (20 Aug 2025, from bdsim/docs/CSM); IEEE's final
 # version may not be posted here, so the tile links to it via the DOI.
-title: "A New Python-Based Tool for Simulation of Dynamical Systems: History, Design, and Usage through Detailed Examples"
+title: "A New Python-Based Tool for Simulation of Dynamical Systems"
 group: papers
 year: 2026
 authors: [Peter Corke]
