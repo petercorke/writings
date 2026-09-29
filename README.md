@@ -176,12 +176,26 @@ docs/<slug>/<slug>.pdf       its PDF, when hosted here
 docs/<slug>/src/             its source (LaTeX, figures; Pages for one note)
 docs/<slug>/files/           companion files (code, examples)
 tools/build.py               builds _site/: tiles page, thumbnails, previews, docs.json
-site/                        page template, stylesheet, hover-preview script
+site/                        page template, stylesheet, hover-preview and find scripts
+wordpress/                   petercorke.com's site-search add-on (see "Search")
 shared/tex, shared/bib       frozen macro files and bibliographies used by old notes
 stats/                       download and traffic history from the old website
 .github/workflows/pages.yml  build and publish on every push to main
 assets/, external/, _site/   (not in git) downloaded release files, fetched external PDFs, output
 ```
+
+## Search
+
+- **Search engines:** the build writes `robots.txt` (all crawlers welcome) and `sitemap.xml`
+  (the page and every PDF hosted here). The site is registered in Google Search Console and
+  Bing Webmaster Tools, which is where to check indexing.
+- **Find box:** the page filters its tiles as you type (`site/filter.js`), in the browser.
+  `?q=words` in the address pre-fills it, so a search can be linked to.
+- **petercorke.com's site search** lists matching documents above its own results. It reads
+  `docs.json` (at most every 12 hours) using `wordpress/docs-search.php`, installed as
+  `wp-content/mu-plugins/docs-search.php`, and the theme's `search.php` prints them; the
+  copy of `search.php` here is the theme file with that change. Edit these here, then copy
+  them to the server.
 
 ## Build locally
 

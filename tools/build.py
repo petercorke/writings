@@ -52,11 +52,13 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 ASSETS = ROOT / "assets"
 SITE = ROOT / "_site"
+SITE_URL = "https://docs.petercorke.com/"
 RELEASE_URL = "https://github.com/petercorke/writings/releases/download/assets"
 EXTERNAL = ROOT / "external"  # cache of PDFs fetched from other hosts, for previews only
 USER_AGENT = "petercorke-writings-site-builder (https://github.com/petercorke/writings)"
 HOST_LABELS = {"arxiv.org": "arXiv", "export.arxiv.org": "arXiv", "ieeexplore.ieee.org": "IEEE Xplore"}
 THUMB_WIDTH = 360  # pixels; tiles display at 90 CSS px
+SCRIPTS = ("style.css", "preview.js", "filter.js")  # copied from site/ and fingerprinted in the page
 PREVIEW_WIDTH = 900  # pixels; the hover preview displays at up to 440 CSS px, so it is readable
 # LaTeX sources \input{rvc-notation}; locally it's on TEXINPUTS, in CI it's checked out here
 RVC_NOTATION = Path(os.environ.get("RVC_NOTATION", Path.home() / "code" / "rvc-notation"))
@@ -390,7 +392,7 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
         shutil.rmtree(SITE)
     for sub in ("thumbs", "previews", "pdf", "files"):
         (SITE / sub).mkdir(parents=True)
-    for asset in ("style.css", "preview.js"):
+    for asset in SCRIPTS:
         shutil.copy(ROOT / "site" / asset, SITE / asset)
 
     with tempfile.TemporaryDirectory() as workdir:
@@ -422,15 +424,43 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
 
     page = (ROOT / "site" / "index.template.html").read_text().replace("<!-- SECTIONS -->", "\n".join(sections))
     # fingerprint the stylesheet and script so browsers fetch fresh copies after a change
-    for asset in ("style.css", "preview.js"):
+    for asset in SCRIPTS:
         digest = hashlib.sha256((ROOT / "site" / asset).read_bytes()).hexdigest()[:10]
         page = page.replace("{{" + asset + "}}", digest)
     (SITE / "index.html").write_text(page)
-    # machine-readable index, e.g. for a WordPress page to list the groups
+    # machine-readable index, read by petercorke.com's site search (see wordpress/)
     (SITE / "docs.json").write_text(json.dumps(
-        [{"slug": d.slug, "title": d.title, "group": d.group, "year": d.year, "pages": d.pages, "href": d.href}
+        [{"slug": d.slug, "title": d.title, "group": d.group, "year": d.year, "pages": d.pages, "href": d.href,
+          "url": absolute(d.href), "authors": d.authors, "summary": d.summary}
          for d in docs], indent=1))
+    write_crawler_files(docs)
     print(f"wrote {SITE}")
+
+
+def absolute(href: str) -> str:
+    """Make a tile link absolute.
+
+    :param href: link as used on the page, relative to the site or already absolute
+    :return: absolute URL
+    """
+    return href if "://" in href else SITE_URL + href
+
+
+def write_crawler_files(docs: list[Doc]) -> None:
+    """Write ``robots.txt`` and ``sitemap.xml`` so search engines find every hosted PDF.
+
+    All crawlers are welcome: the site is static and GitHub serves it. The sitemap lists
+    the page and the PDFs served from this site; documents hosted elsewhere (release
+    assets, arXiv, journals) belong to other hosts' sitemaps and are left out.
+
+    :param docs: the documents, after the build has resolved their links
+    """
+    (SITE / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
+    urls = [SITE_URL] + [absolute(d.href) for d in docs if d.href.startswith("pdf/")]
+    entries = "".join(f"  <url><loc>{html.escape(u)}</loc></url>\n" for u in urls)
+    (SITE / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + entries + "</urlset>\n")
 
 
 if __name__ == "__main__":

@@ -68,3 +68,14 @@ footer { margin-top: 56px; color: var(--muted); font-size: .9rem; }
   border: 1px dashed var(--rule); border-radius: 4px; color: var(--muted); font-size: .8rem;
   text-decoration: none;
 }
+
+/* Find box: filters the tiles in the browser (site/filter.js); hidden without JavaScript */
+.filter { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 0; }
+.filter label { font-weight: 600; }
+.filter input {
+  font: inherit; width: min(360px, 100%); padding: 6px 10px;
+  background: var(--panel); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px;
+}
+.filter input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.filter output { color: var(--muted); font-size: .9rem; }
+.tile[hidden], section[hidden], .filter[hidden] { display: none; }
