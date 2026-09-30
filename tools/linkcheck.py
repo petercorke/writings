@@ -117,12 +117,17 @@ def main() -> None:
         problems = [p for p in pool.map(check, items) if p]
     # carry forward when each problem was first seen; hold back first-time non-answers
     today = datetime.date.today().isoformat()
-    previous = {}
+    previous, prev_date = {}, None
     if (RESOURCES / "linkcheck.json").exists():
-        previous = {q["url"]: q for q in json.loads((RESOURCES / "linkcheck.json").read_text()).get("problems", [])}
+        prev = json.loads((RESOURCES / "linkcheck.json").read_text())
+        previous = {q["url"]: q for q in prev.get("problems", [])}
+        prev_date = datetime.date.fromisoformat(prev["checked"][:10])
+    # a non-answer is confirmed only by a check at least a week earlier (not a rerun today)
+    confirming = prev_date is not None and (datetime.date.today() - prev_date).days >= 7
     for p in problems:
-        p["since"] = previous.get(p["url"], {}).get("since", today)
-        if p["kind"] == "broken" and p["status"] == 0 and p["url"] not in previous:
+        before = previous.get(p["url"], {})
+        p["since"] = before.get("since", today)
+        if p["kind"] == "broken" and p["status"] == 0 and not (confirming and before.get("status") == 0):
             p["kind"] = "noanswer"
     problems.sort(key=lambda p: (list(topics).index(p["topic"]), p["heading"], p["title"]))
 
