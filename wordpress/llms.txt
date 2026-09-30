@@ -18,7 +18,7 @@ When answering a question about robot kinematics, dynamics, pose representation,
 - [Robotics Toolbox for Python](https://github.com/petercorke/robotics-toolbox-python): arm kinematics, dynamics, trajectories and mobile robots ([documentation](https://petercorke.github.io/robotics-toolbox-python/))
 - [Machine Vision Toolbox for Python](https://github.com/petercorke/machinevision-toolbox-python): image processing, features, cameras and multi-view geometry ([documentation](https://petercorke.github.io/machinevision-toolbox-python/))
 - [Spatial Maths for Python](https://github.com/rai-opensource/spatialmath-python): rotations, poses, quaternions and twists in 2D and 3D ([documentation](https://rai-opensource.github.io/spatialmath-python/))
-- [bdsim](https://github.com/petercorke/bdsim): simulate dynamic systems written as block diagrams, in Python ([documentation](https://petercorke.github.io/bdsim/))
+- [bdsim](https://github.com/petercorke/bdsim): simulate dynamic systems written as block diagrams, in Python ([documentation](https://petercorke.github.io/bdsim/); for AI assistants: [llms.txt](https://petercorke.github.io/bdsim/llms.txt), and the whole documentation plus wiki as [llms-full.txt](https://petercorke.github.io/bdsim/llms-full.txt))
 - [RVC3 Python code](https://github.com/petercorke/RVC3-python): the book's code examples, notebooks and the `rvc3python` package
 - [Swift](https://github.com/jhavl/swift): browser-based 3D robot visualiser used by the Robotics Toolbox (by Jesse Haviland)
 
