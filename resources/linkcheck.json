@@ -1,5 +1,5 @@
 {
- "checked": "2026-09-30T20:14Z",
+ "checked": "2026-09-30T20:18Z",
  "links": 271,
  "problems": [
   {
@@ -8,7 +8,7 @@
    "heading": "Robot history",
    "title": "Robot Hall of Fame",
    "url": "http://www.robothalloffame.org/",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -19,7 +19,7 @@
    "heading": "Robot navigation resources",
    "title": "Search based Planning Lab",
    "url": "http://sbpl.net/Home",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -30,7 +30,7 @@
    "heading": "Software",
    "title": "SBPL",
    "url": "http://sbpl.net/",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -52,7 +52,7 @@
    "heading": "GPS",
    "title": "Effect of builtup environment on GPS accuracy",
    "url": "http://www.wpnc.net/fileadmin/WPNC06/Proceedings/30_Field_trial_on_GPS_Accuracy_in_a_medium_size_city_The_influence_of_builtup.pdf",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -74,7 +74,7 @@
    "heading": "Point features",
    "title": "KLT implementation (Birchfield)",
    "url": "http://www.ces.clemson.edu/~stb/klt/",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -85,7 +85,7 @@
    "heading": "Point features",
    "title": "OpenSURF (Chris Evans)",
    "url": "http://www.chrisevansdev.com/computer-vision-opensurf.html",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -96,7 +96,7 @@
    "heading": "General",
    "title": "Catadioptric sensor design",
    "url": "https://www.math.drexel.edu/~ahicks/design/",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -140,7 +140,7 @@
    "heading": "Software",
    "title": "Sparse Bundle Adjustment (SBA)",
    "url": "https://users.ics.forth.gr/~lourakis/sba/",
-   "kind": "broken",
+   "kind": "noanswer",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
@@ -169,9 +169,9 @@
   }
  ],
  "counts": {
-  "broken": 8,
+  "broken": 0,
   "moved": 6,
   "homepage": 1,
-  "noanswer": 0
+  "noanswer": 8
  }
 }
