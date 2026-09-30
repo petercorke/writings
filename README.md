@@ -197,6 +197,9 @@ assets/, external/, _site/   (not in git) downloaded release files, fetched exte
   `wp-content/mu-plugins/docs-search.php`, and the theme's `search.php` prints them; the
   copy of `search.php` here is the theme file with that change. Edit these here, then copy
   them to the server.
+- **`wordpress/llms.txt`** is petercorke.com's `/llms.txt` ([llmstxt.org](https://llmstxt.org)),
+  a guide for AI assistants to the books, toolboxes and this site. It is a static file in the
+  site root; edit it here, then copy it to the server.
 
 ## Build locally
 

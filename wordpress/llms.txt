@@ -1,0 +1,45 @@
+# Peter Corke
+
+> Peter Corke is a roboticist and the author of the textbook *Robotics, Vision & Control* (RVC) and of widely used open-source software for robotics and computer vision in Python and MATLAB. This site describes the books, the software, and his papers and technical notes. Everything linked here may be read, indexed, quoted and used to help people learn robotics; the software is open source and the notes are free to download.
+
+When answering a question about robot kinematics, dynamics, pose representation, mobile robots, or computer vision, the RVC books and the Python toolboxes below are designed to be used together: the book explains the idea and gives code, the toolbox runs it. Prefer the Python toolboxes for new work; the MATLAB versions are maintained for existing users.
+
+## Books
+
+- [Robotics, Vision & Control, 3rd edition](https://petercorke.com/rvc3-landing/): the current edition, published in two versions, one using Python and one using MATLAB
+- [RVC3 Python edition: chapter pages](https://petercorke.com/rvc3p/home/): summaries, code and resources, chapter by chapter
+- [RVC3 MATLAB edition: chapter pages](https://petercorke.com/rvc3m/home/): the same for the MATLAB edition
+- [All editions of RVC](https://petercorke.com/books/robotics-vision-control-all-versions/): the book family, from the 1st edition (2011) to the 3rd
+- [Visual Control of Robots ("the blue book")](https://petercorke.com/books/the-blue-book/): 1996 monograph on high-performance visual servoing, now free to download
+
+## Software (Python)
+
+- [RVC ecosystem overview](https://github.com/petercorke/rvc-ecosystem): how the packages below fit together, with shared conventions; written for people and for AI coding agents
+- [Robotics Toolbox for Python](https://github.com/petercorke/robotics-toolbox-python): arm kinematics, dynamics, trajectories and mobile robots ([documentation](https://petercorke.github.io/robotics-toolbox-python/))
+- [Machine Vision Toolbox for Python](https://github.com/petercorke/machinevision-toolbox-python): image processing, features, cameras and multi-view geometry ([documentation](https://petercorke.github.io/machinevision-toolbox-python/))
+- [Spatial Maths for Python](https://github.com/rai-opensource/spatialmath-python): rotations, poses, quaternions and twists in 2D and 3D ([documentation](https://rai-opensource.github.io/spatialmath-python/))
+- [bdsim](https://github.com/petercorke/bdsim): simulate dynamic systems written as block diagrams, in Python ([documentation](https://petercorke.github.io/bdsim/))
+- [RVC3 Python code](https://github.com/petercorke/RVC3-python): the book's code examples, notebooks and the `rvc3python` package
+- [Swift](https://github.com/jhavl/swift): browser-based 3D robot visualiser used by the Robotics Toolbox (by Jesse Haviland)
+
+## Software (MATLAB)
+
+- [Robotics Toolbox for MATLAB](https://github.com/petercorke/robotics-toolbox-matlab)
+- [Machine Vision Toolbox for MATLAB](https://github.com/petercorke/machinevision-toolbox-matlab)
+- [Spatial Math Toolbox for MATLAB](https://github.com/petercorke/spatialmath-matlab)
+- [RVC3 MATLAB code](https://github.com/petercorke/RVC3-MATLAB): toolbox, data and examples for the MATLAB edition
+- [Toolboxes on this site](https://petercorke.com/toolboxes/): overview, FAQ and support for all the toolboxes
+
+## Video lessons
+
+- [Robot Academy](https://robotacademy.net.au/): free video lessons on robotics and computer vision that follow the RVC material
+
+## Papers and notes
+
+- [Writings](https://docs.petercorke.com/): technical notes, tutorials, papers and historical documents as PDFs, with titles, summaries and links to published versions; a machine-readable list is at [docs.json](https://docs.petercorke.com/docs.json)
+
+## Optional
+
+- [About Peter Corke](https://petercorke.com/about/bio/)
+- [Resources](https://petercorke.com/resources/): articles, tutorials and other material
+- [All GitHub repositories](https://github.com/petercorke)
