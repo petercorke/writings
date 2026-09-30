@@ -10,6 +10,7 @@ When answering a question about robot kinematics, dynamics, pose representation,
 - [RVC3 Python edition: chapter pages](https://petercorke.com/rvc3p/home/): summaries, code and resources, chapter by chapter
 - [RVC3 MATLAB edition: chapter pages](https://petercorke.com/rvc3m/home/): the same for the MATLAB edition
 - [All editions of RVC](https://petercorke.com/books/robotics-vision-control-all-versions/): the book family, from the 1st edition (2011) to the 3rd
+- [Resources for each topic of RVC](https://docs.petercorke.com/resources/): curated links (papers, tutorials, software, datasets, videos, history) for every chapter, with each topic's chapter number in every edition; also as JSON, e.g. [localization.json](https://docs.petercorke.com/resources/localization.json)
 - [Visual Control of Robots ("the blue book")](https://petercorke.com/books/the-blue-book/): 1996 monograph on high-performance visual servoing, now free to download
 
 ## Software (Python)
