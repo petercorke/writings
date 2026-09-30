@@ -176,9 +176,11 @@ docs/<slug>/<slug>.pdf       its PDF, when hosted here
 docs/<slug>/src/             its source (LaTeX, figures; Pages for one note)
 docs/<slug>/files/           companion files (code, examples)
 tools/build.py               builds _site/: tiles page, thumbnails, previews, docs.json
+tools/resources.py           builds _site/resources/: a page and JSON file per topic
 site/                        page template, stylesheet, hover-preview and find scripts
 wordpress/                   petercorke.com's site-search add-on (see "Search")
 shared/tex, shared/bib       frozen macro files and bibliographies used by old notes
+resources/                   curated links for each RVC topic (see resources/README.md)
 stats/                       download and traffic history from the old website
 .github/workflows/pages.yml  build and publish on every push to main
 assets/, external/, _site/   (not in git) downloaded release files, fetched external PDFs, output

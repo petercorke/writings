@@ -5,3 +5,5 @@
   writes the page, `docs.json`, `sitemap.xml` and `robots.txt`. Run `build.py --check` to
   validate the metadata only, and `--latex` to rebuild PDFs from source. The GitHub
   Actions workflow runs it on every push to `main`.
+- `resources.py`: called by `build.py`; validates `resources/*.yml` and writes a page and a
+  JSON file per topic under `_site/resources/`, plus an index.
