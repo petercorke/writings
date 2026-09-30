@@ -79,3 +79,14 @@ footer { margin-top: 56px; color: var(--muted); font-size: .9rem; }
 .filter input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .filter output { color: var(--muted); font-size: .9rem; }
 .tile[hidden], section[hidden], .filter[hidden] { display: none; }
+
+/* Resource lists (site/resources.template.html, built by tools/resources.py) */
+.resources main { max-width: 760px; }
+.resources .chapters { color: var(--muted); font-size: .9rem; margin: 0 0 8px; font-variant-numeric: tabular-nums; }
+.resources h2 { font-size: 1.1rem; margin: 28px 0 6px; }
+ul.res { margin: 0; padding-left: 1.2em; }
+ul.res li { margin: 5px 0; }
+ul.res .note { color: var(--muted); }
+ul.res .note::before { content: "— "; }
+ul.res .archived { color: var(--muted); font-size: .85em; }
+ul.res.topics li { margin: 8px 0; }

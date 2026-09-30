@@ -48,6 +48,8 @@ from pathlib import Path
 import pypdfium2 as pdfium
 import yaml
 
+import resources
+
 ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 ASSETS = ROOT / "assets"
@@ -385,6 +387,8 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
     docs = [load_doc(f, {g["id"] for g in groups}) for f in sorted(DOCS.iterdir()) if (f / "doc.yml").exists()]
     drafts = sum(d.draft_summary for d in docs)
     print(f"{len(docs)} documents in {len(groups)} groups; {drafts} draft summaries")
+    topics = resources.load_topics(ROOT / "resources")
+    print(f"{len(topics)} resource topics, {sum(t.count for t in topics)} links")
     if check_only:
         return
 
@@ -428,12 +432,15 @@ def build(check_only: bool = False, use_latex: bool = False) -> None:
         digest = hashlib.sha256((ROOT / "site" / asset).read_bytes()).hexdigest()[:10]
         page = page.replace("{{" + asset + "}}", digest)
     (SITE / "index.html").write_text(page)
+    style_digest = hashlib.sha256((ROOT / "site" / "style.css").read_bytes()).hexdigest()[:10]
+    template = (ROOT / "site" / "resources.template.html").read_text().replace("{{style.css}}", style_digest)
+    resource_pages = resources.write_site(topics, SITE, template)
     # machine-readable index, read by petercorke.com's site search (see wordpress/)
     (SITE / "docs.json").write_text(json.dumps(
         [{"slug": d.slug, "title": d.title, "group": d.group, "year": d.year, "pages": d.pages, "href": d.href,
           "url": absolute(d.href), "authors": d.authors, "summary": d.summary}
          for d in docs], indent=1))
-    write_crawler_files(docs)
+    write_crawler_files(docs, resource_pages)
     print(f"wrote {SITE}")
 
 
@@ -446,17 +453,19 @@ def absolute(href: str) -> str:
     return href if "://" in href else SITE_URL + href
 
 
-def write_crawler_files(docs: list[Doc]) -> None:
+def write_crawler_files(docs: list[Doc], pages: list[str]) -> None:
     """Write ``robots.txt`` and ``sitemap.xml`` so search engines find every hosted PDF.
 
     All crawlers are welcome: the site is static and GitHub serves it. The sitemap lists
-    the page and the PDFs served from this site; documents hosted elsewhere (release
+    the pages and the PDFs served from this site; documents hosted elsewhere (release
     assets, arXiv, journals) belong to other hosts' sitemaps and are left out.
 
     :param docs: the documents, after the build has resolved their links
+    :param pages: other site-relative pages to list, e.g. the resource pages
     """
     (SITE / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n")
     urls = [SITE_URL] + [absolute(d.href) for d in docs if d.href.startswith("pdf/")]
+    urls += [SITE_URL + p.removesuffix("index.html") for p in pages]
     entries = "".join(f"  <url><loc>{html.escape(u)}</loc></url>\n" for u in urls)
     (SITE / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'

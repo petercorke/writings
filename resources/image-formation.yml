@@ -23,9 +23,6 @@ groups:
     note: Kostas Daniilidis
 - heading: MATLAB software
   items:
-  - title: Camera calibration toolbox for Matlab
-    url: https://www.vision.caltech.edu/bouguetj/calib_doc
-    note: Jean-Yves Bouguet
   - title: Camera Calibration Toolbox for Matlab
     url: https://robots.stanford.edu/cs223b04/JeanYvesCalib/
     note: Jean-Yves Bouguet; also archived permanently at CaltechDATA, https://data.caltech.edu/records/jx9cx-fdh55
