@@ -1,5 +1,5 @@
 {
- "checked": "2026-09-30T20:05Z",
+ "checked": "2026-09-30T20:11Z",
  "links": 271,
  "problems": [
   {
@@ -8,6 +8,46 @@
    "heading": "Robot history",
    "title": "Robot Hall of Fame",
    "url": "http://www.robothalloffame.org/",
+   "kind": "broken",
+   "status": 0,
+   "final": null
+  },
+  {
+   "topic": "navigation",
+   "topic_title": "Navigation",
+   "heading": "Robot navigation resources",
+   "title": "Carmen robot navigation toolkit",
+   "url": "https://carmen.sourceforge.net/",
+   "kind": "broken",
+   "status": 403,
+   "final": null
+  },
+  {
+   "topic": "navigation",
+   "topic_title": "Navigation",
+   "heading": "Robot navigation resources",
+   "title": "Search based Planning Lab",
+   "url": "http://sbpl.net/Home",
+   "kind": "broken",
+   "status": 0,
+   "final": null
+  },
+  {
+   "topic": "navigation",
+   "topic_title": "Navigation",
+   "heading": "Software",
+   "title": "Maze generation",
+   "url": "https://rosettacode.org/wiki/Maze_generation",
+   "kind": "broken",
+   "status": 403,
+   "final": null
+  },
+  {
+   "topic": "navigation",
+   "topic_title": "Navigation",
+   "heading": "Software",
+   "title": "SBPL",
+   "url": "http://sbpl.net/",
    "kind": "broken",
    "status": 0,
    "final": null
@@ -25,11 +65,31 @@
   {
    "topic": "localization",
    "topic_title": "Localization and mapping",
-   "heading": "General",
-   "title": "C4B Mobile Robotics",
-   "url": "https://www.free-ebooks.net/ebook/C4B-Mobile-Robotics",
+   "heading": "GPS",
+   "title": "Effect of builtup environment on GPS accuracy",
+   "url": "http://www.wpnc.net/fileadmin/WPNC06/Proceedings/30_Field_trial_on_GPS_Accuracy_in_a_medium_size_city_The_influence_of_builtup.pdf",
    "kind": "broken",
    "status": 0,
+   "final": null
+  },
+  {
+   "topic": "localization",
+   "topic_title": "Localization and mapping",
+   "heading": "Software",
+   "title": "Carmen robot navigation toolkit",
+   "url": "https://carmen.sourceforge.net/",
+   "kind": "broken",
+   "status": 403,
+   "final": null
+  },
+  {
+   "topic": "localization",
+   "topic_title": "Localization and mapping",
+   "heading": "Software",
+   "title": "KFilter C++ extended Kalman filter library",
+   "url": "https://kalman.sourceforge.net/",
+   "kind": "broken",
+   "status": 403,
    "final": null
   },
   {
@@ -43,11 +103,21 @@
    "final": "https://www.newtonproject.ox.ac.uk/"
   },
   {
+   "topic": "image-processing",
+   "topic_title": "Images and image processing",
+   "heading": "Other open-source software",
+   "title": "NetPBM",
+   "url": "https://netpbm.sourceforge.net/",
+   "kind": "broken",
+   "status": 403,
+   "final": null
+  },
+  {
    "topic": "feature-extraction",
    "topic_title": "Image feature extraction",
-   "heading": "Data sets",
-   "title": "Berkeley segmentation data set",
-   "url": "https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/",
+   "heading": "Point features",
+   "title": "FAST detector",
+   "url": "https://www.edwardrosten.com/work/fast.html",
    "kind": "broken",
    "status": 0,
    "final": null
@@ -65,12 +135,32 @@
   {
    "topic": "feature-extraction",
    "topic_title": "Image feature extraction",
-   "heading": "Scale space",
-   "title": "Introduction to Scale-Space Theory",
-   "url": "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.95.9204&rep=rep1&type=pdf",
-   "kind": "moved",
-   "status": 200,
-   "final": "https://web.archive.org/web/20200129111324/http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.95.9204&rep=rep1&type=pdf"
+   "heading": "Point features",
+   "title": "OpenSURF (Chris Evans)",
+   "url": "http://www.chrisevansdev.com/computer-vision-opensurf.html",
+   "kind": "broken",
+   "status": 0,
+   "final": null
+  },
+  {
+   "topic": "feature-extraction",
+   "topic_title": "Image feature extraction",
+   "heading": "Point features",
+   "title": "SIFT code (vlfeat.org)",
+   "url": "https://www.vlfeat.org/overview/sift.html",
+   "kind": "broken",
+   "status": 0,
+   "final": null
+  },
+  {
+   "topic": "feature-extraction",
+   "topic_title": "Image feature extraction",
+   "heading": "Region features",
+   "title": "MSER code + documentation(vlfeat.org)",
+   "url": "https://www.vlfeat.org/overview/mser.html",
+   "kind": "broken",
+   "status": 0,
+   "final": null
   },
   {
    "topic": "image-formation",
@@ -105,6 +195,16 @@
   {
    "topic": "multiple-images",
    "topic_title": "Using multiple images",
+   "heading": "General",
+   "title": "The fundamental matrix song (audio)",
+   "url": "https://danielwedge.com/fmatrix",
+   "kind": "broken",
+   "status": 0,
+   "final": null
+  },
+  {
+   "topic": "multiple-images",
+   "topic_title": "Using multiple images",
    "heading": "Software",
    "title": "Epipolar geometry toolkit",
    "url": "http://egt.dii.unisi.it/#tth_sEc7",
@@ -135,6 +235,16 @@
   {
    "topic": "visual-servoing",
    "topic_title": "Vision-based control",
+   "heading": "Software",
+   "title": "Visual servoing toolbox",
+   "url": "https://sourceforge.net/projects/vstoolbox/",
+   "kind": "broken",
+   "status": 403,
+   "final": null
+  },
+  {
+   "topic": "visual-servoing",
+   "topic_title": "Vision-based control",
    "heading": "Videos",
    "title": "Visual servoing, IBVS, PBVS, 2.5D",
    "url": "https://www.irisa.fr/lagadic/visp/visual-servoing.html",
@@ -144,8 +254,8 @@
   }
  ],
  "counts": {
-  "broken": 6,
-  "moved": 7,
+  "broken": 18,
+  "moved": 6,
   "homepage": 1
  }
 }
