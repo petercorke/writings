@@ -5,7 +5,10 @@
 
 Three kinds of problem are reported:
 
-- ``broken``: an HTTP error, or no answer at all (checked twice, a minute apart);
+- ``broken``: an HTTP error, or no answer at all (checked twice, a minute apart). A link
+  that doesn't answer is only reported as broken once it also failed the previous check;
+  the first time it is listed as ``noanswer``, since slow servers often don't answer the
+  data-centre addresses GitHub runs from;
 - ``moved``: the link now redirects to a different site;
 - ``homepage``: the link now redirects to the home page of its site, which usually means
   the page itself is gone.
@@ -39,7 +42,7 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTM
 # sites known to refuse automated requests although they work in a browser
 BOT_BLOCKED = {"mathworks.com", "researchgate.net", "journals.sagepub.com", "nytimes.com", "cloudcompare.org",
                "ieeexplore.ieee.org", "tandfonline.com", "sciencedirect.com", "cse.sc.edu", "umich.edu",
-               "asmedigitalcollection.asme.org"}
+               "asmedigitalcollection.asme.org", "sourceforge.net", "rosettacode.org"}
 # resolvers that always redirect somewhere else, by design
 RESOLVERS = {"doi.org", "dx.doi.org", "hdl.handle.net", "arxiv.org"}
 
@@ -112,22 +115,32 @@ def main() -> None:
                                   "title": it["title"], "url": it["url"]})
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
         problems = [p for p in pool.map(check, items) if p]
+    # carry forward when each problem was first seen; hold back first-time non-answers
+    today = datetime.date.today().isoformat()
+    previous = {}
+    if (RESOURCES / "linkcheck.json").exists():
+        previous = {q["url"]: q for q in json.loads((RESOURCES / "linkcheck.json").read_text()).get("problems", [])}
+    for p in problems:
+        p["since"] = previous.get(p["url"], {}).get("since", today)
+        if p["kind"] == "broken" and p["status"] == 0 and p["url"] not in previous:
+            p["kind"] = "noanswer"
     problems.sort(key=lambda p: (list(topics).index(p["topic"]), p["heading"], p["title"]))
 
     report = {
         "checked": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),
         "links": len(items),
         "problems": problems,
-        "counts": {k: sum(p["kind"] == k for p in problems) for k in ("broken", "moved", "homepage")},
+        "counts": {k: sum(p["kind"] == k for p in problems) for k in ("broken", "moved", "homepage", "noanswer")},
     }
     (RESOURCES / "linkcheck.json").write_text(json.dumps(report, indent=1, ensure_ascii=False) + "\n")
     print(f"checked {len(items)} links: {len(problems)} need attention {report['counts']}", file=sys.stderr)
 
     if args.markdown:
+        need = len(problems) - report["counts"]["noanswer"]
         lines = [f"Link check of `resources/` on {report['checked']}: {len(items)} links checked, "
-                 f"**{len(problems)} need attention** (archived copies and sites that block checkers are skipped).", ""]
-        what = {"broken": "Broken (error or no answer)", "moved": "Now redirects to a different site",
-                "homepage": "Now redirects to the site's home page"}
+                 f"**{need} need attention** (archived copies and sites that block checkers are skipped).", ""]
+        what = {"broken": "Broken (error, or no answer two checks running)", "moved": "Now redirects to a different site",
+                "homepage": "Now redirects to the site's home page", "noanswer": "No answer this time (will recheck next month)"}
         for kind, heading in what.items():
             rows = [p for p in problems if p["kind"] == kind]
             if rows:
@@ -135,7 +148,8 @@ def main() -> None:
                 for p in rows:
                     extra = f" → {p['final']}" if p.get("final") else ""
                     code = f" ({p['status']})" if p["status"] else " (no answer)"
-                    lines.append(f"- **{p['topic_title']}** / {p['heading']}: [{p['title']}]({p['url']}){code}{extra}")
+                    since = f", since {p['since']}" if p["since"] != today else ""
+                    lines.append(f"- **{p['topic_title']}** / {p['heading']}: [{p['title']}]({p['url']}){code}{extra}{since}")
                 lines.append("")
         lines.append("Fix them in `resources/<topic>.yml`; this issue is updated by the monthly link check and closed when nothing needs attention.")
         print("\n".join(lines))

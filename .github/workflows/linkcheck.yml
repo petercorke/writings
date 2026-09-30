@@ -41,7 +41,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh label create link-check --color d4a72c --description "Broken or moved links in resources/" --force
-          n=$(jq '.problems | length' resources/linkcheck.json)
+          n=$(jq '[.problems[] | select(.kind != "noanswer")] | length' resources/linkcheck.json)
           num=$(gh issue list --label link-check --state open --json number --jq '.[0].number // empty')
           if [ "$n" -gt 0 ]; then
             if [ -n "$num" ]; then
