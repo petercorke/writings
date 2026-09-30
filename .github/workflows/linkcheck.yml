@@ -1,0 +1,54 @@
+# Check the links in resources/*.yml once a month (and on demand).
+#
+# Writes resources/linkcheck.json (read by the weekly RVC ecosystem report) and keeps one
+# issue labelled "link-check" up to date while any link needs attention; the issue is
+# closed when none do. See tools/linkcheck.py for what counts as a problem.
+name: Link check
+
+on:
+  schedule:
+    - cron: "0 20 1 * *"   # 1st of the month, 20:00 UTC (early morning in Brisbane)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: linkcheck
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Check links
+        run: python tools/linkcheck.py --markdown > report.md
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add resources/linkcheck.json
+          git diff --cached --quiet || git commit -m "Link check: update resources/linkcheck.json"
+          git push
+      - name: Update the link-check issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create link-check --color d4a72c --description "Broken or moved links in resources/" --force
+          n=$(jq '.problems | length' resources/linkcheck.json)
+          num=$(gh issue list --label link-check --state open --json number --jq '.[0].number // empty')
+          if [ "$n" -gt 0 ]; then
+            if [ -n "$num" ]; then
+              gh issue edit "$num" --title "Resource links: $n need attention" --body-file report.md
+            else
+              gh issue create --title "Resource links: $n need attention" --label link-check --body-file report.md
+            fi
+          elif [ -n "$num" ]; then
+            gh issue close "$num" --comment "All links in resources/ are fine as of $(jq -r .checked resources/linkcheck.json)."
+          fi

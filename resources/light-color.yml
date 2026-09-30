@@ -3,7 +3,7 @@ groups:
 - heading: General
   items:
   - title: Charles Poynton’s FAQs on color and gamma
-    url: https://www.poynton.com/
+    url: https://poynton.ca/
   - title: CIE
     url: https://www.cie.co.at/
   - title: ITU recommendations for television
@@ -26,10 +26,10 @@ groups:
     url: https://www.ted.com/talks/beau_lotto_optical_illusions_show_how_we_see#t-137543
     note: Beau Lotto (TED), about color and seeing, some great examples of color constancy
   - title: Color Vision
-    url: https://webvision.med.utah.edu/book/part-vii-color-vision/color-vision/
+    url: https://www.webvision.pitt.edu/book/part-vii-color-vision/color-vision/
     note: Peter Gouras
   - title: Web Vision
-    url: https://webvision.med.utah.edu/
+    url: https://www.webvision.pitt.edu/
     note: comprehensive online resource to the organization of the retina and visual system
   - title: Bayer filter patent
     url: https://www.google.com/patents/US3971065

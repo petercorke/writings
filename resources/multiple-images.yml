@@ -71,16 +71,16 @@ groups:
     url: https://www.mathworks.com/matlabcentral/fileexchange/4576-structure-and-motion-toolkit-in-matlab
     note: by Phil Torr
   - title: The Structure from Motion Toolbox
-    url: ttp://code.google.com/p/vincents-structure-from-motion-matlab-toolbox
+    url: https://code.google.com/archive/p/vincents-structure-from-motion-matlab-toolbox
     note: by Vincent Rigaud
   - title: Simple Sparse Bundle Adjustment (SSBA)
     url: https://github.com/chzach/SSBA
     note: by Christoper Zach
   - title: Sparse Bundle Adjustment (SBA)
-    url: http://www.ics.forth.gr/~lourakis/sba/
-    note: by Lourakis (in C)
+    url: https://users.ics.forth.gr/~lourakis/sba/
+    note: Manolis Lourakis, in C
   - title: Image stitching
-    url: https://hugin.sourceforge.net/
+    url: https://hugin.sourceforge.io/
     note: Hugin autostitch
   - title: Multiple View geometry MATLAB functions
     url: https://www.robots.ox.ac.uk/~vgg/hzbook/code/
@@ -88,9 +88,6 @@ groups:
   - title: PDAL
     url: https://pdal.org/
     note: point cloud data processing
-  - title: SBA
-    url: https://users.ics.forth.gr/~lourakis/sba/
-    note: Manolis Lourakis; sparse bundle adjustment
   - title: CloudCompare
     url: https://www.cloudcompare.org/
     note: 3D point cloud and mesh viewer and editor

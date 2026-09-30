@@ -22,7 +22,7 @@ groups:
   - title: Hough transform (wikipedia)
     url: https://en.wikipedia.org/wiki/Hough_transform
   - title: Hough patent
-    url: https://www.google.com/patents?vid=3069654
+    url: https://patents.google.com/patent/US3069654A
   - title: How the Hough transform was invented (Peter Hart)
     url: https://www.iro.umontreal.ca/~mignotte/IFT6150/ComplementCours/HoughTransform.pdf
   - title: Generalized Hough transform
@@ -47,9 +47,9 @@ groups:
   - title: SIFT code (vlfeat.org)
     url: https://www.vlfeat.org/overview/sift.html
   - title: The SIFT patent (US 6,711,293)
-    url: https://www.google.com/patents?vid=6711293
+    url: https://patents.google.com/patent/US6711293B1
   - title: SURF home page
-    url: https://www.vision.ee.ethz.ch/~surf/index.html
+    url: https://people.ee.ethz.ch/~surf/index.html
     note: SURF
   - title: SURF features (wikipedia)
     url: https://en.wikipedia.org/wiki/SURF
