@@ -1,5 +1,5 @@
 {
- "checked": "2026-09-30T20:11Z",
+ "checked": "2026-09-30T20:14Z",
  "links": 271,
  "problems": [
   {
@@ -10,17 +10,8 @@
    "url": "http://www.robothalloffame.org/",
    "kind": "broken",
    "status": 0,
-   "final": null
-  },
-  {
-   "topic": "navigation",
-   "topic_title": "Navigation",
-   "heading": "Robot navigation resources",
-   "title": "Carmen robot navigation toolkit",
-   "url": "https://carmen.sourceforge.net/",
-   "kind": "broken",
-   "status": 403,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "navigation",
@@ -30,17 +21,8 @@
    "url": "http://sbpl.net/Home",
    "kind": "broken",
    "status": 0,
-   "final": null
-  },
-  {
-   "topic": "navigation",
-   "topic_title": "Navigation",
-   "heading": "Software",
-   "title": "Maze generation",
-   "url": "https://rosettacode.org/wiki/Maze_generation",
-   "kind": "broken",
-   "status": 403,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "navigation",
@@ -50,7 +32,8 @@
    "url": "http://sbpl.net/",
    "kind": "broken",
    "status": 0,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "navigation",
@@ -60,7 +43,8 @@
    "url": "https://www.cs.cmu.edu/~chuck/robotpg/attilapg/",
    "kind": "moved",
    "status": 200,
-   "final": "http://www.charlesrosenberg.com/"
+   "final": "http://www.charlesrosenberg.com/",
+   "since": "2026-09-30"
   },
   {
    "topic": "localization",
@@ -70,27 +54,8 @@
    "url": "http://www.wpnc.net/fileadmin/WPNC06/Proceedings/30_Field_trial_on_GPS_Accuracy_in_a_medium_size_city_The_influence_of_builtup.pdf",
    "kind": "broken",
    "status": 0,
-   "final": null
-  },
-  {
-   "topic": "localization",
-   "topic_title": "Localization and mapping",
-   "heading": "Software",
-   "title": "Carmen robot navigation toolkit",
-   "url": "https://carmen.sourceforge.net/",
-   "kind": "broken",
-   "status": 403,
-   "final": null
-  },
-  {
-   "topic": "localization",
-   "topic_title": "Localization and mapping",
-   "heading": "Software",
-   "title": "KFilter C++ extended Kalman filter library",
-   "url": "https://kalman.sourceforge.net/",
-   "kind": "broken",
-   "status": 403,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "light-color",
@@ -100,27 +65,8 @@
    "url": "http://www.newtonproject.sussex.ac.uk/prism.php?id=47",
    "kind": "moved",
    "status": 200,
-   "final": "https://www.newtonproject.ox.ac.uk/"
-  },
-  {
-   "topic": "image-processing",
-   "topic_title": "Images and image processing",
-   "heading": "Other open-source software",
-   "title": "NetPBM",
-   "url": "https://netpbm.sourceforge.net/",
-   "kind": "broken",
-   "status": 403,
-   "final": null
-  },
-  {
-   "topic": "feature-extraction",
-   "topic_title": "Image feature extraction",
-   "heading": "Point features",
-   "title": "FAST detector",
-   "url": "https://www.edwardrosten.com/work/fast.html",
-   "kind": "broken",
-   "status": 0,
-   "final": null
+   "final": "https://www.newtonproject.ox.ac.uk/",
+   "since": "2026-09-30"
   },
   {
    "topic": "feature-extraction",
@@ -130,7 +76,8 @@
    "url": "http://www.ces.clemson.edu/~stb/klt/",
    "kind": "broken",
    "status": 0,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "feature-extraction",
@@ -140,27 +87,8 @@
    "url": "http://www.chrisevansdev.com/computer-vision-opensurf.html",
    "kind": "broken",
    "status": 0,
-   "final": null
-  },
-  {
-   "topic": "feature-extraction",
-   "topic_title": "Image feature extraction",
-   "heading": "Point features",
-   "title": "SIFT code (vlfeat.org)",
-   "url": "https://www.vlfeat.org/overview/sift.html",
-   "kind": "broken",
-   "status": 0,
-   "final": null
-  },
-  {
-   "topic": "feature-extraction",
-   "topic_title": "Image feature extraction",
-   "heading": "Region features",
-   "title": "MSER code + documentation(vlfeat.org)",
-   "url": "https://www.vlfeat.org/overview/mser.html",
-   "kind": "broken",
-   "status": 0,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "image-formation",
@@ -170,7 +98,8 @@
    "url": "https://www.math.drexel.edu/~ahicks/design/",
    "kind": "broken",
    "status": 0,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "multiple-images",
@@ -180,7 +109,8 @@
    "url": "https://marsprogram.jpl.nasa.gov/MPF/mpf/anaglyph-arc.html",
    "kind": "moved",
    "status": 200,
-   "final": "https://science.nasa.gov/mission/mars-pathfinder/"
+   "final": "https://science.nasa.gov/mission/mars-pathfinder/",
+   "since": "2026-09-30"
   },
   {
    "topic": "multiple-images",
@@ -190,17 +120,8 @@
    "url": "http://www2.informatik.hu-berlin.de/~blaschek/diplvortrag/learn_epi/EpipolarGeo.html",
    "kind": "homepage",
    "status": 200,
-   "final": "https://www2.informatik.hu-berlin.de/"
-  },
-  {
-   "topic": "multiple-images",
-   "topic_title": "Using multiple images",
-   "heading": "General",
-   "title": "The fundamental matrix song (audio)",
-   "url": "https://danielwedge.com/fmatrix",
-   "kind": "broken",
-   "status": 0,
-   "final": null
+   "final": "https://www2.informatik.hu-berlin.de/",
+   "since": "2026-09-30"
   },
   {
    "topic": "multiple-images",
@@ -210,7 +131,8 @@
    "url": "http://egt.dii.unisi.it/#tth_sEc7",
    "kind": "moved",
    "status": 200,
-   "final": "https://clem.dii.unisi.it/"
+   "final": "https://clem.dii.unisi.it/",
+   "since": "2026-09-30"
   },
   {
    "topic": "multiple-images",
@@ -220,7 +142,8 @@
    "url": "https://users.ics.forth.gr/~lourakis/sba/",
    "kind": "broken",
    "status": 0,
-   "final": null
+   "final": null,
+   "since": "2026-09-30"
   },
   {
    "topic": "visual-servoing",
@@ -230,17 +153,8 @@
    "url": "http://egt.dii.unisi.it/",
    "kind": "moved",
    "status": 200,
-   "final": "https://clem.dii.unisi.it/"
-  },
-  {
-   "topic": "visual-servoing",
-   "topic_title": "Vision-based control",
-   "heading": "Software",
-   "title": "Visual servoing toolbox",
-   "url": "https://sourceforge.net/projects/vstoolbox/",
-   "kind": "broken",
-   "status": 403,
-   "final": null
+   "final": "https://clem.dii.unisi.it/",
+   "since": "2026-09-30"
   },
   {
    "topic": "visual-servoing",
@@ -250,12 +164,14 @@
    "url": "https://www.irisa.fr/lagadic/visp/visual-servoing.html",
    "kind": "moved",
    "status": 200,
-   "final": "http://visp.inria.fr/"
+   "final": "http://visp.inria.fr/",
+   "since": "2026-09-30"
   }
  ],
  "counts": {
-  "broken": 18,
+  "broken": 8,
   "moved": 6,
-  "homepage": 1
+  "homepage": 1,
+  "noanswer": 0
  }
 }
