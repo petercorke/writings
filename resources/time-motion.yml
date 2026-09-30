@@ -1,0 +1,28 @@
+topic: time-motion
+groups:
+- heading: Inertial navigation
+  items:
+  - title: Remembering Doc Draper
+    url: https://infinite.mit.edu/video/remembering-doc-draper
+    note: MIT TV
+  - title: Draper Lab bio
+    url: https://www.draper.com/draperfeatures/doc-draper
+  - title: Computer History Museum
+    url: https://www.computerhistory.org/revolution/real-time-computing/6/129
+    note: Aiming for the Moon
+  - title: An Introduction to Inertial and Visual Sensing
+    url: https://doi.org/10.1177/0278364907079279
+    note: Corke, Lobo, Dias (2007)
+  - title: SparkFun
+    url: https://www.sparkfun.com
+    note: inexpensive inertial sensors and breakout boards
+- heading: Videos
+  items:
+  - title: Trajectory generation
+    url: https://www.youtube.com/watch?v=R1t3Ydcz6cQ&list=PLF58C18380E9B356F&index=6&feature=plpp_video
+    note: FAST lab
+- heading: Software
+  items:
+  - title: TOPP-RA
+    url: https://hungpham2511.github.io/toppra
+    note: time-optimal path parameterization

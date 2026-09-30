@@ -1,0 +1,48 @@
+topic: image-formation
+groups:
+- heading: General
+  items:
+  - title: Flash applets on some technical aspects of photography
+    url: https://graphics.stanford.edu/courses/cs178/applets/
+    note: (Mark Levoy etal, Stanford)
+  - title: ePnP pose estimation
+    url: https://cvlab.epfl.ch/software/EPnP
+  - title: Gaussian Sphere vanishing points
+    url: https://www.youtube.com/watch?v=dWvvFrzq2OQ
+  - title: Lightfield cameras
+    url: https://graphics.stanford.edu/papers/CameraArray/CameraArray.mp4
+    note: (Wilburn 2005)
+  - title: Model based vision (video)
+    url: https://www.archive.org/details/JosephMu1987
+    note: Joe Mundy (1987)
+  - title: Catadioptric sensor design
+    url: https://www.math.drexel.edu/~ahicks/design/
+    note: Andrew Hicks; mirror design
+  - title: The Page of Omnidirectional Vision
+    url: https://www.cis.upenn.edu/~kostas/omni.html
+    note: Kostas Daniilidis
+- heading: MATLAB software
+  items:
+  - title: Camera calibration toolbox for Matlab
+    url: https://www.vision.caltech.edu/bouguetj/calib_doc
+    note: Jean-Yves Bouguet
+  - title: Camera Calibration Toolbox for Matlab
+    url: https://robots.stanford.edu/cs223b04/JeanYvesCalib/
+    note: Jean-Yves Bouguet; also archived permanently at CaltechDATA, https://data.caltech.edu/records/jx9cx-fdh55
+  - title: Wide angle camera calibration
+    url: https://sites.google.com/site/scarabotix/ocamcalib-omnidirectional-camera-calibration-toolbox-for-matlab
+    note: Davide Scaramuzza
+  - title: Wide angle camera calibration
+    url: https://users.aalto.fi/~kannalj1/calibration/calibration.html
+    note: by Juho Kannala
+  - title: Light field toolbox for MATLAB
+    url: https://www.mathworks.com/matlabcentral/fileexchange/75250-light-field-toolbox
+    note: Donald Dansereau
+- heading: Software
+  items:
+  - title: AprilTag
+    url: https://github.com/AprilRobotics/apriltag
+    note: visual fiducial markers
+  - title: ArUco
+    url: https://www.uco.es/investiga/grupos/ava/node/26
+    note: square fiducial markers (University of Córdoba)

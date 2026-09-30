@@ -1,0 +1,119 @@
+topic: multiple-images
+groups:
+- heading: General
+  items:
+  - title: The fundamental matrix song (audio)
+    url: https://danielwedge.com/fmatrix
+  - title: Anaglyph images of MARS
+    url: https://marsprogram.jpl.nasa.gov/MPF/mpf/anaglyph-arc.html
+    note: (NASA)
+  - title: Epipolar geometry applets
+    url: http://www2.informatik.hu-berlin.de/~blaschek/diplvortrag/learn_epi/EpipolarGeo.html
+    note: (Sylvain Bougnoux)
+  - title: Homography estimation from points and lines
+    url: https://web.archive.org/web/20110627140632/http://www.cs.ubc.ca:80/~dubroe/courses/MastersEssay.pdf
+    note: masters essay (Elan Dubrofsky)
+    archived: true
+  - title: Bundle Adjustment in the Large
+    url: https://grail.cs.washington.edu/projects/bal
+    note: large bundle adjustment problems (University of Washington)
+  - title: Location recognition using prioritized feature matching
+    url: https://www.cs.cornell.edu/projects/p2f
+    note: Cornell; datasets
+- heading: Stereo datasets
+  items:
+  - title: Tsukuba stereo dataset
+    url: https://vision.middlebury.edu/stereo/data/scenes2001/
+    note: 1800 stereo pairs with ground truth disparity maps, occlusion maps and discontinuity maps. Available
+      as a 5GB download only
+  - title: Middlebury stereo dataset
+    url: https://vision.middlebury.edu/stereo
+    note: has quite high resolution color images, some with ground truth disparity
+  - title: Mars stereo images
+    url: https://web.archive.org/web/20130219222351/http://marsrover.nasa.gov/gallery/3d/
+    note: in anaglyph format
+    archived: true
+  - title: JISCT stereo dataset
+    url: https://web.archive.org/web/20220718155912/http://vasc.ri.cmu.edu/idb/html/jisct
+    note: perhaps the first ever stereo dataset, somewhat low resolution images by todays standards
+    archived: true
+  - title: Middlebury stereo evaluation (version 3)
+    url: https://vision.middlebury.edu/stereo/eval3/
+  - title: KITTI scene flow benchmark
+    url: https://www.cvlibs.net/datasets/kitti/eval_scene_flow.php
+  - title: Oxford VGG multi-view data
+    url: https://www.robots.ox.ac.uk/~vgg/data/data-mview.html
+- heading: Image sequence datasets
+  items:
+  - title: CMU image motion sequences
+    url: https://web.archive.org/web/20170605211254/http://vasc.ri.cmu.edu:80/idb/html/motion/
+    archived: true
+  - title: CAVIAR project motion sequences
+    url: https://homepages.inf.ed.ac.uk/rbf/CAVIARDATA1
+  - title: Traffic sequences
+    url: https://web.archive.org/web/20230601043416/http://i21www.ira.uka.de/image_sequences/
+    archived: true
+  - title: EISATS
+    url: https://cerv.aut.ac.nz/eisats/
+    note: image sequences for driver-assistance research (AUT)
+- heading: Software
+  items:
+  - title: Peter Kovesi’s
+    url: https://www.peterkovesi.com/matlabfns/
+    note: software for Computer Vision and Image processing
+  - title: Point feature detectors
+    url: https://petercorke.com/RVC/chaps/13
+    note: from Chapter 13
+  - title: Epipolar geometry toolkit
+    url: http://egt.dii.unisi.it/#tth_sEc7
+    note: by Gian Luca Mariottini and Domenico Prattichizzo
+  - title: Structure from Motion toolkit for Matlab
+    url: https://www.mathworks.com/matlabcentral/fileexchange/4576-structure-and-motion-toolkit-in-matlab
+    note: by Phil Torr
+  - title: The Structure from Motion Toolbox
+    url: ttp://code.google.com/p/vincents-structure-from-motion-matlab-toolbox
+    note: by Vincent Rigaud
+  - title: Simple Sparse Bundle Adjustment (SSBA)
+    url: https://github.com/chzach/SSBA
+    note: by Christoper Zach
+  - title: Sparse Bundle Adjustment (SBA)
+    url: http://www.ics.forth.gr/~lourakis/sba/
+    note: by Lourakis (in C)
+  - title: Image stitching
+    url: https://hugin.sourceforge.net/
+    note: Hugin autostitch
+  - title: Multiple View geometry MATLAB functions
+    url: https://www.robots.ox.ac.uk/~vgg/hzbook/code/
+    note: Hartley and Zisserman book
+  - title: PDAL
+    url: https://pdal.org/
+    note: point cloud data processing
+  - title: SBA
+    url: https://users.ics.forth.gr/~lourakis/sba/
+    note: Manolis Lourakis; sparse bundle adjustment
+  - title: CloudCompare
+    url: https://www.cloudcompare.org/
+    note: 3D point cloud and mesh viewer and editor
+  - title: AutoStitch
+    url: https://mattabrown.github.io/autostitch.html
+    note: Matthew Brown and David Lowe; panorama stitching
+  - title: Ceres Solver
+    url: http://ceres-solver.org
+    note: large-scale nonlinear least squares (Google)
+  - title: LIBELAS
+    url: https://www.cvlibs.net/software/libelas
+    note: Andreas Geiger; efficient large-scale stereo matching
+  - title: Open3D
+    url: https://www.open3d.org
+    note: library for 3D data processing
+  - title: g2o
+    url: https://github.com/RainerKuemmerle/g2o
+    note: graph optimization for SLAM and bundle adjustment
+  - title: Point Cloud Library (PCL)
+    url: https://pointclouds.org
+  - title: Bundler
+    url: https://www.cs.cornell.edu/~snavely/bundler
+    note: Noah Snavely; structure from motion for unordered image collections
+  - title: Andrew Davison's software
+    url: https://www.doc.ic.ac.uk/~ajd/software.html
+    note: MonoSLAM and more

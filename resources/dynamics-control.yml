@@ -1,0 +1,15 @@
+topic: dynamics-control
+groups:
+- heading: Videos
+  items:
+  - title: Robot arm dynamics
+    url: https://www.youtube.com/watch?v=Fzv8i1CKo0E&list=PLF58C18380E9B356F&index=5&feature=plpp_video
+    note: FAST lab
+- heading: History
+  items:
+  - title: 'Newton''s Principia: the mathematical principles of natural philosophy'
+    url: https://www.archive.org/details/newtonspmathema00newtrich
+    note: English translation (Internet Archive)
+  - title: The Newton Project
+    url: https://www.newtonproject.ox.ac.uk/
+    note: Newton's writings, online

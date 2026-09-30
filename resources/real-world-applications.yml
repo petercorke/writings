@@ -1,0 +1,16 @@
+topic: real-world-applications
+groups:
+- heading: Examples
+  items:
+  - title: Robotics System Toolbox™
+    url: https://au.mathworks.com/help/robotics/examples.html
+  - title: Image Processing Toolbox™
+    url: https://au.mathworks.com/help/images/examples.html
+  - title: Computer Vision Toolbox™
+    url: https://au.mathworks.com/help/vision/examples.html
+  - title: Navigation Toolbox™
+    url: https://au.mathworks.com/help/nav/examples.html
+  - title: Automated Driving Toolbox™
+    url: https://au.mathworks.com/help/driving/examples.html
+  - title: UAV Toolbox
+    url: https://au.mathworks.com/help/uav/examples.html

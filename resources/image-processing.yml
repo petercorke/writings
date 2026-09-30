@@ -1,0 +1,54 @@
+topic: image-processing
+groups:
+- heading: General
+  items:
+  - title: Image file formats
+    url: https://en.wikipedia.org/wiki/Image_file_format
+  - title: Independent JPEG group
+    url: https://www.ijg.org/
+  - title: Lenna
+    url: http://www.lenna.org/
+  - title: History of the Sobel operator
+    url: https://www.researchgate.net/publication/239398674_An_Isotropic_3x3_Image_Gradient_Operator
+    note: Irwin Sobel
+  - title: Sobel operator (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Sobel_operator
+- heading: Image sources
+  items:
+  - title: 'McKeldin Mall, University of Maryland: a live Axis camera, usable with AxisWebCamera'
+    url: http://cam-mckeldin-eastview.umd.edu
+  - title: Opentopia
+    url: https://www.opentopia.com/
+    note: list a huge number of webcams. The actual URL for the camera is listed below the image on the
+      line marked Website:. The the root part of the URL (before the first single slash) is required for
+      the AxisWebCamera class
+  - title: CAVIAR
+    url: https://homepages.inf.ed.ac.uk/rbf/CAVIARDATA1
+    note: motion sequence data base
+- heading: Open-source books
+  items:
+  - title: 'Computer Vision: Algorithms and Applications'
+    url: https://szeliski.org/Book/
+    note: by Richard Szeliski
+- heading: Other open-source software
+  items:
+  - title: Matlab Central file exchange
+    url: https://www.mathworks.com/matlabcentral/fileexchange/?term=image+processing+category%3A%22Image+and+Video+Processing%22
+    note: functions in the image and video processing category
+  - title: Peter Kovesi’s
+    url: https://www.peterkovesi.com/matlabfns/
+    note: software for Computer Vision and Image processing
+  - title: ImageMagick
+    url: https://www.imagemagick.org/
+    note: cross platform (Unix, MacOS, Windows, iPhone) tools for image manipulation. Command line and
+      GUI
+  - title: NetPBM
+    url: https://netpbm.sourceforge.net/
+    note: portable library for image manipulation, defines its own simple file formats (PBM, PGM, PPM,
+      PNM) and an extensive range of filters from common formats to/from P*M formats
+  - title: OpenCV
+    url: https://opencv.org/
+    note: large C-based library of computer vision functions
+  - title: VXL
+    url: https://vxl.github.io/
+    note: large C++-based library of computer vision functions

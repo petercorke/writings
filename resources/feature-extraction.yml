@@ -1,0 +1,78 @@
+topic: feature-extraction
+groups:
+- heading: Data sets
+  items:
+  - title: Berkeley segmentation data set
+    url: https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/
+  - title: ICDAR text recognition data set
+    url: https://en.wikipedia.org/wiki/Image_file_format
+  - title: Comprehensive list of databases
+    url: https://www.imageprocessingplace.com/root_files_V3/image_databases.htm
+    note: from Gonzalez & Woods
+- heading: Region features
+  items:
+  - title: Blob detection (wikipedia)
+    url: https://en.wikipedia.org/wiki/Blob_detection
+  - title: MSER code + documentation(vlfeat.org)
+    url: https://www.vlfeat.org/overview/mser.html
+  - title: Graph-based segmentation
+    url: https://cs.brown.edu/people/pfelzens/segment/
+- heading: Line features
+  items:
+  - title: Hough transform (wikipedia)
+    url: https://en.wikipedia.org/wiki/Hough_transform
+  - title: Hough patent
+    url: https://www.google.com/patents?vid=3069654
+  - title: How the Hough transform was invented (Peter Hart)
+    url: https://www.iro.umontreal.ca/~mignotte/IFT6150/ComplementCours/HoughTransform.pdf
+  - title: Generalized Hough transform
+    url: https://www.ai.sri.com/pubs/files/tn036-duda71.pdf
+- heading: Scale space
+  items:
+  - title: Scale space theory and applications
+    url: https://www.csc.kth.se/~tony/earlyvision.html
+    note: (KTH)
+  - title: Introduction to Scale-Space Theory
+    url: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.95.9204&rep=rep1&type=pdf
+    note: BM ter Haar Romeny, 1996 (PDF)
+- heading: Point features
+  items:
+  - title: Corner detection (wikipedia)
+    url: https://en.wikipedia.org/wiki/Corner_detection
+  - title: David Lowe’s SIFT page
+    url: https://www.cs.ubc.ca/~lowe/keypoints/
+    note: SIFT
+  - title: SIFT features (wikipedia)
+    url: https://en.wikipedia.org/wiki/Scale-invariant_feature_transform
+  - title: SIFT code (vlfeat.org)
+    url: https://www.vlfeat.org/overview/sift.html
+  - title: The SIFT patent (US 6,711,293)
+    url: https://www.google.com/patents?vid=6711293
+  - title: SURF home page
+    url: https://www.vision.ee.ethz.ch/~surf/index.html
+    note: SURF
+  - title: SURF features (wikipedia)
+    url: https://en.wikipedia.org/wiki/SURF
+  - title: OpenSURF implementation in MATLAB (Dirk-Jan Kroon)
+    url: https://www.mathworks.com/matlabcentral/fileexchange/28300-opensurf-including-image-warp
+  - title: OpenSURF (Chris Evans)
+    url: http://www.chrisevansdev.com/computer-vision-opensurf.html
+  - title: GPU SURF (C++, Cuda)
+    url: https://www.d2.mpi-inf.mpg.de/surf?q=surf
+  - title: KLT implementation (Birchfield)
+    url: http://www.ces.clemson.edu/~stb/klt/
+  - title: FAST detector
+    url: https://www.edwardrosten.com/work/fast.html
+- heading: Deep learning
+  items:
+  - title: Deep learning with MATLAB
+    url: https://www.mathworks.com/solutions/deep-learning.html
+  - title: PyTorch
+    url: https://pytorch.org
+  - title: TensorFlow
+    url: https://www.tensorflow.org/
+- heading: Software
+  items:
+  - title: Tesseract
+    url: https://github.com/tesseract-ocr
+    note: open-source optical character recognition

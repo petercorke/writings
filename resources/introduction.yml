@@ -1,0 +1,131 @@
+topic: introduction
+groups:
+- heading: Robot history
+  items:
+  - title: Robot history timeline
+    url: https://davidbuckley.net/DB/HistoryMakers.htm
+    note: up to 1998 (David Buckley)
+  - title: Robot Hall of Fame
+    url: http://www.robothalloffame.org/
+  - title: The Cybernetic zoo
+    url: https://cyberneticzoo.com/
+    note: (info about all manner of robot/cybernetics/cyborg machines
+  - title: Real Robots
+    url: https://davidszondy.com/future/robot/realrobots.htm
+    note: from Tales of Future Past @ davidzondy.com
+  - title: Computer History Museum
+    url: https://www.computerhistory.org/revolution/artificial-intelligence-robotics/13
+    note: Artificial Intelligence & Robotics
+  - title: Robot timeline
+    url: https://www.thocp.net/reference/robotics/robotics.html
+    note: (part 1), up to 1942
+  - title: Robot timeline
+    url: https://www.thocp.net/reference/robotics/robotics2.html
+    note: (part 2), up to 2008
+- heading: Robot fiction
+  items:
+  - title: 80 years of robots in Hollywood
+    url: https://web.archive.org/web/20260422091512/https://entertainment.time.com/2007/07/03/80-years-of-robots-in-hollywood/
+    note: (Time)
+    archived: true
+  - title: Top 10 Hollywood robots
+    url: https://web.archive.org/web/20121104182610/http://www.hollywood.com:80/feature/Top_10_Robots/5266469
+    archived: true
+  - title: Classic robots from the movies
+    url: https://www.theoldrobots.com/
+  - title: Where's WALL.E? (how many fictional robots can you name?)
+    url: https://regsmicrocosm.wordpress.com/robots/wheres-wall-e-poster/
+  - title: Rossum’s Universal Robots (the play)
+    url: https://www.gutenberg.org/ebooks/59112
+  - title: Karel Capek website
+    url: https://web.archive.org/web/20150722061244/http://capek.misto.cz/english/index.html
+    archived: true
+  - title: Who did actually invent the word robot
+    url: https://web.archive.org/web/20150415062618/http://capek.misto.cz/english/robot.html
+    note: (was it Karel’s brother?)
+    archived: true
+- heading: Unimation Inc. (the first robotics company)
+  items:
+  - title: The rise and fall of Unimation Inc.
+    url: https://web.archive.org/web/20120725064202/http://find.botmag.com/121091
+    note: George Munson with Leslie Ballard
+    archived: true
+  - title: George Devol (founder)
+    url: https://en.wikipedia.org/wiki/George_Devol
+    note: (wikipedia)
+  - title: Joe Engelberger (founder)
+    url: https://en.wikipedia.org/wiki/Joseph_Engelberger
+    note: (wikipedia)
+- heading: Robots general
+  items:
+  - title: Robot video collection
+    url: https://www.youtube.com/playlist?list=PL25F167DF842D2F60&feature=plcp
+    note: (YouTube)
+  - title: DARPA Grand Challenge
+    url: https://www.darpa.mil/about/innovation-timeline/grand-challenge
+- heading: Robots, society and ethics
+  items:
+  - title: Robots as media
+    url: https://www.peterasaro.org/courses/2012Robots.html
+    note: (Peter Asaro), big resource list
+  - title: Robot philosophy, ethics, history and media
+    url: https://www.peterasaro.org/
+    note: (Peter Asaro)
+  - title: Stop Killer Robots
+    url: https://www.stopkillerrobots.org/
+  - title: Why the future doesn’t need us
+    url: https://www.wired.com/2000/04/joy-2/
+    note: (Bill Joy)
+  - title: these books
+    url: https://petercorke.com/interesting-books/#robotsfuture
+    note: See also,
+  - title: Governing Lethal Behaviour in Autonomous Robots
+    url: https://www.amazon.com/Governing-Lethal-Behavior-Autonomous-Robots/dp/1420085948/ref=sr_1_1?ie=UTF8&s=books&qid=1239284045&sr=8-1%22
+    note: (Ron Arkin)
+  - title: 'Wired for War: The Robotics Revolution and Conflict in the 21st Century'
+    url: https://www.amazon.com/Wired-War-Robotics-Revolution-Conflict/dp/0143116843/ref=pd_sim_b_4
+    note: (Peter Singer)
+  - title: 'Superintelligence: Paths, Dangers, Strategies'
+    url: https://www.amazon.com/Superintelligence-Dangers-Strategies-Nick-Bostrom/dp/0199678111/ref=sr_1_1?s=books&ie=UTF8&qid=1413838822&sr=1-1&keywords=superintelligence+paths+dangers
+    note: (Nick Bostrom)
+  - title: 'Love and Sex with Robots: The evolution of human-robot relationships'
+    url: https://www.amazon.com/Love-Sex-Robots-Human-Robot-Relationships/dp/0061359807/ref=sr_1_1?s=books&ie=UTF8&qid=1413838361&sr=1-1&keywords=love+sex+robot
+    note: (David Levy)
+  - title: 'The Lights in the Tunnel: Automation, Accelerating Technology and the Economy of the Future'
+    url: https://www.amazon.com/Lights-Tunnel-Automation-Accelerating-Technology/dp/1448659817/ref=sr_1_1?s=books&ie=UTF8&qid=1413838591&sr=1-1&keywords=lights+in+the+tunnel+future+economy
+    note: (Martin Ford)
+  - title: 'Beyond AI: Creating the Conscience of the Machine'
+    url: https://www.amazon.com/Beyond-AI-Creating-Conscience-Machine/dp/1591025117/ref=sr_1_1?s=books&ie=UTF8&qid=1413838531&sr=1-1&keywords=creating+the+conscience+machine
+    note: (J. Storrs Hall)
+  - title: 'The Second Machine Age: Work, Progress, and Prosperity in a Time of Brilliant Technologies'
+    url: https://www.amazon.com/Second-Machine-Age-Prosperity-Technologies/dp/0393239357/ref=sr_1_1?s=books&ie=UTF8&qid=1413838414&sr=1-1&keywords=second+machine+age
+    note: (Erik Brynjolfsson and Andrew McAfee)
+- heading: Robots, cybernetics and artificial intelligence
+  items:
+  - title: Cybernetics
+    url: https://en.wikipedia.org/wiki/Cybernetics
+    note: (wikipedia)
+  - title: History of artificial intelligence (wikipedia)
+    url: https://en.wikipedia.org/wiki/History_of_artificial_intelligence
+  - title: John McCarthy bio
+    url: https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)
+    note: (wikipedia)
+  - title: John McCarthy’s home page
+    url: https://www-formal.stanford.edu/jmc/
+    note: with musings on many topics
+  - title: The Dartmouth AI conference proposal
+    url: https://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html
+  - title: 'The Ratio Club: A Hub of British Cybernetics (PDF)'
+    url: https://www.sussex.ac.uk/Users/philh/pubs/Ratio2.pdf
+    note: 'The Ratio Club: British cybernetics (1945-1955), by Phil Husbands and Owen Holland'
+  - title: Photo of club members
+    url: https://en.wikipedia.org/wiki/Ratio_Club
+    note: including Alan Turing
+- heading: MATLAB® and The MathWorks®
+  items:
+  - title: The MathWorks Inc.
+    url: http://www.mathworks.com/
+  - title: Founding of the MathWorks
+    url: https://petercorke.com/RVC/top/people/moler
+  - title: Writing fast Matlab code
+    url: http://www.mathworks.com/support/tech-notes/1100/1109.html

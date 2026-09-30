@@ -1,0 +1,143 @@
+topic: localization
+groups:
+- heading: General
+  items:
+  - title: Navigating Mobile Robots (Where am I?, 1996)
+    url: https://web.archive.org/web/20230117191624/http://www-personal.umich.edu/~johannb/Papers/pos96rep.pdf
+    note: Borenstein, Everett and Feng, 1996 (free PDF); the 1994 version is in Michigan's Deep Blue repository,
+      https://hdl.handle.net/2027.42/4856
+    archived: true
+  - title: RatSLAM
+    url: https://github.com/davidmball/ratSLAM
+    note: Milford & Wyeth, a navigation system modelled on the rodent hippocampus; open-source version
+      by David Ball
+  - title: SLAM techniques and algorithms
+    url: https://web.archive.org/web/20181223033839/http://computerrobotvision.org:80/2009/tutorial_day/crv09SLAMTutorial.pdf
+    note: Jack Collier
+    archived: true
+  - title: A comparison of data association techniques for simultaneous localization and mapping
+    url: https://dspace.mit.edu/handle/1721.1/32438
+    note: Aron Cooper, Masters thesis, MIT, 2005
+  - title: C4B Mobile Robotics
+    url: https://www.free-ebooks.net/ebook/C4B-Mobile-Robotics
+    note: Paul Newman's Oxford lecture notes (free ebook)
+- heading: SLAM
+  items:
+  - title: SLAM for Dummies
+    url: https://wiki.hshl.de/wiki/images/c/cb/1aslam_blas_repo.pdf
+    note: Riisgaard and Blas, MIT course project
+  - title: 'Simultaneous localization and mapping: part I'
+    url: https://doi.org/10.1109/MRA.2006.1638022
+    note: Durrant-Whyte and Bailey, IEEE RAM 13(2)
+  - title: 'Simultaneous localization and mapping: part 2'
+    url: https://doi.org/10.1109/MRA.2006.1678144
+    note: Bailey and Durrant-Whyte, IEEE RAM 13(3)
+  - title: Giorgio Grisetti's home page
+    url: https://sites.google.com/dis.uniroma1.it/grisetti/home
+    note: GMapping, TORO, g2o and more
+  - title: Tim Bailey's home page
+    url: https://www-personal.acfr.usyd.edu.au/tbailey
+    note: SLAM tutorials and software
+- heading: Kalman filter
+  items:
+  - title: A new approach to linear filtering and prediction problems
+    url: https://doi.org/10.1115/1.3662552
+    note: Kalman (the paper!)
+  - title: Kalman filter home page
+    url: https://web.archive.org/web/20260514081034/http://www.cs.unc.edu/~welch/kalman/
+    note: Welch and Bishop
+    archived: true
+  - title: Understanding the basics of the Kalman filter via a simple and intuitive derivation
+    url: https://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6279585
+    note: Faragher
+  - title: EKF covariance update for a new landmark
+    url: https://petercorke.com/robotics/ekf-covariance-matrix-update-for-a-new-landmark
+    note: a note on the derivation
+- heading: Particle filter
+  items:
+  - title: 'Particle filter made simple: a step-by-step beginner-friendly guide'
+    url: https://arxiv.org/pdf/2511.01281
+    note: arXiv 2025
+  - title: Particle Filter Theory and Practice with Positioning
+    url: https://www.diva-portal.org/smash/get/diva2:360880/FULLTEXT01.pdf
+  - title: A brief introduction to Particle Filters
+    url: https://web.archive.org/web/20151129194335/http://www.igi.tugraz.at:80/pfeiffer/documents/particlefilters.pdf
+    note: Pfeiffer
+    archived: true
+  - title: Particle filters Theory and Practice with Positioning Applications
+    url: https://ieeexplore.ieee.org/document/5546308/
+    note: Gustafsson
+  - title: A tutorial on particle filters for online nonlinear/non-Gaussian Bayesian tracking
+    url: https://doi.org/10.1109/78.978374
+    note: Arulampalam, IEEE Signal Processing Magazine 2002
+  - title: Sequential Monte Carlo methods & Particle Filter Resources
+    url: https://www.stats.ox.ac.uk/~doucet/smc_resources.html
+    note: Arnaud Doucet
+- heading: Software
+  items:
+  - title: KFilter C++ extended Kalman filter library
+    url: https://kalman.sourceforge.net/
+  - title: SLAM toolbox for MATLAB
+    url: https://github.com/joansola/slamtb
+    note: Joan Solà; EKF-SLAM in 2D and 3D, including 6-DOF visual SLAM
+  - title: pykalman
+    url: https://pypi.org/project/pykalman/
+    note: Kalman filter, smoother and EM algorithm in Python
+  - title: Carmen robot navigation toolkit
+    url: https://carmen.sourceforge.net/
+  - title: OpenSLAM.org
+    url: https://openslam-org.github.io/
+  - title: Planar SLAM CAS Robot Navigation Toolbox
+    url: https://web.archive.org/web/20180209071720/http://www.cas.kth.se:80/toolbox/
+    archived: true
+  - title: CSM, the Canonical Scan Matcher (includes PLICP)
+    url: https://github.com/AndreaCensi/csm
+    note: Andrea Censi
+  - title: Cartographer
+    url: https://github.com/cartographer-project/cartographer
+    note: real-time 2D and 3D SLAM (Google)
+  - title: FLANN
+    url: https://github.com/flann-lib/flann
+    note: fast approximate nearest-neighbour search
+  - title: ProSLAM
+    url: https://gitlab.com/srrg-software/srrg_proslam
+    note: stereo visual SLAM
+  - title: Factor graphs and GTSAM
+    url: https://gtsam.org/tutorials/intro.html
+    note: a hands-on introduction
+  - title: GMapping
+    url: https://openslam-org.github.io/gmapping.html
+    note: grid-based SLAM with particle filters (OpenSLAM)
+  - title: Hector SLAM
+    url: https://wiki.ros.org/hector_slam
+    note: ROS package
+- heading: GPS
+  items:
+  - title: 'GPS.gov: how the system works'
+    url: https://www.gps.gov/systems
+  - title: Live position of GPS satellites
+    url: https://www.nstb.tc.faa.gov/RT_WaasSatelliteStatus.htm
+    note: US Federal Aviation Administration
+  - title: GPS constellation status
+    url: https://www.navcen.uscg.gov/gps-constellation
+    note: US Coast Guard Navigation Center
+  - title: GPS info from Navigation Center (US Coast Guard)
+    url: https://www.navcen.uscg.gov/?pageName=GPS
+  - title: How to fool a GPS (TEDx talk)
+    url: https://www.ted.com/talks/todd_humphreys_how_to_fool_a_gps
+    note: Todd Humphreys on the future of GPS and GPS spoofing
+  - title: NOAA publications
+    url: https://www.ngs.noaa.gov/PUBS_LIB/pub_GPS.shtml
+  - title: Effect of builtup environment on GPS accuracy
+    url: http://www.wpnc.net/fileadmin/WPNC06/Proceedings/30_Field_trial_on_GPS_Accuracy_in_a_medium_size_city_The_influence_of_builtup.pdf
+- heading: Hyperbolic navigation systems
+  items:
+  - title: GEE
+    url: https://www.jproc.ca/hyperbolic/gee.html
+    note: the WW2 era radio localization system
+  - title: DECCA Navigator
+    url: https://www.jproc.ca/hyperbolic/decca.html
+    note: a 1950s era commercial radio localization system
+  - title: LORAN-C
+    url: https://www.jproc.ca/hyperbolic/loran_c.html
+    note: as used for maritime and general aviation

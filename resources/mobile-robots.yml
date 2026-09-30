@@ -1,0 +1,16 @@
+topic: mobile-robots
+groups:
+- heading: General
+  items:
+  - title: DARPA Grand Challenge
+    url: https://www.darpa.mil/about/innovation-timeline/grand-challenge
+  - title: Thesis of Paul Pounds
+    url: https://openresearch-repository.anu.edu.au/bitstreams/e0b72a87-51b4-4f0a-876b-9b93a856eab0/download
+    note: ANU, on quadrotor design and control
+  - title: Open-source software and tutorial for quadrotors
+    url: http://www.openflyer.org/
+  - title: Mikrokopter
+    url: https://www.mikrokopter.de/ucwiki/en/MikroKopter
+  - title: Ackermann's Repository of Arts
+    url: https://smithandgosling.wordpress.com/2009/12/02/ackermanns-repository-of-arts
+    note: the story behind Ackermann steering

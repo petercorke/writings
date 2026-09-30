@@ -1,0 +1,22 @@
+# The resource-list topics, in RVC3 chapter order, and where each topic sits in each
+# edition. The list for a topic is resources/<topic>.yml. Chapter numbers differ between
+# editions: RVC2 (and RVC1) put image formation before image processing and feature
+# extraction, and the MATLAB version of RVC3 has different chapters 15 and 16.
+topics:
+  introduction:             {title: Introduction, rvc3p: 1, rvc3m: 1, rvc2: 1, rvc1: 1}
+  position-orientation:     {title: Representing position and orientation, rvc3p: 2, rvc3m: 2, rvc2: 2, rvc1: 2}
+  time-motion:              {title: Time and motion, rvc3p: 3, rvc3m: 3, rvc2: 3, rvc1: 3}
+  mobile-robots:            {title: Mobile robot vehicles, rvc3p: 4, rvc3m: 4, rvc2: 4, rvc1: 4}
+  navigation:               {title: Navigation, rvc3p: 5, rvc3m: 5, rvc2: 5, rvc1: 5}
+  localization:             {title: Localization and mapping, rvc3p: 6, rvc3m: 6, rvc2: 6, rvc1: 6}
+  arm-kinematics:           {title: Robot arm kinematics, rvc3p: 7, rvc3m: 7, rvc2: 7, rvc1: 7}
+  velocity-relationships:   {title: Manipulator velocity, rvc3p: 8, rvc3m: 8, rvc2: 8, rvc1: 8}
+  dynamics-control:         {title: Dynamics and control, rvc3p: 9, rvc3m: 9, rvc2: 9, rvc1: 9}
+  light-color:              {title: Light and color, rvc3p: 10, rvc3m: 10, rvc2: 10, rvc1: 10}
+  image-processing:         {title: Images and image processing, rvc3p: 11, rvc3m: 11, rvc2: 12, rvc1: 12}
+  feature-extraction:       {title: Image feature extraction, rvc3p: 12, rvc3m: 12, rvc2: 13, rvc1: 13}
+  image-formation:          {title: Image formation, rvc3p: 13, rvc3m: 13, rvc2: 11, rvc1: 11}
+  multiple-images:          {title: Using multiple images, rvc3p: 14, rvc3m: 14, rvc2: 14, rvc1: 14}
+  visual-servoing:          {title: Vision-based control, rvc3p: 15, rvc3m: 15, rvc2: 15, rvc1: 15}
+  advanced-visual-servoing: {title: Advanced visual servoing, rvc3p: 16, rvc2: 16, rvc1: 16}
+  real-world-applications:  {title: Real-world applications, rvc3m: 16}

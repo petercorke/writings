@@ -1,0 +1,91 @@
+topic: light-color
+groups:
+- heading: General
+  items:
+  - title: Charles Poynton’s FAQs on color and gamma
+    url: https://www.poynton.com/
+  - title: CIE
+    url: https://www.cie.co.at/
+  - title: ITU recommendations for television
+    url: https://www.itu.int/rec/R-REC-BT/en
+  - title: Newton’s papers on Opticks
+    url: http://www.newtonproject.sussex.ac.uk/prism.php?id=47
+  - title: Pantone colors by number
+    url: https://web.archive.org/web/20140729100833/http://petermoulding.com/pantone_pms_list_by_number
+    archived: true
+  - title: Subset of Pantone colors with RGB, XYZ values
+    url: https://web.archive.org/web/20141009011248/http://petermoulding.com:80/pantone_colours
+    archived: true
+  - title: Visualizing the XYZ Color Space
+    url: https://www.youtube.com/watch?v=x0-qoXOCOow
+    note: (YouTube video)
+  - title: Color Vision
+    url: https://www.youtube.com/watch?v=iDsrzKDB_tA
+    note: Craig Blackwell (YouTube video series)
+  - title: Optical illusions show how we see
+    url: https://www.ted.com/talks/beau_lotto_optical_illusions_show_how_we_see#t-137543
+    note: Beau Lotto (TED), about color and seeing, some great examples of color constancy
+  - title: Color Vision
+    url: https://webvision.med.utah.edu/book/part-vii-color-vision/color-vision/
+    note: Peter Gouras
+  - title: Web Vision
+    url: https://webvision.med.utah.edu/
+    note: comprehensive online resource to the organization of the retina and visual system
+  - title: Bayer filter patent
+    url: https://www.google.com/patents/US3971065
+    note: for Color Imaging Array by Bruce Bayer (Eastman Kodak)
+  - title: The CIE XYZ and xyY Color spaces
+    url: https://graphics.stanford.edu/courses/cs148-10-summer/docs/2010--kerr--cie_xyz.pdf
+    note: by Douglass Kerr (Stanford)
+  - title: Pantone colour chart
+    url: https://www.pantone-colours.com
+  - title: Color constancy
+    url: https://www.colorconstancy.org/
+    note: research site on illuminant estimation
+  - title: CVonline
+    url: https://homepages.inf.ed.ac.uk/rbf/CVonline
+    note: compendium of computer vision (University of Edinburgh)
+- heading: Software
+  items:
+  - title: Colorlab Toolbox for Matlab
+    url: https://web.archive.org/web/20170823182040/http://cs.joensuu.fi:80/colorlab_toolbox/
+    note: (University of Eastern Finland)
+    archived: true
+  - title: Colorspace transformations in Matlab
+    url: https://www.mathworks.com/matlabcentral/fileexchange/28790-colorspace-transformations
+    note: (Pascal Getreuer)
+  - title: Color space tools in Java
+    url: https://web.archive.org/web/20201114000717/http://graphics.cs.brown.edu/research/exploratory/freeSoftware/catalogs/color_theory.html
+    note: (Brown University)
+    archived: true
+  - title: Colour
+    url: https://www.colour-science.org
+    note: open-source color science library for Python
+- heading: Spectral data
+  items:
+  - title: ASTER Spectral Library
+    url: https://speclib.jpl.nasa.gov/
+    note: (NASA)
+  - title: Spectral database
+    url: https://www.uef.fi/fi/spectral/spectral-database
+    note: (University of Eastern Finland)
+  - title: CIE and spectral data
+    url: https://www.rit.edu/science/munsell-color-science-lab-educational-resources
+    note: (Munsell Color Science Lab, RIT)
+  - title: GretagMacbeth ColorChecker®
+    url: https://babelcolor.com/colorchecker.htm
+  - title: Cone response, CIE functions
+    url: http://www.cvrl.org/
+    note: (CVRL at University College London)
+  - title: Spectral color research
+    url: https://uef.fi/en/spectral
+    note: University of Eastern Finland; spectral databases
+- heading: Color blindness
+  items:
+  - title: Are you colorblind?
+    url: https://colorvisiontesting.com/
+  - title: Lots of resources related to colorblindness
+    url: https://www.color-blindness.com/
+  - title: Color Blindness
+    url: https://www.youtube.com/watch?v=zu0adBCD8HY&list=UUn6gcfNSZvBUeccmqsn1LXg
+    note: Craig Blackwell (YouTube video series)

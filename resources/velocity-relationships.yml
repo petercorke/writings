@@ -1,0 +1,13 @@
+topic: velocity-relationships
+groups:
+- heading: Videos
+  items:
+  - title: Jacobian visualization
+    url: https://www.youtube.com/watch?v=qZoxlGOU5ag&list=PLF58C18380E9B356F&index=4&feature=plpp_video
+    note: FAST lab
+- heading: References
+  items:
+  - title: 'Manipulator Differential Kinematics: Part 2: Acceleration and Advanced Applications'
+    url: https://doi.org/10.1109/MRA.2023.3270221
+    note: J. Haviland and P. Corke, in IEEE Robotics & Automation Magazine, vol. 31, no. 4, pp. 159-169,
+      Dec. 2024

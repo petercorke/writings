@@ -1,0 +1,21 @@
+topic: advanced-visual-servoing
+groups:
+- heading: Publications
+  items:
+  - title: A new hybrid image-based visual servo control scheme
+    url: https://doi.org/10.1109/CDC.2000.914182
+    note: Corke, Hutchinson (2000)
+  - title: 'Visual servo control II: Advanced approaches'
+    url: https://doi.org/10.1109/MRA.2007.339609
+    note: Chaumette, Hutchinson (2006)
+  - title: 2.5D visual servoing
+    url: https://doi.org/10.1109/70.760345
+    note: Malis, Chaumette (1999)
+- heading: Software
+  items:
+  - title: ROS
+    url: https://www.ros.org
+    note: the Robot Operating System
+  - title: ViSP
+    url: https://visp.inria.fr
+    note: visual servoing platform (Inria)

@@ -1,0 +1,22 @@
+topic: arm-kinematics
+groups:
+- heading: Videos
+  items:
+  - title: Denavit-Hartenberg reference frame layout
+    url: https://www.youtube.com/watch?v=rA9tm0gTln8
+    note: Ethan Tira-Thompson (movie)
+  - title: Link frame assignment
+    url: https://www.youtube.com/watch?v=eaBV5V3-T60&list=PLF58C18380E9B356F&index=2&feature=plpp_video
+    note: FAST lab
+  - title: Forward and inverse kinematics
+    url: https://www.youtube.com/watch?v=SZP1KQ2qSEA&list=PLF58C18380E9B356F&index=3&feature=plpp_video
+    note: FAST lab
+  - title: MATLAB code examples
+    url: https://petercorke.com/RVC/chaps/7/code.html
+  - title: All figures
+    url: https://petercorke.com/RVC/chaps/7/figures.html
+- heading: Software
+  items:
+  - title: URDF
+    url: https://wiki.ros.org/urdf
+    note: the Unified Robot Description Format (ROS)

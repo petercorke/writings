@@ -1,0 +1,84 @@
+topic: navigation
+groups:
+- heading: Robot navigation resources
+  items:
+  - title: Open Motion Planning Library (OMPL)
+    url: https://ompl.kavrakilab.org/
+    note: Kavraki Lab
+  - title: Search based Planning Lab
+    url: http://sbpl.net/Home
+    note: CMU
+  - title: Steve LaValle motion planning site
+    url: https://msl.cs.uiuc.edu/~lavalle
+    note: includes book, courseware, software
+  - title: Carmen robot navigation toolkit
+    url: https://carmen.sourceforge.net/
+  - title: Lattice planner
+    url: https://github.com/sbpl/sbpl
+    note: GitHub
+  - title: Planning Algorithms
+    url: https://lavalle.pl/planning
+    note: Steven LaValle's book, free online
+- heading: Early reactive navigation systems
+  items:
+  - title: Grey Walter and the robotic tortoise from 1951
+    url: https://www.youtube.com/watch?v=wQE82derooc
+    note: (video)
+  - title: Grey Walter and the robotic tortoises
+    url: https://cyberneticzoo.com/?cat=20
+    note: (various resources @cyberneticzoo.com)
+  - title: Hopkins beast
+    url: https://cyberneticzoo.com/?p=1495
+    note: '@cyberneticzoo.com'
+  - title: Hopkins beast
+    url: https://www.computerhistory.org/revolution/artificial-intelligence-robotics/13/291/1258
+    note: '@ computer history museum'
+- heading: Early robot planning & navigation systems
+  items:
+  - title: Hans Moravec's Stanford cart
+    url: https://www.nytimes.com/video/science/1247468063802/stanford-cart.html
+  - title: 'Shakey: Experiments in Robot Planning and Learning, 1972'
+    url: https://www.youtube.com/watch?v=GmU7SimFkpU
+    note: (video)
+- heading: Braitenberg vehicles
+  items:
+  - title: Notes on Braitenberg’s vehicles
+    url: https://instruct.westvalley.edu/lafave/Vehicles_online.html
+  - title: Analysis of Mobile Robot Navigation Algorithms in Unknown Environments
+    url: https://robotics.ee.uwa.edu.au/theses/2010-Navigation-Ng-PhD.pdf
+    note: masters thesis by James Ng
+  - title: Braitenberg vehicle 2b behaving as a billiard ball
+    url: https://www.ini.rub.de/data/documents/rano10empirical.pdf
+    note: Inaki Rano
+  - title: Braitenberg vehicle simulator
+    url: https://www.braitenberg.world
+  - title: Tutorial and how to build a Braitenberg vehicle
+    url: https://www.youtube.com/watch?v=A-fxij3zM7g
+    note: Brian Douglas
+- heading: Subsumption architecture
+  items:
+  - title: Subsumption architecture
+    url: https://cs.brown.edu/~tld/courses/cs148/02/architectures.html
+  - title: Attila robot
+    url: https://www.cs.cmu.edu/~chuck/robotpg/attilapg/
+    note: built at MIT by Rod Brooks’ lab
+- heading: Software
+  items:
+  - title: Motion planning software
+    url: https://lavalle.pl/software.html
+    note: Steven LaValle
+  - title: Maze generation
+    url: https://rosettacode.org/wiki/Maze_generation
+    note: Rosetta Code
+  - title: PythonRobotics
+    url: https://github.com/AtsushiSakai/PythonRobotics
+    note: Atsushi Sakai; Python code for many robotics algorithms
+  - title: pysbpl
+    url: https://github.com/poine/pysbpl
+    note: Python interface to SBPL
+  - title: SBPL
+    url: http://sbpl.net/
+    note: search-based planning library
+  - title: Clothoids
+    url: https://github.com/ebertolazzi/Clothoids
+    note: Enrico Bertolazzi; clothoid curves for path planning

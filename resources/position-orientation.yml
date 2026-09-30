@@ -1,0 +1,59 @@
+topic: position-orientation
+groups:
+- heading: Gimbal lock
+  items:
+  - title: LMA790-3-LM Apollo operations handbook
+    url: https://www.apollojournals.org/alsj/LMA790-3-LM-2.1.pdf
+    note: Fig 2.13 from my book is on page 44, and the vehicle’s coordinate frame is on page 16
+  - title: Consideration of Apollo IMU gimbal lock
+    url: https://www.apollojournals.org/alsj/e-1344.htm
+    note: David Hoag (1963)
+  - title: Gimbal Angles, Gimbal Lock, and a Fourth Gimbal for Christmas
+    url: https://history.nasa.gov/alsj/gimbals.html
+    note: Eric Jones & Paul Fjeld
+- heading: Quaternions
+  items:
+  - title: Animating rotation with quaternion curves
+    url: https://www.engr.colostate.edu/ECE555/reading/article_8.pdf
+    note: Shoemake (1985). The classic paper on quaternion interpolation
+  - title: Hamilton, Rodrigues, and the quaternion scandal
+    url: https://doi.org/10.1080/0025570X.1989.11977459
+- heading: Videos
+  items:
+  - title: Transformation matrix
+    url: https://www.youtube.com/watch?v=ImPBVQJRSwY&list=PLF58C18380E9B356F&index=1&feature=plpp_video
+    note: FAST lab
+- heading: Misc
+  items:
+  - title: An Introduction to Inertial and Visual Sensing
+    url: https://doi.org/10.1177/0278364907079279
+    note: Corke, Lobo, Dias (2007)
+  - title: Build your own coordinate frame out of paper
+    url: https://petercorke.com/axes.pdf
+    note: Build your own coordinate frame out of paper
+  - title: Print your own coordinate frame out of plastic!
+    url: https://www.thingiverse.com/thing:34602
+  - title: Build your own coordinate frame out of wood!
+    url: https://caltri.blogspot.co.uk/
+  - title: Build your own 3D coordinate frame
+    url: https://petercorke.com/resources/3d-frame
+    note: a printable frame to fold
+- heading: Lie groups
+  items:
+  - title: 'Pieter van Goor: Lie groups'
+    url: https://pvangoor.github.io
+    note: blog posts on SE(2), SL(2), quaternions as a Lie group and equivariant systems
+  - title: Lie groups for 2D and 3D transformations
+    url: https://www.ethaneade.com/latex2html/lie/lie.html
+    note: Ethan Eade; also as PDF, https://www.ethaneade.com/lie.pdf
+- heading: Software
+  items:
+  - title: manif
+    url: https://artivis.github.io/manif
+    note: Lie theory library for state estimation (C++ and Python)
+  - title: tf2
+    url: https://wiki.ros.org/tf2
+    note: coordinate frame transforms in ROS
+  - title: Sophus
+    url: https://github.com/strasdat/Sophus
+    note: Lie groups for 2D and 3D geometry in C++

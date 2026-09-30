@@ -1,0 +1,40 @@
+topic: visual-servoing
+groups:
+- heading: Publications
+  items:
+  - title: A tutorial on visual servo control
+    url: https://doi.org/10.1109/70.538972
+    note: Hutchinson, Hager & Corke (1996)
+  - title: 'Visual Control of Robots: High-Performance Visual Servoing'
+    url: https://eprints.qut.edu.au/34313/
+    note: 1996, Peter Corke. Now out of print but available for free as an ePrint
+  - title: PhD thesis of Peter Corke
+    url: https://minerva-access.unimelb.edu.au/handle/11343/38847
+    note: 1994, dynamics and control of vision-based control systems
+  - title: PhD thesis of Francois Chaumette
+    url: https://www.irisa.fr/lagadic/publi/publi/Chaumette90b-eng.html
+    note: 1990 (in French). Describes image task-space control and use of features such as points, lines
+      and ellipses
+  - title: 'Visual servo control I: Basic approaches'
+    url: https://doi.org/10.1109/MRA.2006.250573
+    note: Chaumette, Hutchinson (2006)
+  - title: Potential problems of stability and convergence in image-based and position-based visual
+    url: https://hal.inria.fr/docs/00/35/25/53/PDF/1998_lncis_chaumette.pdf
+    note: Chaumette (1998). This paper describes the IBVS failure mode where the camera retreats to infinity
+- heading: Videos
+  items:
+  - title: Visual servoing, IBVS, PBVS, 2.5D
+    url: https://www.irisa.fr/lagadic/visp/visual-servoing.html
+    note: INRIA lagadic
+- heading: Software
+  items:
+  - title: Epipolar geometry toolbox
+    url: http://egt.dii.unisi.it/
+  - title: Visual servoing toolbox
+    url: https://sourceforge.net/projects/vstoolbox/
+  - title: ViSP for Visual Servoing
+    url: https://www.irisa.fr/lagadic/pdf/2005_ieee_ram_marchand.pdf
+  - title: Visual servoing simulator
+    url: https://web.archive.org/web/20161210144239/http://www.robot.uji.es:80/research/projects/javiss
+    note: (Java)
+    archived: true
