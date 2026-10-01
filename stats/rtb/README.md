@@ -1,13 +1,14 @@
 # Robotics Toolbox for MATLAB: usage
 
-Totals from petercorke.com/RTB/, the toolbox's old download area. See
+Totals from petercorke.com/RTB/, copied here weekly by `.github/workflows/rtb-stats.yml`, the toolbox's old download area. See
 `wordpress/rtb/README.md` for how they are made. No IP addresses or organisation names
 are kept here.
 
 | file | contents |
 |---|---|
 | `monthly.csv` | month, event, country, detail, count, users |
-| `daily.csv` | date, event, country, detail, count, users (from September 2026) |
+| `daily.csv` | date, event, country, detail, count, users (from September 2026; finished months only) |
+| `latest.json` | the current summary from `/RTB/stats.php`: this month and last by country and by MATLAB release or file, the last 60 days day by day, and guestbook entries by country for the last 12 months. Read by the weekly ecosystem report |
 | `awstats-rtb-2017-2026.csv` | month, version_checks, landing_page, guestbook_submit, zip_download: requests per month from SiteGround's AWStats summaries |
 
 In `monthly.csv` and `daily.csv`:

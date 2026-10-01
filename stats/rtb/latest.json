@@ -1,0 +1,1306 @@
+{
+    "generated": "2026-10-01T15:15Z",
+    "about": "Robotics Toolbox for MATLAB usage. \"check\": RTB 9.10, 10.0 or 10.1 started in MATLAB (detail = MATLAB release). \"download\": a zip from petercorke.com/RTB/ (detail = file). users = distinct IP addresses in the period, counted with a monthly key and never stored.",
+    "countries": "ISO 3166 alpha-2; IP to country data by DB-IP (https://db-ip.com), CC BY 4.0",
+    "geo": "geo: current",
+    "check": {
+        "months": {
+            "2026-09": {
+                "by_detail": {
+                    "R2026a": {
+                        "count": 555,
+                        "users": 83
+                    },
+                    "R2025b": {
+                        "count": 764,
+                        "users": 68
+                    },
+                    "R2023a": {
+                        "count": 396,
+                        "users": 50
+                    },
+                    "R2022b": {
+                        "count": 610,
+                        "users": 44
+                    },
+                    "R2024a": {
+                        "count": 242,
+                        "users": 42
+                    },
+                    "R2025a": {
+                        "count": 155,
+                        "users": 37
+                    },
+                    "R2024b": {
+                        "count": 302,
+                        "users": 34
+                    },
+                    "R2017b": {
+                        "count": 101,
+                        "users": 26
+                    },
+                    "R2023b": {
+                        "count": 154,
+                        "users": 23
+                    },
+                    "R2016a": {
+                        "count": 109,
+                        "users": 18
+                    },
+                    "R2021b": {
+                        "count": 43,
+                        "users": 13
+                    },
+                    "R2014a": {
+                        "count": 124,
+                        "users": 10
+                    },
+                    "unknown": {
+                        "count": 12,
+                        "users": 9
+                    },
+                    "R2022a": {
+                        "count": 27,
+                        "users": 8
+                    },
+                    "R2015b": {
+                        "count": 56,
+                        "users": 7
+                    },
+                    "R2019a": {
+                        "count": 31,
+                        "users": 6
+                    },
+                    "R2018b": {
+                        "count": 32,
+                        "users": 5
+                    },
+                    "R2019b": {
+                        "count": 12,
+                        "users": 5
+                    },
+                    "R2020a": {
+                        "count": 15,
+                        "users": 4
+                    },
+                    "R2021a": {
+                        "count": 12,
+                        "users": 4
+                    },
+                    "R2013a": {
+                        "count": 6,
+                        "users": 2
+                    },
+                    "R2014b": {
+                        "count": 5,
+                        "users": 2
+                    },
+                    "R2016b": {
+                        "count": 4,
+                        "users": 2
+                    },
+                    "R2012b": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "R2018a": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "R2020b": {
+                        "count": 4,
+                        "users": 1
+                    }
+                },
+                "by_country": {
+                    "CN": {
+                        "count": 1441,
+                        "users": 222
+                    },
+                    "CO": {
+                        "count": 386,
+                        "users": 46
+                    },
+                    "TW": {
+                        "count": 477,
+                        "users": 46
+                    },
+                    "US": {
+                        "count": 374,
+                        "users": 42
+                    },
+                    "MX": {
+                        "count": 300,
+                        "users": 39
+                    },
+                    "LB": {
+                        "count": 68,
+                        "users": 11
+                    },
+                    "VN": {
+                        "count": 48,
+                        "users": 10
+                    },
+                    "KR": {
+                        "count": 157,
+                        "users": 9
+                    },
+                    "SE": {
+                        "count": 38,
+                        "users": 8
+                    },
+                    "HK": {
+                        "count": 99,
+                        "users": 6
+                    },
+                    "PK": {
+                        "count": 10,
+                        "users": 5
+                    },
+                    "YE": {
+                        "count": 11,
+                        "users": 5
+                    },
+                    "IE": {
+                        "count": 53,
+                        "users": 4
+                    },
+                    "JP": {
+                        "count": 37,
+                        "users": 4
+                    },
+                    "NO": {
+                        "count": 8,
+                        "users": 4
+                    },
+                    "CL": {
+                        "count": 9,
+                        "users": 3
+                    },
+                    "PL": {
+                        "count": 38,
+                        "users": 3
+                    },
+                    "AR": {
+                        "count": 16,
+                        "users": 2
+                    },
+                    "DE": {
+                        "count": 8,
+                        "users": 2
+                    },
+                    "FI": {
+                        "count": 14,
+                        "users": 2
+                    },
+                    "OM": {
+                        "count": 9,
+                        "users": 2
+                    },
+                    "PH": {
+                        "count": 4,
+                        "users": 2
+                    },
+                    "TN": {
+                        "count": 110,
+                        "users": 2
+                    },
+                    "BR": {
+                        "count": 22,
+                        "users": 1
+                    },
+                    "CA": {
+                        "count": 4,
+                        "users": 1
+                    },
+                    "ES": {
+                        "count": 4,
+                        "users": 1
+                    },
+                    "GB": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "KW": {
+                        "count": 4,
+                        "users": 1
+                    },
+                    "MA": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "MG": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "MY": {
+                        "count": 3,
+                        "users": 1
+                    },
+                    "PE": {
+                        "count": 4,
+                        "users": 1
+                    },
+                    "RU": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "SG": {
+                        "count": 4,
+                        "users": 1
+                    },
+                    "UA": {
+                        "count": 8,
+                        "users": 1
+                    }
+                }
+            },
+            "2026-10": {
+                "by_detail": {
+                    "R2022b": {
+                        "count": 11,
+                        "users": 2
+                    },
+                    "R2025b": {
+                        "count": 17,
+                        "users": 1
+                    }
+                },
+                "by_country": {
+                    "CN": {
+                        "count": 17,
+                        "users": 1
+                    },
+                    "JP": {
+                        "count": 8,
+                        "users": 1
+                    },
+                    "TW": {
+                        "count": 3,
+                        "users": 1
+                    }
+                }
+            }
+        },
+        "daily": {
+            "2026-09-01": {
+                "count": 38,
+                "users": 11
+            },
+            "2026-09-02": {
+                "count": 44,
+                "users": 12
+            },
+            "2026-09-03": {
+                "count": 104,
+                "users": 16
+            },
+            "2026-09-04": {
+                "count": 116,
+                "users": 18
+            },
+            "2026-09-05": {
+                "count": 32,
+                "users": 7
+            },
+            "2026-09-06": {
+                "count": 8,
+                "users": 4
+            },
+            "2026-09-07": {
+                "count": 197,
+                "users": 50
+            },
+            "2026-09-08": {
+                "count": 201,
+                "users": 32
+            },
+            "2026-09-09": {
+                "count": 120,
+                "users": 30
+            },
+            "2026-09-10": {
+                "count": 103,
+                "users": 27
+            },
+            "2026-09-11": {
+                "count": 127,
+                "users": 25
+            },
+            "2026-09-12": {
+                "count": 78,
+                "users": 17
+            },
+            "2026-09-13": {
+                "count": 31,
+                "users": 13
+            },
+            "2026-09-14": {
+                "count": 196,
+                "users": 41
+            },
+            "2026-09-15": {
+                "count": 118,
+                "users": 21
+            },
+            "2026-09-16": {
+                "count": 131,
+                "users": 33
+            },
+            "2026-09-17": {
+                "count": 292,
+                "users": 42
+            },
+            "2026-09-18": {
+                "count": 255,
+                "users": 37
+            },
+            "2026-09-19": {
+                "count": 125,
+                "users": 18
+            },
+            "2026-09-20": {
+                "count": 63,
+                "users": 7
+            },
+            "2026-09-21": {
+                "count": 290,
+                "users": 42
+            },
+            "2026-09-22": {
+                "count": 104,
+                "users": 25
+            },
+            "2026-09-23": {
+                "count": 120,
+                "users": 16
+            },
+            "2026-09-24": {
+                "count": 89,
+                "users": 15
+            },
+            "2026-09-25": {
+                "count": 77,
+                "users": 11
+            },
+            "2026-09-26": {
+                "count": 137,
+                "users": 16
+            },
+            "2026-09-27": {
+                "count": 83,
+                "users": 20
+            },
+            "2026-09-28": {
+                "count": 225,
+                "users": 28
+            },
+            "2026-09-29": {
+                "count": 97,
+                "users": 18
+            },
+            "2026-09-30": {
+                "count": 173,
+                "users": 27
+            },
+            "2026-10-01": {
+                "count": 28,
+                "users": 3
+            }
+        },
+        "monthly_totals": {
+            "2026-09": {
+                "count": 3774,
+                "users": 491
+            },
+            "2026-10": {
+                "count": 28,
+                "users": 3
+            }
+        }
+    },
+    "download": {
+        "months": {
+            "2026-09": {
+                "by_detail": {
+                    "current/robot-9.10.zip": {
+                        "count": 34,
+                        "users": 34
+                    },
+                    "current/robot-9.9.zip": {
+                        "count": 14,
+                        "users": 14
+                    },
+                    "current/robot-9.3.zip": {
+                        "count": 13,
+                        "users": 13
+                    },
+                    "r8/robot.zip": {
+                        "count": 6,
+                        "users": 6
+                    },
+                    "current/robot-9.4.zip": {
+                        "count": 3,
+                        "users": 3
+                    },
+                    "current/robot-9.6.zip": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "current/robot-9.8.zip": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "r7/robot.zip": {
+                        "count": 1,
+                        "users": 1
+                    }
+                },
+                "by_country": {
+                    "US": {
+                        "count": 17,
+                        "users": 14
+                    },
+                    "CN": {
+                        "count": 15,
+                        "users": 9
+                    },
+                    "FI": {
+                        "count": 7,
+                        "users": 5
+                    },
+                    "CL": {
+                        "count": 4,
+                        "users": 3
+                    },
+                    "CO": {
+                        "count": 3,
+                        "users": 3
+                    },
+                    "BR": {
+                        "count": 3,
+                        "users": 2
+                    },
+                    "PE": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "AR": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "BE": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "CA": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "DK": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "DO": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "DZ": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "EG": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "HK": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "IE": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "JP": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "LK": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "NL": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "PT": {
+                        "count": 3,
+                        "users": 1
+                    },
+                    "QA": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "VN": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "YE": {
+                        "count": 1,
+                        "users": 1
+                    }
+                }
+            },
+            "2026-10": {
+                "by_detail": {
+                    "current/robot-9.10.zip": {
+                        "count": 5,
+                        "users": 5
+                    },
+                    "r8/robot.zip": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "other": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "r4/robot.zip": {
+                        "count": 1,
+                        "users": 1
+                    }
+                },
+                "by_country": {
+                    "US": {
+                        "count": 7,
+                        "users": 4
+                    },
+                    "SG": {
+                        "count": 2,
+                        "users": 1
+                    }
+                }
+            }
+        },
+        "daily": {
+            "2026-10-01": {
+                "count": 9,
+                "users": 5
+            }
+        },
+        "monthly_totals": {
+            "2012-11": {
+                "count": 248,
+                "users": 51
+            },
+            "2013-11": {
+                "count": 13702,
+                "users": 1465
+            },
+            "2013-12": {
+                "count": 10175,
+                "users": 1216
+            },
+            "2014-01": {
+                "count": 15457,
+                "users": 1324
+            },
+            "2014-02": {
+                "count": 8763,
+                "users": 1456
+            },
+            "2014-03": {
+                "count": 17802,
+                "users": 1978
+            },
+            "2014-04": {
+                "count": 15727,
+                "users": 1729
+            },
+            "2014-05": {
+                "count": 37211,
+                "users": 1571
+            },
+            "2014-06": {
+                "count": 14727,
+                "users": 1173
+            },
+            "2014-07": {
+                "count": 9269,
+                "users": 916
+            },
+            "2014-08": {
+                "count": 9293,
+                "users": 1093
+            },
+            "2014-09": {
+                "count": 13005,
+                "users": 1547
+            },
+            "2014-10": {
+                "count": 29708,
+                "users": 1897
+            },
+            "2014-11": {
+                "count": 17586,
+                "users": 1986
+            },
+            "2014-12": {
+                "count": 14802,
+                "users": 1414
+            },
+            "2015-01": {
+                "count": 21077,
+                "users": 1750
+            },
+            "2015-02": {
+                "count": 17994,
+                "users": 1822
+            },
+            "2015-03": {
+                "count": 31887,
+                "users": 2357
+            },
+            "2015-04": {
+                "count": 32304,
+                "users": 2263
+            },
+            "2015-05": {
+                "count": 30744,
+                "users": 2003
+            },
+            "2015-06": {
+                "count": 19845,
+                "users": 1505
+            },
+            "2015-07": {
+                "count": 12613,
+                "users": 1078
+            },
+            "2015-08": {
+                "count": 11992,
+                "users": 1260
+            },
+            "2015-09": {
+                "count": 16318,
+                "users": 2187
+            },
+            "2015-10": {
+                "count": 20038,
+                "users": 2487
+            },
+            "2015-11": {
+                "count": 18428,
+                "users": 2306
+            },
+            "2015-12": {
+                "count": 19622,
+                "users": 1727
+            },
+            "2016-01": {
+                "count": 24624,
+                "users": 1776
+            },
+            "2016-02": {
+                "count": 20996,
+                "users": 2124
+            },
+            "2016-03": {
+                "count": 44668,
+                "users": 2419
+            },
+            "2016-04": {
+                "count": 33344,
+                "users": 2737
+            },
+            "2016-05": {
+                "count": 30520,
+                "users": 2167
+            },
+            "2016-06": {
+                "count": 17666,
+                "users": 1722
+            },
+            "2016-07": {
+                "count": 20338,
+                "users": 1204
+            },
+            "2016-08": {
+                "count": 19145,
+                "users": 1694
+            },
+            "2016-09": {
+                "count": 147973,
+                "users": 2265
+            },
+            "2016-10": {
+                "count": 43034,
+                "users": 2934
+            },
+            "2016-11": {
+                "count": 42825,
+                "users": 2843
+            },
+            "2016-12": {
+                "count": 25893,
+                "users": 1579
+            },
+            "2017-01": {
+                "count": 5000,
+                "users": 1586
+            },
+            "2017-02": {
+                "count": 5574,
+                "users": 2318
+            },
+            "2017-03": {
+                "count": 7275,
+                "users": 2654
+            },
+            "2017-04": {
+                "count": 5705,
+                "users": 2143
+            },
+            "2017-05": {
+                "count": 5940,
+                "users": 2402
+            },
+            "2017-06": {
+                "count": 1739,
+                "users": 810
+            },
+            "2017-07": {
+                "count": 531,
+                "users": 189
+            },
+            "2017-08": {
+                "count": 468,
+                "users": 164
+            },
+            "2017-09": {
+                "count": 693,
+                "users": 255
+            },
+            "2017-10": {
+                "count": 1201,
+                "users": 509
+            },
+            "2017-11": {
+                "count": 1022,
+                "users": 462
+            },
+            "2017-12": {
+                "count": 694,
+                "users": 310
+            },
+            "2018-01": {
+                "count": 756,
+                "users": 292
+            },
+            "2018-02": {
+                "count": 448,
+                "users": 256
+            },
+            "2018-03": {
+                "count": 550,
+                "users": 291
+            },
+            "2018-04": {
+                "count": 572,
+                "users": 349
+            },
+            "2018-05": {
+                "count": 523,
+                "users": 283
+            },
+            "2018-06": {
+                "count": 484,
+                "users": 253
+            },
+            "2018-07": {
+                "count": 324,
+                "users": 159
+            },
+            "2018-08": {
+                "count": 383,
+                "users": 203
+            },
+            "2018-09": {
+                "count": 373,
+                "users": 259
+            },
+            "2018-10": {
+                "count": 780,
+                "users": 431
+            },
+            "2018-11": {
+                "count": 668,
+                "users": 415
+            },
+            "2018-12": {
+                "count": 400,
+                "users": 233
+            },
+            "2019-01": {
+                "count": 504,
+                "users": 333
+            },
+            "2019-02": {
+                "count": 536,
+                "users": 352
+            },
+            "2019-03": {
+                "count": 560,
+                "users": 388
+            },
+            "2019-04": {
+                "count": 598,
+                "users": 363
+            },
+            "2019-05": {
+                "count": 795,
+                "users": 419
+            },
+            "2019-06": {
+                "count": 544,
+                "users": 292
+            },
+            "2019-07": {
+                "count": 291,
+                "users": 155
+            },
+            "2019-08": {
+                "count": 297,
+                "users": 145
+            },
+            "2019-09": {
+                "count": 365,
+                "users": 216
+            },
+            "2019-10": {
+                "count": 421,
+                "users": 284
+            },
+            "2019-11": {
+                "count": 346,
+                "users": 238
+            },
+            "2019-12": {
+                "count": 261,
+                "users": 164
+            },
+            "2020-01": {
+                "count": 272,
+                "users": 139
+            },
+            "2020-02": {
+                "count": 469,
+                "users": 205
+            },
+            "2020-03": {
+                "count": 1131,
+                "users": 624
+            },
+            "2020-04": {
+                "count": 1283,
+                "users": 734
+            },
+            "2020-05": {
+                "count": 1001,
+                "users": 553
+            },
+            "2020-06": {
+                "count": 679,
+                "users": 419
+            },
+            "2020-07": {
+                "count": 1034,
+                "users": 321
+            },
+            "2020-08": {
+                "count": 1015,
+                "users": 242
+            },
+            "2020-09": {
+                "count": 1696,
+                "users": 398
+            },
+            "2020-10": {
+                "count": 1434,
+                "users": 363
+            },
+            "2020-11": {
+                "count": 1469,
+                "users": 355
+            },
+            "2020-12": {
+                "count": 1440,
+                "users": 332
+            },
+            "2021-01": {
+                "count": 1005,
+                "users": 226
+            },
+            "2021-02": {
+                "count": 230,
+                "users": 63
+            },
+            "2021-03": {
+                "count": 16,
+                "users": 9
+            },
+            "2021-04": {
+                "count": 10,
+                "users": 6
+            },
+            "2021-05": {
+                "count": 9,
+                "users": 7
+            },
+            "2021-06": {
+                "count": 1,
+                "users": 1
+            },
+            "2021-07": {
+                "count": 9,
+                "users": 3
+            },
+            "2021-08": {
+                "count": 5,
+                "users": 2
+            },
+            "2021-09": {
+                "count": 1,
+                "users": 1
+            },
+            "2021-10": {
+                "count": 10,
+                "users": 3
+            },
+            "2021-11": {
+                "count": 7,
+                "users": 4
+            },
+            "2022-01": {
+                "count": 1,
+                "users": 1
+            },
+            "2022-02": {
+                "count": 12,
+                "users": 3
+            },
+            "2022-03": {
+                "count": 8,
+                "users": 5
+            },
+            "2022-04": {
+                "count": 5,
+                "users": 3
+            },
+            "2022-05": {
+                "count": 8,
+                "users": 3
+            },
+            "2022-06": {
+                "count": 1,
+                "users": 1
+            },
+            "2022-08": {
+                "count": 34,
+                "users": 25
+            },
+            "2022-09": {
+                "count": 103,
+                "users": 72
+            },
+            "2022-10": {
+                "count": 120,
+                "users": 75
+            },
+            "2022-11": {
+                "count": 107,
+                "users": 71
+            },
+            "2022-12": {
+                "count": 116,
+                "users": 63
+            },
+            "2023-01": {
+                "count": 93,
+                "users": 58
+            },
+            "2023-02": {
+                "count": 104,
+                "users": 60
+            },
+            "2023-03": {
+                "count": 118,
+                "users": 71
+            },
+            "2023-04": {
+                "count": 114,
+                "users": 64
+            },
+            "2023-05": {
+                "count": 100,
+                "users": 65
+            },
+            "2023-06": {
+                "count": 82,
+                "users": 50
+            },
+            "2023-07": {
+                "count": 70,
+                "users": 42
+            },
+            "2023-08": {
+                "count": 66,
+                "users": 43
+            },
+            "2023-09": {
+                "count": 93,
+                "users": 62
+            },
+            "2023-10": {
+                "count": 111,
+                "users": 66
+            },
+            "2023-11": {
+                "count": 106,
+                "users": 65
+            },
+            "2023-12": {
+                "count": 90,
+                "users": 52
+            },
+            "2024-01": {
+                "count": 100,
+                "users": 56
+            },
+            "2024-02": {
+                "count": 82,
+                "users": 46
+            },
+            "2024-03": {
+                "count": 85,
+                "users": 55
+            },
+            "2024-04": {
+                "count": 117,
+                "users": 72
+            },
+            "2024-05": {
+                "count": 115,
+                "users": 62
+            },
+            "2024-06": {
+                "count": 50,
+                "users": 34
+            },
+            "2024-07": {
+                "count": 56,
+                "users": 31
+            },
+            "2024-08": {
+                "count": 74,
+                "users": 48
+            },
+            "2024-09": {
+                "count": 85,
+                "users": 51
+            },
+            "2024-10": {
+                "count": 84,
+                "users": 57
+            },
+            "2024-11": {
+                "count": 92,
+                "users": 51
+            },
+            "2024-12": {
+                "count": 71,
+                "users": 44
+            },
+            "2025-01": {
+                "count": 62,
+                "users": 44
+            },
+            "2025-02": {
+                "count": 69,
+                "users": 45
+            },
+            "2025-03": {
+                "count": 90,
+                "users": 52
+            },
+            "2025-04": {
+                "count": 88,
+                "users": 49
+            },
+            "2025-05": {
+                "count": 100,
+                "users": 44
+            },
+            "2025-06": {
+                "count": 63,
+                "users": 45
+            },
+            "2025-07": {
+                "count": 48,
+                "users": 28
+            },
+            "2025-08": {
+                "count": 36,
+                "users": 19
+            },
+            "2025-09": {
+                "count": 59,
+                "users": 41
+            },
+            "2025-10": {
+                "count": 70,
+                "users": 47
+            },
+            "2025-11": {
+                "count": 64,
+                "users": 47
+            },
+            "2025-12": {
+                "count": 56,
+                "users": 37
+            },
+            "2026-01": {
+                "count": 61,
+                "users": 41
+            },
+            "2026-02": {
+                "count": 77,
+                "users": 43
+            },
+            "2026-03": {
+                "count": 82,
+                "users": 53
+            },
+            "2026-04": {
+                "count": 130,
+                "users": 70
+            },
+            "2026-05": {
+                "count": 92,
+                "users": 62
+            },
+            "2026-06": {
+                "count": 79,
+                "users": 59
+            },
+            "2026-07": {
+                "count": 44,
+                "users": 32
+            },
+            "2026-08": {
+                "count": 33,
+                "users": 20
+            },
+            "2026-09": {
+                "count": 75,
+                "users": 54
+            },
+            "2026-10": {
+                "count": 9,
+                "users": 5
+            }
+        }
+    },
+    "guestbook": {
+        "months": {
+            "2025-11": 97,
+            "2025-12": 70,
+            "2026-01": 93,
+            "2026-02": 109,
+            "2026-03": 116,
+            "2026-04": 156,
+            "2026-05": 151,
+            "2026-06": 105,
+            "2026-07": 53,
+            "2026-08": 29,
+            "2026-09": 125,
+            "2026-10": 4
+        },
+        "by_country": {
+            "China": 322,
+            "United States": 186,
+            "Spain": 81,
+            "United Kingdom": 61,
+            "Colombia": 33,
+            "Egypt": 28,
+            "India": 28,
+            "Brazil": 24,
+            "Mexico": 24,
+            "Finland": 20,
+            "Japan": 20,
+            "Canada": 18,
+            "Italy": 16,
+            "Poland": 14,
+            "Peru": 12,
+            "Algeria": 12,
+            "Ecuador": 11,
+            "Australia": 11,
+            "Germany": 10,
+            "Yemen": 8,
+            "South Korea": 8,
+            "France": 8,
+            "Sri Lanka": 8,
+            "Netherlands": 7,
+            "Sweden": 7,
+            "Chile": 7,
+            "Turkey": 7,
+            "Malaysia": 7,
+            "Pakistan": 7,
+            "Hong Kong": 6,
+            "Vietnam": 6,
+            "Norway": 5,
+            "Bolivia": 5,
+            "Greece": 4,
+            "Portugal": 4,
+            "Taiwan": 4,
+            "Argentina": 3,
+            "Ethiopia": 3,
+            "Thailand": 3,
+            "Iran": 3,
+            "Yugoslavia": 3,
+            "Morocco": 3,
+            "Belgium": 3,
+            "Tunisia": 3,
+            "Indonesia": 3,
+            "Ukraine": 2,
+            "Saudi Arabia": 2,
+            "Russia": 2,
+            "Angola": 2,
+            "Vanuatu": 2,
+            "Jordan": 2,
+            "Philippines": 2,
+            "Albania": 2,
+            "Qatar": 2,
+            "Guatemala": 2,
+            "Antarctica": 2,
+            "Singapore": 2,
+            "Ireland": 2,
+            "Anguill": 1,
+            "Afghanistan": 1,
+            "Slovenia": 1,
+            "Austria": 1,
+            "Armenia": 1,
+            "Andorra": 1,
+            "Romania": 1,
+            "Hungary": 1,
+            "Cyprus": 1,
+            "Nicaragua": 1,
+            "Mongolia": 1,
+            "Israel": 1,
+            "American Samoa": 1,
+            "Denmark": 1,
+            "South Africa": 1,
+            "Puerto Rico": 1
+        }
+    }
+}

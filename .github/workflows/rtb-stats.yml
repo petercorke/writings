@@ -1,5 +1,6 @@
 # Copy the MATLAB Robotics Toolbox usage totals from petercorke.com into stats/rtb/ once a
-# month (and on demand), so the record is kept in git as well as on the server.
+# week (and on demand), so the record is kept in git as well as on the server, and the
+# weekly RVC ecosystem report (which runs an hour later) can read stats/rtb/latest.json.
 #
 # The totals are made by wordpress/rtb/telemetry.php on petercorke.com: version checks
 # made by RTB 9.10-10.1 at MATLAB startup, and downloads from the old /RTB/ page, by
@@ -8,7 +9,7 @@ name: RTB usage snapshot
 
 on:
   schedule:
-    - cron: "0 21 2 * *"   # 2nd of the month, 21:00 UTC, once the previous month is totalled
+    - cron: "0 22 * * 5"   # Fridays 22:00 UTC, an hour before the weekly ecosystem report
   workflow_dispatch:
 
 permissions:
@@ -28,12 +29,14 @@ jobs:
           base="https://petercorke.com/RTB/stats.php"
           curl -fsS -A "petercorke/writings rtb-stats" "$base?csv=monthly&t=$(date +%s)" -o stats/rtb/monthly.csv
           curl -fsS -A "petercorke/writings rtb-stats" "$base?csv=daily&t=$(date +%s)" -o stats/rtb/daily.csv
+          curl -fsS -A "petercorke/writings rtb-stats" "$base?t=$(date +%s)" -o stats/rtb/latest.json
+          python3 -c 'import json; d = json.load(open("stats/rtb/latest.json")); assert "check" in d'
           head -1 stats/rtb/monthly.csv | grep -q '^month,event,country,detail,count,users$'
           head -1 stats/rtb/daily.csv | grep -q '^date,event,country,detail,count,users$'
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add stats/rtb/monthly.csv stats/rtb/daily.csv
-          git diff --cached --quiet || git commit -m "RTB usage: monthly snapshot of stats/rtb/"
+          git add stats/rtb/monthly.csv stats/rtb/daily.csv stats/rtb/latest.json
+          git diff --cached --quiet || git commit -m "RTB usage: weekly snapshot of stats/rtb/"
           git push
