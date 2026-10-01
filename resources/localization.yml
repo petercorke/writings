@@ -4,8 +4,8 @@ groups:
   items:
   - title: Navigating Mobile Robots (Where am I?, 1996)
     url: https://web.archive.org/web/20230117191624/http://www-personal.umich.edu/~johannb/Papers/pos96rep.pdf
-    note: Borenstein, Everett and Feng, 1996 (free PDF); the 1994 version is in Michigan's Deep Blue repository,
-      https://hdl.handle.net/2027.42/4856
+    note: Borenstein, Everett and Feng, 1996 (free PDF); the 1994 version is in [Michigan's Deep Blue
+      repository](https://hdl.handle.net/2027.42/4856)
     archived: true
   - title: RatSLAM
     url: https://github.com/davidmball/ratSLAM

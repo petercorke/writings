@@ -48,6 +48,25 @@ function rvc_resources_get( string $topic ): ?array {
 }
 
 /**
+ * A note as HTML: escaped text, with any Markdown-style [text](url) turned into a link.
+ *
+ * @param string $note the note from the topic file
+ * @return string HTML
+ */
+function rvc_resources_note( string $note ): string {
+	$out = '';
+	$pos = 0;
+	if ( preg_match_all( '/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/', $note, $m, PREG_OFFSET_CAPTURE | PREG_SET_ORDER ) ) {
+		foreach ( $m as $link ) {
+			$out .= esc_html( substr( $note, $pos, $link[0][1] - $pos ) );
+			$out .= sprintf( '<a href="%s" target="_blank" rel="noopener">%s</a>', esc_url( $link[2][0] ), esc_html( $link[1][0] ) );
+			$pos  = $link[0][1] + strlen( $link[0][0] );
+		}
+	}
+	return $out . esc_html( substr( $note, $pos ) );
+}
+
+/**
  * The [rvc_resources] shortcode.
  *
  * @param array|string $atts shortcode attributes
@@ -73,7 +92,7 @@ function rvc_resources_shortcode( $atts ): string {
 				esc_url( $item['url'] ),
 				esc_html( $item['title'] ),
 				empty( $item['archived'] ) ? '' : ' (archived)',
-				empty( $item['note'] ) ? '' : ', ' . esc_html( $item['note'] )
+				empty( $item['note'] ) ? '' : ', ' . rvc_resources_note( $item['note'] )
 			);
 		}
 		$out .= "</ul>\n";

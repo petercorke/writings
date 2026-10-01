@@ -24,7 +24,9 @@ groups:
         archived: true
 ```
 
-- `title` and `url` are required; `note` is a short phrase shown after the link.
+- `title` and `url` are required; `note` is a short phrase shown after the link. A note can
+  contain links written as `[text](url)`, e.g. `also as [PDF](https://example.org/x.pdf)`;
+  the link text is shown, never a bare address (the build rejects a bare URL in a note).
 - `archived: true` marks an Internet Archive copy of a page that no longer exists; it is
   shown with "(archived)".
 - Prefer a DOI (`https://doi.org/...`) for published papers, and https addresses.

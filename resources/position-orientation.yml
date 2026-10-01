@@ -45,7 +45,7 @@ groups:
     note: blog posts on SE(2), SL(2), quaternions as a Lie group and equivariant systems
   - title: Lie groups for 2D and 3D transformations
     url: https://www.ethaneade.com/latex2html/lie/lie.html
-    note: Ethan Eade; also as PDF, https://www.ethaneade.com/lie.pdf
+    note: Ethan Eade; also as [PDF](https://www.ethaneade.com/lie.pdf)
 - heading: Software
   items:
   - title: manif

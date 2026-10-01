@@ -25,7 +25,7 @@ groups:
   items:
   - title: Camera Calibration Toolbox for Matlab
     url: https://robots.stanford.edu/cs223b04/JeanYvesCalib/
-    note: Jean-Yves Bouguet; also archived permanently at CaltechDATA, https://data.caltech.edu/records/jx9cx-fdh55
+    note: Jean-Yves Bouguet; also archived permanently at [CaltechDATA](https://data.caltech.edu/records/jx9cx-fdh55)
   - title: Wide angle camera calibration
     url: https://sites.google.com/site/scarabotix/ocamcalib-omnidirectional-camera-calibration-toolbox-for-matlab
     note: Davide Scaramuzza

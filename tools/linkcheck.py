@@ -27,6 +27,7 @@ import argparse
 import concurrent.futures
 import datetime
 import json
+import re
 import sys
 import time
 import urllib.error
@@ -113,6 +114,9 @@ def main() -> None:
                 if not it.get("archived"):
                     items.append({"topic": tid, "topic_title": meta["title"], "heading": g["heading"],
                                   "title": it["title"], "url": it["url"]})
+                for text, url in re.findall(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", it.get("note", "")):
+                    items.append({"topic": tid, "topic_title": meta["title"], "heading": g["heading"],
+                                  "title": f"{it['title']}: {text}", "url": url})
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
         problems = [p for p in pool.map(check, items) if p]
     # carry forward when each problem was first seen; hold back first-time non-answers

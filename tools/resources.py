@@ -14,11 +14,13 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
 
+NOTE_LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")  # [text](url) in a note
 EDITIONS = {"rvc3p": "RVC3 Python", "rvc3m": "RVC3 MATLAB", "rvc2": "RVC2", "rvc1": "RVC1"}
 ITEM_KEYS = {"title", "url", "note", "archived"}
 
@@ -55,6 +57,8 @@ def load_topics(folder: Path) -> list[Topic]:
             for it in g["items"]:
                 if not it.get("title") or not it.get("url"):
                     raise ValueError(f"resources/{path.name}: item without title or url under {g['heading']!r}")
+                if re.search(r"https?://", NOTE_LINK.sub("", it.get("note", ""))):
+                    raise ValueError(f"resources/{path.name}: bare URL in the note of {it['title']!r}; write [text](url)")
                 if extra := set(it) - ITEM_KEYS:
                     raise ValueError(f"resources/{path.name}: unknown field(s) {sorted(extra)} in {it['title']!r}")
         chapters = {ed: meta[ed] for ed in EDITIONS if ed in meta}
@@ -63,6 +67,17 @@ def load_topics(folder: Path) -> list[Topic]:
     if unlisted:
         raise ValueError(f"resources: {sorted(unlisted)} not in topics.yml")
     return topics
+
+
+def note_html(note: str) -> str:
+    """A note as HTML: escaped text, with any ``[text](url)`` turned into a link."""
+    out, pos = [], 0
+    for m in NOTE_LINK.finditer(note):
+        out.append(html.escape(note[pos:m.start()]))
+        out.append(f'<a href="{html.escape(m[2])}">{html.escape(m[1])}</a>')
+        pos = m.end()
+    out.append(html.escape(note[pos:]))
+    return "".join(out)
 
 
 def chapter_line(topic: Topic) -> str:
@@ -89,7 +104,7 @@ def topic_body(topic: Topic) -> str:
         out.append(f"<section><h2>{esc(g['heading'])}</h2><ul class=\"res\">")
         for it in g["items"]:
             archived = ' <span class="archived">(archived)</span>' if it.get("archived") else ""
-            note = f' <span class="note">{esc(it["note"])}</span>' if it.get("note") else ""
+            note = f' <span class="note">{note_html(it["note"])}</span>' if it.get("note") else ""
             out.append(f'<li><a href="{esc(it["url"])}">{esc(it["title"])}</a>{archived}{note}</li>')
         out.append("</ul></section>")
     return "\n".join(out)
