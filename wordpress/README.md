@@ -12,5 +12,8 @@ them to the server; the copies here are the masters.
 - `mathjax-uncombined.php`: a must-use plugin that keeps MathJax out of SiteGround Speed
   Optimizer's combined JavaScript, where it can't load its configuration and equations
   show as raw LaTeX.
+- `rtb/`: the old Robotics Toolbox download area, petercorke.com/RTB/: the download
+  script, the version check answered by RTB 9.10–10.1, and usage counting by country
+  (see `rtb/README.md`).
 - `llms.txt`: petercorke.com's `/llms.txt`, a guide for AI assistants to the books,
   toolboxes and this site. A static file in the site root.

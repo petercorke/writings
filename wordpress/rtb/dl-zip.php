@@ -3,6 +3,7 @@
 // Invoked as dl-zip.php?file=current/robot-<version>.zip, or dl-zip.php?ver=r<N> for
 // the releases in r4, r6, r7, r8. Only those files can be served: until 1 Oct 2026 any
 // path or URL was passed straight to readfile().
+// Downloads are counted, by country, in telemetry.php (no IP addresses are kept).
 // Source: github.com/petercorke/writings, wordpress/rtb/dl-zip.php.
 
 if ( ! isset( $_COOKIE['RobotToolboxCookie02'] ) ) {
@@ -26,10 +27,9 @@ if ( null === $file || ! is_file( __DIR__ . '/' . $file ) ) {
 }
 
 header( 'Content-type: application/zip-stream' );
+header( 'Cache-Control: no-store' ); // every download must reach PHP to be counted
 header( 'Content-Disposition: attachment; filename="' . basename( $file ) . '"' );
 readfile( __DIR__ . '/' . $file );
 
-$fp = fopen( __DIR__ . '/logs/file', 'a' );
-flock( $fp, LOCK_EX );
-fputs( $fp, 'zip: ' . date( 'j-m-Y H:i', time() ) . ', ' . $_SERVER['REMOTE_ADDR'] . ', ' . $file . "\n" );
-fclose( $fp );
+require __DIR__ . '/telemetry.php';
+rtb_record( 'download', basename( dirname( $file ) ) . '/' . basename( $file ) );

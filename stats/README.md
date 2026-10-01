@@ -41,3 +41,8 @@ halved after March 2026 (about 300k to 75k a month) and bandwidth fell from abou
 11 GB a month. Bingbot alone made 260,000 requests in March 2026 and 4,600 in April.
 From April to September 2026, old plugin download links were requested about 16,000
 times and returned 404 (10,558 of them for the ICRA 2020 Python toolbox paper).
+
+## Robotics Toolbox for MATLAB
+
+`rtb/` holds usage totals for the old toolbox download area and its version check; see
+`rtb/README.md`.
