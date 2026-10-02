@@ -1,5 +1,5 @@
 {
-    "generated": "2026-10-01T15:15Z",
+    "generated": "2026-10-02T22:05Z",
     "about": "Robotics Toolbox for MATLAB usage. \"check\": RTB 9.10, 10.0 or 10.1 started in MATLAB (detail = MATLAB release). \"download\": a zip from petercorke.com/RTB/ (detail = file). users = distinct IP addresses in the period, counted with a monthly key and never stored.",
     "countries": "ISO 3166 alpha-2; IP to country data by DB-IP (https://db-ip.com), CC BY 4.0",
     "geo": "geo: current",
@@ -257,22 +257,62 @@
             },
             "2026-10": {
                 "by_detail": {
-                    "R2022b": {
-                        "count": 11,
-                        "users": 2
+                    "R2026a": {
+                        "count": 9,
+                        "users": 6
+                    },
+                    "R2024a": {
+                        "count": 10,
+                        "users": 3
                     },
                     "R2025b": {
-                        "count": 17,
+                        "count": 19,
+                        "users": 3
+                    },
+                    "R2022b": {
+                        "count": 12,
+                        "users": 2
+                    },
+                    "R2025a": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "R2023b": {
+                        "count": 2,
                         "users": 1
                     }
                 },
                 "by_country": {
+                    "US": {
+                        "count": 11,
+                        "users": 7
+                    },
+                    "CO": {
+                        "count": 3,
+                        "users": 3
+                    },
+                    "BO": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "BR": {
+                        "count": 1,
+                        "users": 1
+                    },
                     "CN": {
                         "count": 17,
                         "users": 1
                     },
                     "JP": {
+                        "count": 9,
+                        "users": 1
+                    },
+                    "KR": {
                         "count": 8,
+                        "users": 1
+                    },
+                    "LB": {
+                        "count": 1,
                         "users": 1
                     },
                     "TW": {
@@ -404,8 +444,12 @@
                 "users": 27
             },
             "2026-10-01": {
-                "count": 28,
-                "users": 3
+                "count": 37,
+                "users": 10
+            },
+            "2026-10-02": {
+                "count": 17,
+                "users": 9
             }
         },
         "monthly_totals": {
@@ -414,8 +458,8 @@
                 "users": 491
             },
             "2026-10": {
-                "count": 28,
-                "users": 3
+                "count": 54,
+                "users": 17
             }
         }
     },
@@ -554,12 +598,16 @@
             "2026-10": {
                 "by_detail": {
                     "current/robot-9.10.zip": {
-                        "count": 5,
-                        "users": 5
+                        "count": 12,
+                        "users": 10
                     },
                     "r8/robot.zip": {
-                        "count": 2,
-                        "users": 2
+                        "count": 4,
+                        "users": 4
+                    },
+                    "current/robot-9.9.zip": {
+                        "count": 1,
+                        "users": 1
                     },
                     "other": {
                         "count": 1,
@@ -572,8 +620,16 @@
                 },
                 "by_country": {
                     "US": {
-                        "count": 7,
-                        "users": 4
+                        "count": 14,
+                        "users": 9
+                    },
+                    "MX": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "PT": {
+                        "count": 1,
+                        "users": 1
                     },
                     "SG": {
                         "count": 2,
@@ -584,8 +640,12 @@
         },
         "daily": {
             "2026-10-01": {
-                "count": 9,
-                "users": 5
+                "count": 11,
+                "users": 7
+            },
+            "2026-10-02": {
+                "count": 8,
+                "users": 6
             }
         },
         "monthly_totals": {
@@ -1206,8 +1266,8 @@
                 "users": 54
             },
             "2026-10": {
-                "count": 9,
-                "users": 5
+                "count": 19,
+                "users": 12
             }
         }
     },
@@ -1224,19 +1284,19 @@
             "2026-07": 53,
             "2026-08": 29,
             "2026-09": 125,
-            "2026-10": 4
+            "2026-10": 12
         },
         "by_country": {
             "China": 322,
-            "United States": 186,
+            "United States": 191,
             "Spain": 81,
             "United Kingdom": 61,
             "Colombia": 33,
             "Egypt": 28,
             "India": 28,
+            "Mexico": 25,
             "Brazil": 24,
-            "Mexico": 24,
-            "Finland": 20,
+            "Finland": 21,
             "Japan": 20,
             "Canada": 18,
             "Italy": 16,
@@ -1259,9 +1319,9 @@
             "Hong Kong": 6,
             "Vietnam": 6,
             "Norway": 5,
+            "Portugal": 5,
             "Bolivia": 5,
             "Greece": 4,
-            "Portugal": 4,
             "Taiwan": 4,
             "Argentina": 3,
             "Ethiopia": 3,
