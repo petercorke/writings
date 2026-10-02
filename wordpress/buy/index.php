@@ -3,8 +3,10 @@
  * "Buy" links that send each reader to the best place to buy the book: their Amazon store
  * where Peter is an Associate, otherwise the publisher.
  *
- *   https://petercorke.com/buy/rvc3p          redirect, store chosen by the reader's country
- *   https://petercorke.com/buy/rvc3p?store=au  a particular store
+ *   https://petercorke.com/buy/rvc3p              one of Peter's books, store chosen by country
+ *   https://petercorke.com/buy/rvc3p?store=au      a particular store where Peter is an Associate
+ *                                                  (au, us, or a store domain such as co.uk)
+ *   https://petercorke.com/buy/isbn/0262201623     any book by its print ISBN-10 ("Books I like")
  *
  * Readers in Australia go to amazon.com.au and readers in the USA to amazon.com, with
  * the Associates tag for that store. Readers in a country with its own Amazon store,
@@ -12,6 +14,9 @@
  * no commission programme, so that costs nothing and ships worldwide); everyone else
  * goes to amazon.com with the US tag, since that is where they would buy. Each click is
  * counted by country, book and destination (telemetry.php, no IP addresses kept).
+ *
+ * Other authors' books (/buy/isbn/...) have no publisher page to fall back on, so readers
+ * in a country with its own Amazon store go there, untagged.
  *
  * Amazon's Associates rules forbid hiding which site a click came from. This is a plain
  * redirect, so the browser still tells Amazon the page the reader clicked on (on
@@ -58,15 +63,24 @@ header( 'Cache-Control: no-store, private' ); // the answer depends on the reade
 header( 'X-Robots-Tag: noindex' );
 
 $book = strtolower( trim( $_GET['book'] ?? '', '/' ) );
+$isbn = strtoupper( $_GET['isbn'] ?? '' );
+if ( 'isbn' === $book && preg_match( '/^[0-9]{9}[0-9X]$/', $isbn ) ) {
+	$country = rtb_country( $_SERVER['REMOTE_ADDR'] ?? '' );
+	$store   = STORES[ $country ] ?? 'com';
+	$url     = 'https://www.amazon.' . $store . '/dp/' . $isbn . ( isset( TAGS[ $store ] ) ? '?tag=' . TAGS[ $store ] : '' );
+	rtb_record( 'buy', "isbn:$isbn/$store" );
+	header( 'Location: ' . $url, true, 302 );
+	exit;
+}
 if ( ! isset( BOOKS[ $book ] ) ) {
 	header( 'Location: https://petercorke.com/books/', true, 302 );
 	exit;
 }
 
 $country = rtb_country( $_SERVER['REMOTE_ADDR'] ?? '' );
-$want    = strtolower( $_GET['store'] ?? '' );
-if ( 'au' === $want || 'us' === $want ) {
-	$store = 'au' === $want ? 'com.au' : 'com';
+$want    = array( 'au' => 'com.au', 'us' => 'com' )[ strtolower( $_GET['store'] ?? '' ) ] ?? strtolower( $_GET['store'] ?? '' );
+if ( isset( TAGS[ $want ] ) ) {
+	$store = $want; // ?store=au, ?store=us, or any store we have a tag for (e.g. co.uk): for testing
 } else {
 	$store = STORES[ $country ] ?? 'com'; // no local store: amazon.com
 }

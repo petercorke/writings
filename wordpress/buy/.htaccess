@@ -1,4 +1,5 @@
-# /buy/<book> -> index.php?book=<book>  (see index.php)
+# /buy/<book> -> index.php?book=<book>, /buy/isbn/<ISBN-10> -> index.php?book=isbn&isbn=...  (see index.php)
 RewriteEngine On
 RewriteBase /buy/
+RewriteRule ^isbn/([0-9]{9}[0-9Xx])/?$ index.php?book=isbn&isbn=$1 [L,QSA]
 RewriteRule ^([a-z0-9]+)/?$ index.php?book=$1 [L,QSA]
