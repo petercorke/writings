@@ -15,6 +15,9 @@ them to the server; the copies here are the masters.
 - `anniversary-tag.php`: a must-use plugin adding `[anniversary]` to Simple Calendar's event
   template, so "This day in robotics" shows "1930 (96 years ago): Jacques Denavit born". The
   calendar's template (calendar post 832) uses `[anniversary]` in place of `[title]`.
+- `buy/`: `petercorke.com/buy/<book>` (rvc3p, rvc3m, rvc2, rvc1) sends a reader to amazon.com.au or
+  amazon.com with the Associates tag, or to Springer where a local Amazon store would earn
+  nothing; clicks are counted by country with `rtb/telemetry.php`.
 - `rtb/`: the old Robotics Toolbox download area, petercorke.com/RTB/: the download
   script, the version check answered by RTB 9.10–10.1, and usage counting by country
   (see `rtb/README.md`).

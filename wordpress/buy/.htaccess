@@ -1,0 +1,4 @@
+# /buy/<book> -> index.php?book=<book>  (see index.php)
+RewriteEngine On
+RewriteBase /buy/
+RewriteRule ^([a-z0-9]+)/?$ index.php?book=$1 [L,QSA]
