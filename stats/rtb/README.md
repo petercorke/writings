@@ -1,6 +1,6 @@
 # Robotics Toolbox for MATLAB: usage
 
-Totals from petercorke.com/RTB/, copied here weekly by `.github/workflows/rtb-stats.yml`, the toolbox's old download area. See
+Totals from petercorke.com/RTB/, copied weekly by `.github/workflows/rtb-stats.yml`, the toolbox's old download area. The files below (except the AWStats one) live on the **`data` branch**, not `main`, so bot commits never touch `main`; read them with `ref: data` or at `raw.githubusercontent.com/petercorke/writings/data/stats/rtb/<file>`. See
 `wordpress/rtb/README.md` for how they are made. No IP addresses or organisation names
 are kept here.
 

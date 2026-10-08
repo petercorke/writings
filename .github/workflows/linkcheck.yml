@@ -3,6 +3,10 @@
 # Writes resources/linkcheck.json (read by the weekly RVC ecosystem report) and keeps one
 # issue labelled "link-check" up to date while any link needs attention; the issue is
 # closed when none do. See tools/linkcheck.py for what counts as a problem.
+#
+# The JSON is kept on the `data` branch, not main (bot commits there never interrupt work
+# on main or trigger the site build). It is copied into resources/ for the script, which
+# reads the previous run from there, and copied back afterwards; main ignores the file.
 name: Link check
 
 on:
@@ -23,6 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+      - name: Restore the previous result
+        run: cp data/resources/linkcheck.json resources/linkcheck.json
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -31,11 +41,13 @@ jobs:
         run: python tools/linkcheck.py --markdown > report.md
       - name: Commit results
         run: |
+          cp resources/linkcheck.json data/resources/linkcheck.json
+          cd data
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add resources/linkcheck.json
           git diff --cached --quiet || git commit -m "Link check: update resources/linkcheck.json"
-          git push
+          git push origin data
       - name: Update the link-check issue
         env:
           GH_TOKEN: ${{ github.token }}

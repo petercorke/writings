@@ -2,6 +2,9 @@
 # week (and on demand), so the record is kept in git as well as on the server, and the
 # weekly RVC ecosystem report (which runs an hour later) can read stats/rtb/latest.json.
 #
+# The files live on the `data` branch, not main: bot commits there never interrupt work on
+# main or trigger the site build. The branch is seeded by hand once (see its README.md).
+#
 # The totals are made by wordpress/rtb/telemetry.php on petercorke.com: version checks
 # made by RTB 9.10-10.1 at MATLAB startup, and downloads from the old /RTB/ page, by
 # country. They contain no IP addresses. See stats/rtb/README.md.
@@ -24,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: data
       - name: Fetch totals
         run: |
           base="https://petercorke.com/RTB/stats.php"
@@ -39,4 +44,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add stats/rtb/monthly.csv stats/rtb/daily.csv stats/rtb/latest.json
           git diff --cached --quiet || git commit -m "RTB usage: weekly snapshot of stats/rtb/"
-          git push
+          git push origin data

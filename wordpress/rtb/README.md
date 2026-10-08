@@ -14,7 +14,7 @@ MATLAB runs `startup_rtb`. Only the files here have been changed; the rest of /R
   address kept; see the comment at its top. Data is in `~/rtb-telemetry/` on the server,
   outside the web root.
 - `stats.php`: the totals as JSON (`/RTB/stats.php`), or as CSV (`?csv=monthly`,
-  `?csv=daily`). Read by the weekly RVC ecosystem report, and copied into `stats/rtb/`
+  `?csv=daily`). Read by the weekly RVC ecosystem report, and copied into `stats/rtb/` on the `data` branch
   monthly by `.github/workflows/rtb-stats.yml`.
 
 Country data is DB-IP's "IP to Country Lite" (CC BY 4.0, https://db-ip.com), downloaded
