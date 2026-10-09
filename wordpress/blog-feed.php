@@ -10,7 +10,8 @@
  * can't be reached. Discussion items link out to GitHub and carry a small source line.
  *
  * Attributes:
- *   menu   "yes" (default) shows a row of year links above the list; "no" leaves it out
+ *   menu   "yes" (default) shows a row of year links, each with its number of entries, e.g.
+ *          "2024 (3)", above the list; "no" leaves it out
  *
  * To see a change before the cache expires: wp transient delete blog_feed_discussions
  */
@@ -100,8 +101,8 @@ function blog_feed_shortcode( $atts ): string {
 	$out = '';
 	if ( 'no' !== $atts['menu'] ) {
 		$out .= '<div class="anchor-menu"><ul>';
-		foreach ( array_keys( $years ) as $year ) {
-			$out .= sprintf( '<li><a href="#blog-%1$s">%1$s</a></li>', esc_attr( $year ) );
+		foreach ( $years as $year => $list ) {
+			$out .= sprintf( '<li><a href="#blog-%1$s">%1$s (%2$d)</a></li>', esc_attr( $year ), count( $list ) );
 		}
 		$out .= "</ul></div>\n";
 	}
