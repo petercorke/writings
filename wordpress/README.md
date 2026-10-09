@@ -15,6 +15,11 @@ them to the server; the copies here are the masters.
 - `anniversary-tag.php`: a must-use plugin adding `[anniversary]` to Simple Calendar's event
   template, so "This day in robotics" shows "1930 (96 years ago): Jacques Denavit born". The
   calendar's template (calendar post 832) uses `[anniversary]` in place of `[title]`.
+- `page-post-archive.php`: the theme template (`wp-content/themes/zephyr_petercorke/`) behind
+  Articles & tutorials (page 800). It used to hard-code five category blocks by ID, so a new
+  category (`control`) never appeared. It now keeps the old order, headings and `#tutes`-style
+  anchors, adds `CONTROL`, and gives any other category that has posts its own section,
+  just before GENERAL.
 - `no-event-schema.php`: a must-use plugin that strips the schema.org Event microdata Simple
   Calendar hard-codes on every `[calendar]` list item. "This day in robotics" lists historical
   anniversaries, not events, and the markup only had a start date and description, so Search
