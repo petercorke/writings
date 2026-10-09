@@ -17,7 +17,7 @@ is the map; each part has its own README for detail.
 | WordPress site (posts, pages, menus) | SiteGround | the WordPress database, not this repo | |
 | Add-ons for the site: plugins, a theme template, redirects, the old `/RTB/` area | SiteGround (PHP) | **this repo, `wordpress/`**, deployed by copy | [`wordpress/README.md`](wordpress/README.md) |
 | docs.petercorke.com, resource-list JSON, `docs.json` | GitHub Pages | `docs/`, `resources/`, built by `tools/build.py` on every push to `main` | [`README.md`](README.md), [`tools/README.md`](tools/README.md) |
-| Scheduled collectors (link check, RTB usage, blog feed) | GitHub Actions | `tools/`, `.github/workflows/` | below |
+| Scheduled collectors (link check, RTB usage, blog feed, discussions awaiting reply) | GitHub Actions | `tools/`, `.github/workflows/` | below |
 | Machine-written data | the **`data` branch** of this repo | written only by the workflows | its own `README.md` |
 | Weekly ecosystem report | a scheduled routine on claude.ai | reads the repos and the `data` branch; posts to an issue in `rvc-ecosystem` | |
 
@@ -35,6 +35,7 @@ flowchart LR
     lc["link check (monthly)"]
     rs["RTB usage copy (weekly)"]
     bf["blog feed (daily)"]
+    da["discussions awaiting (weekly)"]
   end
   subgraph SG["SiteGround: petercorke.com"]
     wp["WordPress + add-ons"]
@@ -49,6 +50,7 @@ flowchart LR
   rs -- "reads stats.php" --> rtb
   rs --> data
   disc --> bf --> data
+  disc --> da --> data
   data -- "blog/discussions.json" --> wp
   data --> rep
   rtb -. totals .-> rs
@@ -82,9 +84,15 @@ into `blog/discussions.json` on the `data` branch. The plugin fetches that, cach
 **Site search.** `wordpress/docs-search.php` lists matching documents from `docs.json` (written
 by the site build) above the normal WordPress results, cached for 12 hours.
 
+**Discussions awaiting a reply.** Weekly, just before the report, `tools/discussions_awaiting.py`
+finds open Discussions whose latest activity is from someone other than Peter (bots ignored) and
+writes `reports/discussions-awaiting.json` to the `data` branch. Waiting a year or less is
+"recent" and listed one by one; older is "backlog" and reported as a count plus the oldest few, so
+stale threads can't bury new ones.
+
 **Weekly report.** A scheduled routine checks every repo for items awaiting a reply, reads the
-link-check and RTB files from the `data` branch, and posts the result as a comment on a tracking
-issue in `rvc-ecosystem`.
+link-check, RTB and discussions files from the `data` branch, and posts the result as a comment on
+a tracking issue in `rvc-ecosystem`.
 
 **Other add-ons.** `buy/` (book links that go to the right Amazon store or the publisher, with
 clicks counted), `anniversary-tag.php` and `no-event-schema.php` ("This day in robotics"),
@@ -111,6 +119,6 @@ templates `search.php` and `page-post-archive.php`. See [`wordpress/README.md`](
 |---|---|
 | A resource list on a chapter page is missing or old | `https://docs.petercorke.com/resources/<topic>.json`; the last Pages run |
 | The Blog page lacks a recent discussion | the `Blog feed` run; `data` branch `blog/discussions.json`; the 6-hour cache |
-| The weekly report's RTB or link section is empty | the `data` branch files and their `generated` / `checked` dates |
+| The weekly report's RTB, link or discussions section is empty | the `data` branch files and their `generated` / `checked` dates |
 | A new category isn't on Articles & tutorials | it needs at least one post; `page-post-archive.php` adds it automatically |
 | Pasted text has odd spacing | `paste-as-text.php` should prevent it; see the paste notes in `wordpress/README.md` |
