@@ -32,3 +32,6 @@ them to the server; the copies here are the masters.
   (see `rtb/README.md`).
 - `llms.txt`: petercorke.com's `/llms.txt`, a guide for AI assistants to the books,
   toolboxes and this site. A static file in the site root.
+- `paste-as-text.php`: a must-use plugin that makes the classic editor paste as plain text by
+  default, so HTML carried on the clipboard from an email, Gemini or a web page never reaches
+  the post (it was the cause of the badly spaced ball-and-beam post, 2026-10-10).
