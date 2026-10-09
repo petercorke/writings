@@ -6,7 +6,9 @@ tiles, each with a page preview that enlarges on hover.
 
 The site is generated: every push to `main` runs `tools/build.py` in GitHub Actions, which
 reads a small description file per document, renders the previews and publishes the page to
-GitHub Pages. Nothing runs on petercorke.com.
+GitHub Pages. The same repository also holds the add-ons and scheduled jobs behind
+petercorke.com (the `wordpress/` directory and `.github/workflows/`); how they all fit
+together is in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Adding a document
 

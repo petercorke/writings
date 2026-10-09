@@ -1,6 +1,7 @@
 # WordPress add-ons for petercorke.com
 
-Files installed on petercorke.com that belong with this site. Edit them here, then copy
+Files installed on petercorke.com that belong with this site. How they fit with the rest of
+the machinery is in [`../ARCHITECTURE.md`](../ARCHITECTURE.md). Edit them here, then copy
 them to the server; the copies here are the masters.
 
 - `docs-search.php`: a must-use plugin (`wp-content/mu-plugins/`) that lists matching
