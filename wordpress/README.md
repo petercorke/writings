@@ -35,3 +35,8 @@ them to the server; the copies here are the masters.
 - `paste-as-text.php`: a must-use plugin that makes the classic editor paste as plain text by
   default, so HTML carried on the clipboard from an email, Gemini or a web page never reaches
   the post (it was the cause of the badly spaced ball-and-beam post, 2026-10-10).
+- `blog-feed.php`: a must-use plugin providing `[blog_feed]`, used by the Blog page (page 2358):
+  one chronological list, newest first and grouped by year, of the site's posts and of Peter's
+  GitHub Discussions (the ones he started, plus announcements, from every repo with Discussions
+  on). The discussions are collected daily by `tools/blogfeed.py`, run by
+  `.github/workflows/blog-feed.yml`, into `blog/discussions.json` on the `data` branch.
