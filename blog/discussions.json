@@ -1,0 +1,126 @@
+{
+ "generated": "2026-10-09T20:25:01Z",
+ "owner": "petercorke",
+ "items": [
+  {
+   "date": "2026-09-14T14:07:44Z",
+   "title": "Simple way to control IK solution configurations",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/671",
+   "repo": "robotics-toolbox-python",
+   "category": "Ideas",
+   "excerpt": "One of the problems with numerical IK is that you can't control the solution of the arm, it will be randomly elbow up or elbow down depending on how the RNG dice roll. I wonder (pure speculation) if we could get some…"
+  },
+  {
+   "date": "2026-08-20T05:49:11Z",
+   "title": "V1.4.0 released",
+   "url": "https://github.com/petercorke/bdsim/discussions/80",
+   "repo": "bdsim",
+   "category": "General",
+   "excerpt": "This release has a few new features, but mostly bug fixes, and proper deprecation of features I unilaterally pulled (like out.y0) for instance. The documentation was in places quite out of date, so the README, wiki, and…"
+  },
+  {
+   "date": "2024-08-06T02:41:21Z",
+   "title": "Numpy2",
+   "url": "https://github.com/petercorke/RVC3-python/discussions/19",
+   "repo": "RVC3-python",
+   "category": "Announcements",
+   "excerpt": "numpy2 is causing a few issues. Right now OpenCV won't work and Jesse' spatial geometry package wont work either. The latter is easier to fix and that job is on our list. There are a number of other major dependencies…"
+  },
+  {
+   "date": "2023-05-18T08:38:33Z",
+   "title": "v1.1 release",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/371",
+   "repo": "robotics-toolbox-python",
+   "category": "Changes",
+   "excerpt": "It's been a while since the last release, but we've just released v1.1.0 in anticipation of the publication the third edition RVC book. We've been a bit preoccupied with books, papers and teaching so far this year, but…"
+  },
+  {
+   "date": "2023-01-22T23:01:54Z",
+   "title": "Current state of bdsim",
+   "url": "https://github.com/petercorke/bdsim/discussions/14",
+   "repo": "bdsim",
+   "category": "General",
+   "excerpt": "As of Jan 2023. Over the last year , my attention has been spread a bit too thinly across two book projects and multiple packages (machine vision toolbox, spatial math toolbox and robotics toolbox). Consequently bdsim…"
+  },
+  {
+   "date": "2023-01-22T22:58:05Z",
+   "title": "What do you use bdsim for?",
+   "url": "https://github.com/petercorke/bdsim/discussions/13",
+   "repo": "bdsim",
+   "category": "Q&A",
+   "excerpt": "Please share your use cases and areas you would like to see developed."
+  },
+  {
+   "date": "2022-06-16T00:28:14Z",
+   "title": "Interactive Q&A session",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/319",
+   "repo": "robotics-toolbox-python",
+   "category": "Q&A",
+   "excerpt": "Join the creators, Jesse Haviland and Peter Corke, for an interactive Q&A session about the Robotics Toolbox for Python. We will meet via Zoom to discuss design issues, questions, features and how to contribute. We’re…"
+  },
+  {
+   "date": "2022-05-14T06:45:41Z",
+   "title": "V1.0 released",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/312",
+   "repo": "robotics-toolbox-python",
+   "category": "General",
+   "excerpt": "We've gone to 1.0 because this version fully supports the third edition of the Robotics, Vision & Control book which has been shipped to the publisher, hopefully released later this year. The book explains the theory…"
+  },
+  {
+   "date": "2021-05-04T06:25:01Z",
+   "title": "New branch for RTB development",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/235",
+   "repo": "robotics-toolbox-python",
+   "category": "Changes",
+   "excerpt": "We're going to try and be more disciplined with GitHub, moving our development and prototyping to the future branch. master branch should be less noisy that it has been."
+  },
+  {
+   "date": "2021-05-04T06:22:29Z",
+   "title": "New PyPI version posted",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/234",
+   "repo": "robotics-toolbox-python",
+   "category": "Changes",
+   "excerpt": "0.10.0 is now on PyPI. Let us know any issues. The previous version 0.9.1 was posted 2 months ago, and there's been some redesign and bug fixes."
+  },
+  {
+   "date": "2021-03-21T07:34:57Z",
+   "title": "Changes to IK for trajectories",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/202",
+   "repo": "robotics-toolbox-python",
+   "category": "Changes",
+   "excerpt": "IK methods return a named tuple that holds joint coordinates, success, reason for failure, residual, number of iterations. For a trajectory used to return a list of these tuples, but that meant quite a bit of work to…"
+  },
+  {
+   "date": "2021-03-21T07:32:10Z",
+   "title": "More change to trajectory",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/201",
+   "repo": "robotics-toolbox-python",
+   "category": "Changes",
+   "excerpt": "The attributes in the Trajectory class were called x, y, yd and ydd. For consistency with the RVC book these are now named t, s, sd, and sdd. These attributes q, qd and qdd are the same as s, sd, and sdd."
+  },
+  {
+   "date": "2021-03-04T06:14:07Z",
+   "title": "v0.9 on PyPI",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/189",
+   "repo": "robotics-toolbox-python",
+   "category": "Show and tell",
+   "excerpt": "New features and compatibility with some breaking changes to SMTB."
+  },
+  {
+   "date": "2021-02-14T06:33:01Z",
+   "title": "Changes to trajectory functions",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/176",
+   "repo": "robotics-toolbox-python",
+   "category": "Changes",
+   "excerpt": "Old behaviour Trajectory functions used to return a named tuple with time, position, velocity and acceleration, eg. tg = tpoly1(0, 1, 20) with elements x, y, yd, ydd, which could be plotted with t1plot. While tg =…"
+  },
+  {
+   "date": "2021-01-25T22:36:20Z",
+   "title": "V0.7",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/168",
+   "repo": "robotics-toolbox-python",
+   "category": "Show and tell",
+   "excerpt": "Jesse has just pushed 0.7 as a release. We've had some issues with the build failing under windows which turned out to be some weird Unicode thing. The robot arm stuff is in good shape, we have lots of models and…"
+  }
+ ]
+}
