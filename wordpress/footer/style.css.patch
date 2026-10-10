@@ -1,0 +1,31 @@
+--- a/style.css
++++ b/style.css
+@@ -1860,7 +1860,7 @@
+ footer
+ {
+ 	width: 98%;
+-	height: 190px;
++	height: 100px;
+ 	display: block;
+ 	margin: 0 auto;
+ 	padding: 0;
+@@ -1990,7 +1990,7 @@
+ 	line-height: 16px;
+ 	color: #a2a2a2;
+ 	margin: 0;
+-	padding: 25px;
++	padding: 14px 25px;
+ 	text-transform: uppercase;
+ }
+ 
+@@ -2954,8 +2954,8 @@
+ 	h2.hm-feature-title {margin: 0 0 40px;}
+ 	.hm-feature-img {width: 100%;float: none; margin-bottom: 20px;}
+ 	.hm-feature-txt {width: 100%;float: none;}
+-	footer {height: auto;padding: 50px 0;}
+-	.footer-logo-box {position: relative;left: auto; top: auto; transform: none; margin: 0 auto 30px auto;}
++	footer {height: auto;padding: 24px 0;}
++	.footer-logo-box {position: relative;left: auto; top: auto; transform: none; margin: 0 auto 16px auto;}
+ 	.social-media ul {position: relative;right: auto; top: auto; transform: none; margin: 0 auto;}
+ 	.logo-bar-footer {display: none;}
+ 	.post-date {float: none;display: block;margin: 0 0 20px 0;text-align: center;}
