@@ -1,0 +1,42 @@
+--- a/style.css
++++ b/style.css
+@@ -864,7 +864,12 @@
+ 	width: 100%;
+ 	display: block;
+ 	margin: 0;
+-	padding: 120px 0px;
++	padding: 56px 0px 0px;
++}
++
++.hm-feature + .hm-feature
++{
++	padding-top: 56px;
+ }
+ 
+ .hm-feature .wrapper
+@@ -896,7 +901,7 @@
+ 	font-weight: 400;
+ 	color: #373a43;
+ 	padding: 0;
+-	margin: 0 0 80px 0;
++	margin: 0 0 36px 0;
+ 	text-align: center;
+ }
+ 
+@@ -918,7 +923,7 @@
+ 	width: 85%;
+ 	max-width: 1250px;
+ 	margin: 0 auto;
+-	padding: 80px 0;
++	padding: 56px 0 48px;
+ }
+ 
+ .hm-posts .item
+@@ -2951,6 +2956,7 @@
+ 	.intro-logo h3 {clear: none;font-size: 65px;line-height: 55px;margin: 0 0 0 120px;}
+ 	.intro-text {width: 80%;bottom: 5%;}
+ 	.hm-feature {padding: 70px 0;}
++	.hm-feature + .hm-feature {padding-top: 70px;}
+ 	h2.hm-feature-title {margin: 0 0 40px;}
+ 	.hm-feature-img {width: 100%;float: none; margin-bottom: 20px;}
+ 	.hm-feature-txt {width: 100%;float: none;}
