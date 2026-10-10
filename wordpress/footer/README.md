@@ -6,7 +6,7 @@ The server holds copies; keep these in step.
 | File | Installed at | What it does |
 |---|---|---|
 | `footer.php` | `wp-content/themes/zephyr_petercorke/footer.php` | Each icon link gets a hovertip (`title`) and an accessible name (`aria-label`), derived from the link's host because the ACF rows have no label field; `rel="noopener"`; images get `alt=""` |
-| `style.css.patch` | applied to the theme's `style.css` | footer `height` 190px -> 100px; copyright bar padding 25px -> 14px 25px; phone footer padding 50px -> 24px and logo gap 30px -> 16px |
+| `style.css.patch` | applied to the theme's `style.css` | footer `height` 190px -> 100px; wordmark and icons raised 8px (`top: calc(50% - 8px)`) to clear the blue tab; copyright bar padding 25px -> 14px 25px; phone footer padding 50px -> 24px and logo gap 30px -> 16px |
 | `orcid.svg`, `dblp.svg` | WordPress media library (attachments 2556, 2557) | White glyphs from Simple Icons (CC0) for the dark footer |
 
 ## The icons are data, not template
