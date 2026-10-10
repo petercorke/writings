@@ -9,7 +9,8 @@
   JSON file per topic under `_site/resources/`, plus an index.
 - `linkcheck.py`: checks every link in `resources/*.yml` and writes `resources/linkcheck.json`
   (kept on the `data` branch); run monthly by `.github/workflows/linkcheck.yml`.
-- `blogfeed.py`: collects the GitHub Discussions Peter started (plus announcements) from every
-  repo of his that has them, for the Blog page; run daily by `.github/workflows/blog-feed.yml`.
+- `blogfeed.py`: collects the discussions in each repo's "Announcements" category (Announcement
+  format, so only maintainers can post there) for the Blog page; run daily by
+  `.github/workflows/blog-feed.yml`. `test_blogfeed.py` checks the selection rule.
 - `discussions_awaiting.py`: lists open Discussions waiting for his reply, in two tiers (recent,
   backlog), for the weekly ecosystem report; run weekly by `.github/workflows/discussions-awaiting.yml`.

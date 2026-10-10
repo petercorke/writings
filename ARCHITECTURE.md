@@ -75,10 +75,12 @@ the current version when MATLAB starts. `wordpress/rtb/` counts those checks and
 from the old `/RTB/` page, by country and release, with **no IP addresses kept**. Weekly, a
 workflow copies the totals into `stats/rtb/` on the `data` branch ([`wordpress/rtb/README.md`](wordpress/rtb/README.md)).
 
-**Blog page.** `[blog_feed]` (`wordpress/blog-feed.php`) lists the site's posts and Peter's GitHub
-Discussions in one chronological list, grouped by year. Daily, `tools/blogfeed.py` collects the
-discussions he started, plus announcements, from every public repo of his with Discussions on,
-into `blog/discussions.json` on the `data` branch. The plugin fetches that, cached for 6 hours.
+**Blog page.** `[blog_feed]` (`wordpress/blog-feed.php`) lists the site's posts and the
+announcements from Peter's GitHub Discussions in one chronological list, grouped by year. Daily,
+`tools/blogfeed.py` collects the discussions in the **Announcements** category (Announcement
+format, so only maintainers can post there) of every public repo of his with Discussions on,
+into `blog/discussions.json` on the `data` branch. To put something on the Blog, post it in
+Announcements; nothing else is promoted. The plugin fetches that, cached for 6 hours.
 *If GitHub is down*, the list shows posts and the last known discussions.
 
 **Site search.** `wordpress/docs-search.php` lists matching documents from `docs.json` (written

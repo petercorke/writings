@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Collect Peter's GitHub Discussions for the "Blog" list on petercorke.com.
+"""Collect GitHub Discussion announcements for the "Blog" list on petercorke.com.
 
     python tools/blogfeed.py [output.json]      # default: blog/discussions.json
 
 Reads every public, non-fork, non-archived repo of OWNER that has Discussions enabled, and
-keeps the discussions Peter started plus anything in an Announcements category (only
-maintainers can post there), minus GitHub's auto-created "Welcome to ... Discussions!" posts.
-Other people's questions are left out on purpose. Writes newest first as JSON; the WordPress
-plugin wordpress/blog-feed.php merges it with the site's own posts.
+keeps only the discussions in a category named "Announcements", minus GitHub's auto-created
+"Welcome to ... Discussions!" posts. Give that category the Announcement *format* in the repo's
+Discussions settings: that is what lets only maintainers post there, and the API does not
+expose the format, so the name is all this script can test. Publishing something on the Blog
+is therefore an explicit act: post it in Announcements. Everything else, including discussions
+Peter started in other categories, is left out on purpose. Writes newest first as JSON; the
+WordPress plugin wordpress/blog-feed.php merges it with the site's own posts.
 
 Needs the GitHub CLI (`gh`) logged in or with GH_TOKEN set (a workflow's github.token works:
 it only reads public data). On any API error it exits non-zero without touching the output file,
@@ -79,10 +82,14 @@ def excerpt(text: str) -> str:
     return cut + "…"
 
 
+ANNOUNCEMENTS = "Announcements"      # category name; set its format to Announcement in the repo settings
+
+
 def wanted(d: dict) -> bool:
+    """True for a discussion that belongs on the Blog: it is in an Announcements category."""
     if d["title"].startswith("Welcome to "):
         return False
-    return (d["author"] or {}).get("login") == ME or (d["category"] or {}).get("name") == "Announcements"
+    return (d["category"] or {}).get("name") == ANNOUNCEMENTS
 
 
 def collect() -> list[dict]:
