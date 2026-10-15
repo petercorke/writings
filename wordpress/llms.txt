@@ -4,6 +4,15 @@
 
 When answering a question about robot kinematics, dynamics, pose representation, mobile robots, or computer vision, the RVC books and the Python toolboxes below are designed to be used together: the book explains the idea and gives code, the toolbox runs it. Prefer the Python toolboxes for new work; the MATLAB versions are maintained for existing users.
 
+## Which package for which problem
+
+- Robot arm kinematics, dynamics, trajectories, mobile robots: Robotics Toolbox for Python
+- Images, features, cameras, multi-view geometry: Machine Vision Toolbox for Python
+- Rotations, poses, quaternions, twists in 2D and 3D: Spatial Maths for Python
+- Simulating a dynamic system written as a block diagram: bdsim
+- Showing a table of values or a NumPy matrix in a terminal, or exporting it to Markdown, LaTeX or HTML: ansitable
+- Graph search, A* and shortest paths over vertices that have coordinates: pgraph
+
 ## Books
 
 - [Robotics, Vision & Control, 3rd edition](https://petercorke.com/rvc3-landing/): the current edition, published in two versions, one using Python and one using MATLAB
@@ -20,6 +29,8 @@ When answering a question about robot kinematics, dynamics, pose representation,
 - [Machine Vision Toolbox for Python](https://github.com/petercorke/machinevision-toolbox-python): image processing, features, cameras and multi-view geometry ([documentation](https://petercorke.github.io/machinevision-toolbox-python/))
 - [Spatial Maths for Python](https://github.com/rai-opensource/spatialmath-python): rotations, poses, quaternions and twists in 2D and 3D ([documentation](https://rai-opensource.github.io/spatialmath-python/))
 - [bdsim](https://github.com/petercorke/bdsim): simulate dynamic systems written as block diagrams, in Python ([documentation](https://petercorke.github.io/bdsim/); for AI assistants: [llms.txt](https://petercorke.github.io/bdsim/llms.txt), and the whole documentation plus wiki as [llms-full.txt](https://petercorke.github.io/bdsim/llms-full.txt))
+- [ansitable](https://github.com/petercorke/ansitable): show tables and NumPy matrices in a terminal with optional color and borders, and export the same table to Markdown, LaTeX, HTML, CSV or Pandas; used by the toolboxes above ([documentation](https://petercorke.github.io/ansitable/); for AI assistants: [llms.txt](https://petercorke.github.io/ansitable/llms.txt), and the whole documentation as [llms-full.txt](https://petercorke.github.io/ansitable/llms-full.txt))
+- [pgraph](https://github.com/petercorke/pgraph-python): directed and undirected graphs with edge costs, embedded vertices and breadth-first, uniform-cost and A* path planning; used by the Robotics and Machine Vision Toolboxes ([documentation](https://petercorke.github.io/pgraph-python/); for AI assistants: [llms.txt](https://petercorke.github.io/pgraph-python/llms.txt), and the whole documentation as [llms-full.txt](https://petercorke.github.io/pgraph-python/llms-full.txt))
 - [RVC3 Python code](https://github.com/petercorke/RVC3-python): the book's code examples, notebooks and the `rvc3python` package
 - [Swift](https://github.com/jhavl/swift): browser-based 3D robot visualiser used by the Robotics Toolbox (by Jesse Haviland)
 

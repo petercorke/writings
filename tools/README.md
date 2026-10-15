@@ -14,3 +14,6 @@
   `.github/workflows/blog-feed.yml`. `test_blogfeed.py` checks the selection rule.
 - `discussions_awaiting.py`: lists open Discussions waiting for his reply, in two tiers (recent,
   backlog), for the weekly ecosystem report; run weekly by `.github/workflows/discussions-awaiting.yml`.
+- `llms_hits.py`: reports who fetches `/llms.txt` and `/robots.txt` on petercorke.com, by kind of
+  visitor and by week, from the server's access logs over `ssh sg` (about 30 days are kept; no
+  addresses are printed). Run by hand: `python tools/llms_hits.py`.
