@@ -1,28 +1,13 @@
 {
- "generated": "2026-10-16T22:38:02Z",
+ "generated": "2026-10-23T22:37:48Z",
  "owner": "petercorke",
  "recent_days": 365,
  "counts": {
-  "total": 1,
-  "recent": 1,
+  "total": 0,
+  "recent": 0,
   "backlog": 0,
   "backlog_never_replied": 0
  },
  "oldest_backlog": [],
- "items": [
-  {
-   "repo": "robotics-toolbox-python",
-   "number": 391,
-   "title": "adaptive Li damping on ikine LM?",
-   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/391",
-   "category": "Ideas",
-   "opened_by": "francogassibe",
-   "last_by": "francogassibe",
-   "last_at": "2026-10-12T21:34:41Z",
-   "days": 4,
-   "comments": 2,
-   "answered": false,
-   "tier": "recent"
-  }
- ]
+ "items": []
 }
