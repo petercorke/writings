@@ -1,7 +1,15 @@
 {
- "generated": "2026-10-10T05:30:30Z",
+ "generated": "2026-10-24T19:33:04Z",
  "owner": "petercorke",
  "items": [
+  {
+   "date": "2026-10-24T01:03:10Z",
+   "title": "V1.5.0 released with symbolic IK",
+   "url": "https://github.com/petercorke/robotics-toolbox-python/discussions/899",
+   "repo": "robotics-toolbox-python",
+   "category": "Announcements",
+   "excerpt": "The busiest release yet: 145 commits in a month, and ten first-time contributors (thank you!). My trusty partner Claude who did a lot of the heavy lifting. The feature I'm most excited about: give the Toolbox a DH model…"
+  },
   {
    "date": "2026-08-20T05:49:11Z",
    "title": "V1.4.0 released",
