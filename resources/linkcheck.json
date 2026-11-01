@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-08T05:39Z",
+ "checked": "2026-11-01T20:08Z",
  "links": 274,
  "problems": [
   {
@@ -12,6 +12,50 @@
    "status": 0,
    "final": null,
    "since": "2026-09-30"
+  },
+  {
+   "topic": "introduction",
+   "topic_title": "Introduction",
+   "heading": "Robots, cybernetics and artificial intelligence",
+   "title": "The Ratio Club: A Hub of British Cybernetics (PDF)",
+   "url": "https://www.sussex.ac.uk/Users/philh/pubs/Ratio2.pdf",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "mobile-robots",
+   "topic_title": "Mobile robot vehicles",
+   "heading": "General",
+   "title": "Open-source software and tutorial for quadrotors",
+   "url": "http://www.openflyer.org/",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "mobile-robots",
+   "topic_title": "Mobile robot vehicles",
+   "heading": "General",
+   "title": "Thesis of Paul Pounds",
+   "url": "https://openresearch-repository.anu.edu.au/bitstreams/e0b72a87-51b4-4f0a-876b-9b93a856eab0/download",
+   "kind": "broken",
+   "status": 503,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "navigation",
+   "topic_title": "Navigation",
+   "heading": "Braitenberg vehicles",
+   "title": "Analysis of Mobile Robot Navigation Algorithms in Unknown Environments",
+   "url": "https://robotics.ee.uwa.edu.au/theses/2010-Navigation-Ng-PhD.pdf",
+   "kind": "broken",
+   "status": 520,
+   "final": null,
+   "since": "2026-11-01"
   },
   {
    "topic": "navigation",
@@ -58,6 +102,28 @@
    "since": "2026-09-30"
   },
   {
+   "topic": "localization",
+   "topic_title": "Localization and mapping",
+   "heading": "GPS",
+   "title": "GPS constellation status",
+   "url": "https://www.navcen.uscg.gov/gps-constellation",
+   "kind": "broken",
+   "status": 403,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "localization",
+   "topic_title": "Localization and mapping",
+   "heading": "GPS",
+   "title": "GPS info from Navigation Center (US Coast Guard)",
+   "url": "https://www.navcen.uscg.gov/?pageName=GPS",
+   "kind": "broken",
+   "status": 403,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
    "topic": "light-color",
    "topic_title": "Light and color",
    "heading": "General",
@@ -67,6 +133,17 @@
    "status": 200,
    "final": "https://www.newtonproject.ox.ac.uk/",
    "since": "2026-09-30"
+  },
+  {
+   "topic": "light-color",
+   "topic_title": "Light and color",
+   "heading": "General",
+   "title": "The CIE XYZ and xyY Color spaces",
+   "url": "https://graphics.stanford.edu/courses/cs148-10-summer/docs/2010--kerr--cie_xyz.pdf",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
   },
   {
    "topic": "feature-extraction",
@@ -102,6 +179,28 @@
    "since": "2026-09-30"
   },
   {
+   "topic": "image-formation",
+   "topic_title": "Image formation",
+   "heading": "General",
+   "title": "Flash applets on some technical aspects of photography",
+   "url": "https://graphics.stanford.edu/courses/cs178/applets/",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "image-formation",
+   "topic_title": "Image formation",
+   "heading": "General",
+   "title": "Lightfield cameras",
+   "url": "https://graphics.stanford.edu/papers/CameraArray/CameraArray.mp4",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
    "topic": "multiple-images",
    "topic_title": "Using multiple images",
    "heading": "General",
@@ -127,6 +226,17 @@
    "topic": "multiple-images",
    "topic_title": "Using multiple images",
    "heading": "Software",
+   "title": "Ceres Solver",
+   "url": "http://ceres-solver.org",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "multiple-images",
+   "topic_title": "Using multiple images",
+   "heading": "Software",
    "title": "Epipolar geometry toolkit",
    "url": "http://egt.dii.unisi.it/#tth_sEc7",
    "kind": "moved",
@@ -138,12 +248,34 @@
    "topic": "multiple-images",
    "topic_title": "Using multiple images",
    "heading": "Software",
+   "title": "Multiple View geometry MATLAB functions",
+   "url": "https://www.robots.ox.ac.uk/~vgg/hzbook/code/",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
+  },
+  {
+   "topic": "multiple-images",
+   "topic_title": "Using multiple images",
+   "heading": "Software",
    "title": "Sparse Bundle Adjustment (SBA)",
    "url": "https://users.ics.forth.gr/~lourakis/sba/",
    "kind": "broken",
    "status": 0,
    "final": null,
    "since": "2026-09-30"
+  },
+  {
+   "topic": "multiple-images",
+   "topic_title": "Using multiple images",
+   "heading": "Stereo datasets",
+   "title": "Oxford VGG multi-view data",
+   "url": "https://www.robots.ox.ac.uk/~vgg/data/data-mview.html",
+   "kind": "noanswer",
+   "status": 0,
+   "final": null,
+   "since": "2026-11-01"
   },
   {
    "topic": "visual-servoing",
@@ -169,9 +301,9 @@
   }
  ],
  "counts": {
-  "broken": 8,
+  "broken": 12,
   "moved": 6,
   "homepage": 1,
-  "noanswer": 0
+  "noanswer": 8
  }
 }
