@@ -1,292 +1,42 @@
 {
-    "generated": "2026-10-30T22:03Z",
+    "generated": "2026-11-13T22:03Z",
     "about": "Robotics Toolbox for MATLAB usage. \"check\": RTB 9.10, 10.0 or 10.1 started in MATLAB (detail = MATLAB release). \"download\": a zip from petercorke.com/RTB/ (detail = file). users = distinct IP addresses in the period, counted with a monthly key and never stored.",
     "countries": "ISO 3166 alpha-2; IP to country data by DB-IP (https://db-ip.com), CC BY 4.0",
-    "geo": "geo: current",
+    "geo": "geo: rebuilt, 362998 IPv4 and 369798 IPv6 ranges",
     "check": {
         "months": {
-            "2026-09": {
-                "by_detail": {
-                    "R2026a": {
-                        "count": 555,
-                        "users": 83
-                    },
-                    "R2025b": {
-                        "count": 764,
-                        "users": 68
-                    },
-                    "R2023a": {
-                        "count": 396,
-                        "users": 50
-                    },
-                    "R2022b": {
-                        "count": 610,
-                        "users": 44
-                    },
-                    "R2024a": {
-                        "count": 242,
-                        "users": 42
-                    },
-                    "R2025a": {
-                        "count": 155,
-                        "users": 37
-                    },
-                    "R2024b": {
-                        "count": 302,
-                        "users": 34
-                    },
-                    "R2017b": {
-                        "count": 101,
-                        "users": 26
-                    },
-                    "R2023b": {
-                        "count": 154,
-                        "users": 23
-                    },
-                    "R2016a": {
-                        "count": 109,
-                        "users": 18
-                    },
-                    "R2021b": {
-                        "count": 43,
-                        "users": 13
-                    },
-                    "R2014a": {
-                        "count": 124,
-                        "users": 10
-                    },
-                    "unknown": {
-                        "count": 12,
-                        "users": 9
-                    },
-                    "R2022a": {
-                        "count": 27,
-                        "users": 8
-                    },
-                    "R2015b": {
-                        "count": 56,
-                        "users": 7
-                    },
-                    "R2019a": {
-                        "count": 31,
-                        "users": 6
-                    },
-                    "R2018b": {
-                        "count": 32,
-                        "users": 5
-                    },
-                    "R2019b": {
-                        "count": 12,
-                        "users": 5
-                    },
-                    "R2020a": {
-                        "count": 15,
-                        "users": 4
-                    },
-                    "R2021a": {
-                        "count": 12,
-                        "users": 4
-                    },
-                    "R2013a": {
-                        "count": 6,
-                        "users": 2
-                    },
-                    "R2014b": {
-                        "count": 5,
-                        "users": 2
-                    },
-                    "R2016b": {
-                        "count": 4,
-                        "users": 2
-                    },
-                    "R2012b": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "R2018a": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "R2020b": {
-                        "count": 4,
-                        "users": 1
-                    }
-                },
-                "by_country": {
-                    "CN": {
-                        "count": 1441,
-                        "users": 222
-                    },
-                    "CO": {
-                        "count": 386,
-                        "users": 46
-                    },
-                    "TW": {
-                        "count": 477,
-                        "users": 46
-                    },
-                    "US": {
-                        "count": 374,
-                        "users": 42
-                    },
-                    "MX": {
-                        "count": 300,
-                        "users": 39
-                    },
-                    "LB": {
-                        "count": 68,
-                        "users": 11
-                    },
-                    "VN": {
-                        "count": 48,
-                        "users": 10
-                    },
-                    "KR": {
-                        "count": 157,
-                        "users": 9
-                    },
-                    "SE": {
-                        "count": 38,
-                        "users": 8
-                    },
-                    "HK": {
-                        "count": 99,
-                        "users": 6
-                    },
-                    "PK": {
-                        "count": 10,
-                        "users": 5
-                    },
-                    "YE": {
-                        "count": 11,
-                        "users": 5
-                    },
-                    "IE": {
-                        "count": 53,
-                        "users": 4
-                    },
-                    "JP": {
-                        "count": 37,
-                        "users": 4
-                    },
-                    "NO": {
-                        "count": 8,
-                        "users": 4
-                    },
-                    "CL": {
-                        "count": 9,
-                        "users": 3
-                    },
-                    "PL": {
-                        "count": 38,
-                        "users": 3
-                    },
-                    "AR": {
-                        "count": 16,
-                        "users": 2
-                    },
-                    "DE": {
-                        "count": 8,
-                        "users": 2
-                    },
-                    "FI": {
-                        "count": 14,
-                        "users": 2
-                    },
-                    "OM": {
-                        "count": 9,
-                        "users": 2
-                    },
-                    "PH": {
-                        "count": 4,
-                        "users": 2
-                    },
-                    "TN": {
-                        "count": 110,
-                        "users": 2
-                    },
-                    "BR": {
-                        "count": 22,
-                        "users": 1
-                    },
-                    "CA": {
-                        "count": 4,
-                        "users": 1
-                    },
-                    "ES": {
-                        "count": 4,
-                        "users": 1
-                    },
-                    "GB": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "KW": {
-                        "count": 4,
-                        "users": 1
-                    },
-                    "MA": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "MG": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "MY": {
-                        "count": 3,
-                        "users": 1
-                    },
-                    "PE": {
-                        "count": 4,
-                        "users": 1
-                    },
-                    "RU": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "SG": {
-                        "count": 4,
-                        "users": 1
-                    },
-                    "UA": {
-                        "count": 8,
-                        "users": 1
-                    }
-                }
-            },
             "2026-10": {
                 "by_detail": {
                     "R2026a": {
-                        "count": 554,
-                        "users": 124
+                        "count": 557,
+                        "users": 126
                     },
                     "R2024b": {
-                        "count": 366,
-                        "users": 109
+                        "count": 375,
+                        "users": 110
                     },
                     "R2025a": {
-                        "count": 286,
-                        "users": 102
+                        "count": 290,
+                        "users": 103
                     },
                     "R2025b": {
-                        "count": 305,
-                        "users": 101
+                        "count": 307,
+                        "users": 102
                     },
                     "R2024a": {
-                        "count": 341,
-                        "users": 61
+                        "count": 346,
+                        "users": 63
                     },
                     "R2023b": {
-                        "count": 148,
-                        "users": 43
+                        "count": 149,
+                        "users": 44
                     },
                     "R2026b": {
-                        "count": 582,
-                        "users": 34
+                        "count": 587,
+                        "users": 35
                     },
                     "R2022b": {
-                        "count": 151,
+                        "count": 156,
                         "users": 29
                     },
                     "R2023a": {
@@ -294,12 +44,12 @@
                         "users": 23
                     },
                     "unknown": {
-                        "count": 17,
-                        "users": 14
+                        "count": 19,
+                        "users": 15
                     },
                     "R2021a": {
-                        "count": 78,
-                        "users": 8
+                        "count": 147,
+                        "users": 9
                     },
                     "R2021b": {
                         "count": 15,
@@ -312,39 +62,39 @@
                 },
                 "by_country": {
                     "CN": {
-                        "count": 1013,
-                        "users": 285
+                        "count": 1024,
+                        "users": 290
                     },
                     "TW": {
-                        "count": 393,
+                        "count": 402,
                         "users": 80
                     },
                     "US": {
-                        "count": 730,
-                        "users": 65
+                        "count": 799,
+                        "users": 66
                     },
                     "CO": {
                         "count": 147,
                         "users": 41
                     },
                     "LB": {
-                        "count": 140,
-                        "users": 21
+                        "count": 141,
+                        "users": 22
                     },
                     "MX": {
                         "count": 60,
                         "users": 17
                     },
                     "VN": {
-                        "count": 26,
+                        "count": 29,
                         "users": 13
+                    },
+                    "JP": {
+                        "count": 75,
+                        "users": 12
                     },
                     "HK": {
                         "count": 20,
-                        "users": 10
-                    },
-                    "JP": {
-                        "count": 68,
                         "users": 10
                     },
                     "KR": {
@@ -415,6 +165,10 @@
                         "count": 4,
                         "users": 2
                     },
+                    "GB": {
+                        "count": 6,
+                        "users": 2
+                    },
                     "OM": {
                         "count": 2,
                         "users": 2
@@ -425,10 +179,6 @@
                     },
                     "FR": {
                         "count": 16,
-                        "users": 1
-                    },
-                    "GB": {
-                        "count": 1,
                         "users": 1
                     },
                     "IN": {
@@ -468,61 +218,203 @@
                         "users": 1
                     }
                 }
+            },
+            "2026-11": {
+                "by_detail": {
+                    "R2024a": {
+                        "count": 295,
+                        "users": 53
+                    },
+                    "R2025b": {
+                        "count": 183,
+                        "users": 48
+                    },
+                    "R2024b": {
+                        "count": 403,
+                        "users": 37
+                    },
+                    "R2025a": {
+                        "count": 382,
+                        "users": 29
+                    },
+                    "R2022b": {
+                        "count": 124,
+                        "users": 23
+                    },
+                    "R2026b": {
+                        "count": 415,
+                        "users": 17
+                    },
+                    "R2023b": {
+                        "count": 47,
+                        "users": 14
+                    },
+                    "R2026a": {
+                        "count": 83,
+                        "users": 13
+                    },
+                    "R2023a": {
+                        "count": 26,
+                        "users": 12
+                    },
+                    "unknown": {
+                        "count": 19,
+                        "users": 11
+                    },
+                    "R2021a": {
+                        "count": 456,
+                        "users": 7
+                    },
+                    "R2022a": {
+                        "count": 18,
+                        "users": 2
+                    },
+                    "R2021b": {
+                        "count": 1,
+                        "users": 1
+                    }
+                },
+                "by_country": {
+                    "CN": {
+                        "count": 1420,
+                        "users": 133
+                    },
+                    "US": {
+                        "count": 147,
+                        "users": 14
+                    },
+                    "TW": {
+                        "count": 52,
+                        "users": 11
+                    },
+                    "DZ": {
+                        "count": 15,
+                        "users": 10
+                    },
+                    "SG": {
+                        "count": 351,
+                        "users": 7
+                    },
+                    "JP": {
+                        "count": 24,
+                        "users": 6
+                    },
+                    "CO": {
+                        "count": 56,
+                        "users": 5
+                    },
+                    "ES": {
+                        "count": 28,
+                        "users": 5
+                    },
+                    "ID": {
+                        "count": 8,
+                        "users": 5
+                    },
+                    "VN": {
+                        "count": 12,
+                        "users": 5
+                    },
+                    "CA": {
+                        "count": 5,
+                        "users": 4
+                    },
+                    "KR": {
+                        "count": 190,
+                        "users": 4
+                    },
+                    "LB": {
+                        "count": 38,
+                        "users": 4
+                    },
+                    "MX": {
+                        "count": 21,
+                        "users": 4
+                    },
+                    "PL": {
+                        "count": 10,
+                        "users": 4
+                    },
+                    "UA": {
+                        "count": 7,
+                        "users": 4
+                    },
+                    "HK": {
+                        "count": 10,
+                        "users": 3
+                    },
+                    "BR": {
+                        "count": 3,
+                        "users": 2
+                    },
+                    "IQ": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "IT": {
+                        "count": 3,
+                        "users": 2
+                    },
+                    "OM": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "RO": {
+                        "count": 3,
+                        "users": 2
+                    },
+                    "TN": {
+                        "count": 7,
+                        "users": 2
+                    },
+                    "AE": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "BO": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "DE": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "FI": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "FR": {
+                        "count": 25,
+                        "users": 1
+                    },
+                    "NL": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "NO": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "PT": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "SY": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "TH": {
+                        "count": 2,
+                        "users": 1
+                    },
+                    "YE": {
+                        "count": 1,
+                        "users": 1
+                    }
+                }
             }
         },
         "daily": {
-            "2026-09-01": {
-                "count": 38,
-                "users": 11
-            },
-            "2026-09-02": {
-                "count": 44,
-                "users": 12
-            },
-            "2026-09-03": {
-                "count": 104,
-                "users": 16
-            },
-            "2026-09-04": {
-                "count": 116,
-                "users": 18
-            },
-            "2026-09-05": {
-                "count": 32,
-                "users": 7
-            },
-            "2026-09-06": {
-                "count": 8,
-                "users": 4
-            },
-            "2026-09-07": {
-                "count": 197,
-                "users": 50
-            },
-            "2026-09-08": {
-                "count": 201,
-                "users": 32
-            },
-            "2026-09-09": {
-                "count": 120,
-                "users": 30
-            },
-            "2026-09-10": {
-                "count": 103,
-                "users": 27
-            },
-            "2026-09-11": {
-                "count": 127,
-                "users": 25
-            },
-            "2026-09-12": {
-                "count": 78,
-                "users": 17
-            },
-            "2026-09-13": {
-                "count": 31,
-                "users": 13
-            },
             "2026-09-14": {
                 "count": 196,
                 "users": 41
@@ -710,6 +602,62 @@
             "2026-10-30": {
                 "count": 146,
                 "users": 44
+            },
+            "2026-10-31": {
+                "count": 105,
+                "users": 15
+            },
+            "2026-11-01": {
+                "count": 51,
+                "users": 12
+            },
+            "2026-11-02": {
+                "count": 131,
+                "users": 26
+            },
+            "2026-11-03": {
+                "count": 203,
+                "users": 29
+            },
+            "2026-11-04": {
+                "count": 145,
+                "users": 26
+            },
+            "2026-11-05": {
+                "count": 201,
+                "users": 27
+            },
+            "2026-11-06": {
+                "count": 250,
+                "users": 16
+            },
+            "2026-11-07": {
+                "count": 68,
+                "users": 20
+            },
+            "2026-11-08": {
+                "count": 33,
+                "users": 11
+            },
+            "2026-11-09": {
+                "count": 92,
+                "users": 15
+            },
+            "2026-11-10": {
+                "count": 48,
+                "users": 24
+            },
+            "2026-11-11": {
+                "count": 409,
+                "users": 35
+            },
+            "2026-11-12": {
+                "count": 351,
+                "users": 29
+            },
+            "2026-11-13": {
+                "count": 470,
+                "users": 38
             }
         },
         "monthly_totals": {
@@ -718,143 +666,17 @@
                 "users": 491
             },
             "2026-10": {
-                "count": 2941,
-                "users": 618
+                "count": 3046,
+                "users": 628
+            },
+            "2026-11": {
+                "count": 2452,
+                "users": 251
             }
         }
     },
     "download": {
         "months": {
-            "2026-09": {
-                "by_detail": {
-                    "current/robot-9.10.zip": {
-                        "count": 34,
-                        "users": 34
-                    },
-                    "current/robot-9.9.zip": {
-                        "count": 14,
-                        "users": 14
-                    },
-                    "current/robot-9.3.zip": {
-                        "count": 13,
-                        "users": 13
-                    },
-                    "r8/robot.zip": {
-                        "count": 6,
-                        "users": 6
-                    },
-                    "current/robot-9.4.zip": {
-                        "count": 3,
-                        "users": 3
-                    },
-                    "current/robot-9.6.zip": {
-                        "count": 2,
-                        "users": 2
-                    },
-                    "current/robot-9.8.zip": {
-                        "count": 2,
-                        "users": 2
-                    },
-                    "r7/robot.zip": {
-                        "count": 1,
-                        "users": 1
-                    }
-                },
-                "by_country": {
-                    "US": {
-                        "count": 17,
-                        "users": 14
-                    },
-                    "CN": {
-                        "count": 15,
-                        "users": 9
-                    },
-                    "FI": {
-                        "count": 7,
-                        "users": 5
-                    },
-                    "CL": {
-                        "count": 4,
-                        "users": 3
-                    },
-                    "CO": {
-                        "count": 3,
-                        "users": 3
-                    },
-                    "BR": {
-                        "count": 3,
-                        "users": 2
-                    },
-                    "PE": {
-                        "count": 2,
-                        "users": 2
-                    },
-                    "AR": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "BE": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "CA": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "DK": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "DO": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "DZ": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "EG": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "HK": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "IE": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "JP": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "LK": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "NL": {
-                        "count": 1,
-                        "users": 1
-                    },
-                    "PT": {
-                        "count": 3,
-                        "users": 1
-                    },
-                    "QA": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "VN": {
-                        "count": 2,
-                        "users": 1
-                    },
-                    "YE": {
-                        "count": 1,
-                        "users": 1
-                    }
-                }
-            },
             "2026-10": {
                 "by_detail": {
                     "current/robot-9.10.zip": {
@@ -996,6 +818,92 @@
                         "users": 1
                     }
                 }
+            },
+            "2026-11": {
+                "by_detail": {
+                    "current/robot-9.10.zip": {
+                        "count": 18,
+                        "users": 18
+                    },
+                    "current/robot-9.9.zip": {
+                        "count": 5,
+                        "users": 3
+                    },
+                    "current/robot-9.3.zip": {
+                        "count": 3,
+                        "users": 2
+                    },
+                    "r8/robot.zip": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "current/robot-9.6.zip": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "current/robot-9.7.zip": {
+                        "count": 1,
+                        "users": 1
+                    }
+                },
+                "by_country": {
+                    "CN": {
+                        "count": 14,
+                        "users": 8
+                    },
+                    "FI": {
+                        "count": 2,
+                        "users": 2
+                    },
+                    "AE": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "AR": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "BR": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "CA": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "DZ": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "ES": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "ID": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "IT": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "JP": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "PT": {
+                        "count": 3,
+                        "users": 1
+                    },
+                    "RO": {
+                        "count": 1,
+                        "users": 1
+                    },
+                    "US": {
+                        "count": 1,
+                        "users": 1
+                    }
+                }
             }
         },
         "daily": {
@@ -1096,6 +1004,54 @@
                 "users": 2
             },
             "2026-10-30": {
+                "count": 1,
+                "users": 1
+            },
+            "2026-11-01": {
+                "count": 1,
+                "users": 1
+            },
+            "2026-11-02": {
+                "count": 2,
+                "users": 2
+            },
+            "2026-11-03": {
+                "count": 3,
+                "users": 1
+            },
+            "2026-11-04": {
+                "count": 2,
+                "users": 2
+            },
+            "2026-11-05": {
+                "count": 6,
+                "users": 3
+            },
+            "2026-11-06": {
+                "count": 2,
+                "users": 2
+            },
+            "2026-11-07": {
+                "count": 1,
+                "users": 1
+            },
+            "2026-11-08": {
+                "count": 6,
+                "users": 4
+            },
+            "2026-11-09": {
+                "count": 1,
+                "users": 1
+            },
+            "2026-11-10": {
+                "count": 1,
+                "users": 1
+            },
+            "2026-11-12": {
+                "count": 4,
+                "users": 4
+            },
+            "2026-11-13": {
                 "count": 1,
                 "users": 1
             }
@@ -1720,12 +1676,15 @@
             "2026-10": {
                 "count": 96,
                 "users": 63
+            },
+            "2026-11": {
+                "count": 30,
+                "users": 22
             }
         }
     },
     "guestbook": {
         "months": {
-            "2025-11": 97,
             "2025-12": 70,
             "2026-01": 93,
             "2026-02": 109,
@@ -1736,72 +1695,70 @@
             "2026-07": 53,
             "2026-08": 29,
             "2026-09": 125,
-            "2026-10": 82
+            "2026-10": 82,
+            "2026-11": 26
         },
         "by_country": {
-            "China": 335,
-            "United States": 205,
-            "Spain": 84,
-            "United Kingdom": 62,
-            "Colombia": 34,
-            "Egypt": 34,
-            "India": 29,
-            "Brazil": 26,
+            "China": 324,
+            "United States": 197,
+            "Spain": 83,
+            "United Kingdom": 51,
+            "Egypt": 33,
+            "Colombia": 32,
+            "India": 30,
             "Mexico": 26,
-            "Finland": 22,
+            "Finland": 23,
+            "Brazil": 23,
             "Japan": 22,
-            "Canada": 21,
-            "Italy": 17,
-            "Germany": 15,
+            "Canada": 19,
+            "Italy": 16,
             "Poland": 14,
-            "Peru": 13,
-            "Algeria": 13,
+            "Germany": 13,
             "Australia": 13,
-            "Ecuador": 11,
-            "Turkey": 10,
+            "Algeria": 12,
+            "Peru": 10,
+            "Ecuador": 9,
             "Malaysia": 9,
-            "Netherlands": 8,
-            "Yemen": 8,
-            "South Korea": 8,
-            "France": 8,
             "Sri Lanka": 8,
             "Pakistan": 8,
-            "Sweden": 7,
             "Portugal": 7,
-            "Chile": 7,
+            "Netherlands": 7,
+            "South Korea": 7,
+            "France": 6,
             "Hong Kong": 6,
+            "Turkey": 6,
+            "Chile": 6,
             "Vietnam": 6,
-            "Norway": 5,
+            "Yemen": 6,
             "Bolivia": 5,
-            "Greece": 4,
             "Taiwan": 4,
-            "Argentina": 3,
-            "Ethiopia": 3,
-            "Thailand": 3,
-            "Ukraine": 3,
+            "Indonesia": 4,
             "Iran": 3,
             "Yugoslavia": 3,
             "Morocco": 3,
             "Belgium": 3,
+            "Argentina": 3,
+            "Albania": 3,
             "Tunisia": 3,
-            "Indonesia": 3,
-            "Saudi Arabia": 2,
-            "Russia": 2,
+            "Romania": 3,
             "Angola": 2,
+            "Ethiopia": 2,
+            "Sweden": 2,
             "Vanuatu": 2,
             "Jordan": 2,
+            "Greece": 2,
             "Philippines": 2,
-            "Albania": 2,
             "Qatar": 2,
-            "Romania": 2,
+            "Norway": 2,
             "Guatemala": 2,
             "Antarctica": 2,
             "Singapore": 2,
             "Ireland": 2,
-            "Anguill": 1,
             "Afghanistan": 1,
+            "Russia": 1,
             "Slovenia": 1,
             "Austria": 1,
+            "Saudi Arabia": 1,
             "Armenia": 1,
             "Andorra": 1,
             "Hungary": 1,
@@ -1812,8 +1769,11 @@
             "American Samoa": 1,
             "Denmark": 1,
             "South Africa": 1,
+            "Thailand": 1,
             "Puerto Rico": 1,
-            "Kenya": 1
+            "Kenya": 1,
+            "Ukraine": 1,
+            "United Arab Emirates": 1
         }
     }
 }
