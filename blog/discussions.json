@@ -1,7 +1,15 @@
 {
- "generated": "2026-10-24T19:33:04Z",
+ "generated": "2026-11-15T19:32:32Z",
  "owner": "petercorke",
  "items": [
+  {
+   "date": "2026-11-15T06:45:15Z",
+   "title": "v1.5.0 released",
+   "url": "https://github.com/petercorke/bdsim/discussions/256",
+   "repo": "bdsim",
+   "category": "Announcements",
+   "excerpt": "Highlights System analysis: bd.functions() turns a block diagram into the functions f(x,u) and g(x,u), and bd.linearize() gives the A, B, C, D matrices and poles at an operating point; Linearization.ss() hands the…"
+  },
   {
    "date": "2026-10-24T01:03:10Z",
    "title": "V1.5.0 released with symbolic IK",
